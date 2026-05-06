@@ -2,7 +2,7 @@
 
 언어 학습 앱 구조를 바탕으로 한국어, 영어, 일본어, 스페인어, 이탈리아어, 한자, Python, Java 학습 코스를 함께 다루도록 확장 중인 Next.js 학습 플랫폼입니다. 아직 개발 중인 프로젝트라 데모 사이트 주소는 비워두고, 현재 구현된 기능과 화면 중심으로 정리했습니다.
 
-Demo site:
+Demo site: [https://lingo.oosu.dev](https://lingo.oosu.dev)
 
 ![Lingo main screen](.github/images/img_main.png)
 
