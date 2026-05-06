@@ -5,7 +5,7 @@ import vm from "node:vm";
 
 import { neon } from "@neondatabase/serverless";
 import "dotenv/config";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/neon-http";
 
 import * as schema from "@/db/schema";
@@ -608,44 +608,91 @@ const insertCourse = async (course: CourseSeed) => {
         .values({ title: course.title, imageSrc: course.imageSrc })
         .returning();
 
-  await db
-    .delete(schema.units)
-    .where(eq(schema.units.courseId, insertedCourse.id));
-
   for (const [unitIndex, unit] of course.units.entries()) {
-    const [insertedUnit] = await db
-      .insert(schema.units)
-      .values({
-        courseId: insertedCourse.id,
-        title: unit.title,
-        description: unit.description,
-        order: unitIndex + 1,
-      })
-      .returning();
+    const unitOrder = unitIndex + 1;
+    const existingUnit = await db.query.units.findFirst({
+      where: and(
+        eq(schema.units.courseId, insertedCourse.id),
+        eq(schema.units.order, unitOrder)
+      ),
+    });
 
-    for (const [lessonIndex, lesson] of unit.lessons.entries()) {
-      const [insertedLesson] = await db
-        .insert(schema.lessons)
-        .values({
-          unitId: insertedUnit.id,
-          title: lesson.title,
-          order: lessonIndex + 1,
-        })
-        .returning();
-
-      for (const [challengeIndex, challenge] of lesson.challenges.entries()) {
-        const [insertedChallenge] = await db
-          .insert(schema.challenges)
+    const [insertedUnit] = existingUnit
+      ? await db
+          .update(schema.units)
+          .set({
+            title: unit.title,
+            description: unit.description,
+          })
+          .where(eq(schema.units.id, existingUnit.id))
+          .returning()
+      : await db
+          .insert(schema.units)
           .values({
-            lessonId: insertedLesson.id,
-            type: challenge.type ?? "SELECT",
-            question: challenge.question,
-            prompt: challenge.prompt,
-            code: challenge.code,
-            hint: challenge.hint,
-            order: challengeIndex + 1,
+            courseId: insertedCourse.id,
+            title: unit.title,
+            description: unit.description,
+            order: unitOrder,
           })
           .returning();
+
+    for (const [lessonIndex, lesson] of unit.lessons.entries()) {
+      const lessonOrder = lessonIndex + 1;
+      const existingLesson = await db.query.lessons.findFirst({
+        where: and(
+          eq(schema.lessons.unitId, insertedUnit.id),
+          eq(schema.lessons.order, lessonOrder)
+        ),
+      });
+
+      const [insertedLesson] = existingLesson
+        ? await db
+            .update(schema.lessons)
+            .set({ title: lesson.title })
+            .where(eq(schema.lessons.id, existingLesson.id))
+            .returning()
+        : await db
+            .insert(schema.lessons)
+            .values({
+              unitId: insertedUnit.id,
+              title: lesson.title,
+              order: lessonOrder,
+            })
+            .returning();
+
+      for (const [challengeIndex, challenge] of lesson.challenges.entries()) {
+        const challengeOrder = challengeIndex + 1;
+        const challengeValues = {
+          lessonId: insertedLesson.id,
+          type: challenge.type ?? "SELECT",
+          question: challenge.question,
+          prompt: challenge.prompt ?? null,
+          code: challenge.code ?? null,
+          hint: challenge.hint ?? null,
+          order: challengeOrder,
+        };
+
+        const existingChallenge = await db.query.challenges.findFirst({
+          where: and(
+            eq(schema.challenges.lessonId, insertedLesson.id),
+            eq(schema.challenges.order, challengeOrder)
+          ),
+        });
+
+        const [insertedChallenge] = existingChallenge
+          ? await db
+              .update(schema.challenges)
+              .set(challengeValues)
+              .where(eq(schema.challenges.id, existingChallenge.id))
+              .returning()
+          : await db
+              .insert(schema.challenges)
+              .values(challengeValues)
+              .returning();
+
+        await db
+          .delete(schema.challengeOptions)
+          .where(eq(schema.challengeOptions.challengeId, insertedChallenge.id));
 
         await db.insert(schema.challengeOptions).values(
           challenge.options.map((option) => ({
