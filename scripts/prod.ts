@@ -5,6 +5,7 @@ import vm from "node:vm";
 
 import { neon } from "@neondatabase/serverless";
 import "dotenv/config";
+import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/neon-http";
 
 import * as schema from "@/db/schema";
@@ -170,7 +171,7 @@ const buildProgrammingCourse = ({
       );
 
       return {
-        title: category.title,
+        title: `Unit ${category.id + 1}. ${category.title}`,
         description: category.desc,
         lessons: categoryQuestions.map((question) => ({
           title: stripHtml(question.title),
@@ -216,49 +217,223 @@ const languageLesson = (
   ]),
 });
 
-const naturalCourses: CourseSeed[] = [
+const spanishChallengeTemplates: ChallengeSeed[] = [
   {
-    title: "Spanish",
-    imageSrc: "/es.svg",
-    units: [
+    type: "SELECT",
+    question: 'Which one of these is "the man"?',
+    options: [
       {
-        title: "Unit 1",
-        description: "Learn core Spanish nouns and greetings",
-        lessons: [
-          languageLesson("People", [
-            {
-              source: "the man",
-              target: "el hombre",
-              alt: ["la mujer", "el chico"],
-            },
-            {
-              source: "the woman",
-              target: "la mujer",
-              alt: ["el hombre", "la nina"],
-            },
-            {
-              source: "the boy",
-              target: "el chico",
-              alt: ["el robot", "la mujer"],
-            },
-          ]),
-          languageLesson("Common phrases", [
-            { source: "hello", target: "hola", alt: ["adios", "gracias"] },
-            {
-              source: "thank you",
-              target: "gracias",
-              alt: ["por favor", "hola"],
-            },
-            {
-              source: "please",
-              target: "por favor",
-              alt: ["adios", "gracias"],
-            },
-          ]),
-        ],
+        text: "el hombre",
+        correct: true,
+        imageSrc: "/man.svg",
+        audioSrc: "/es_man.mp3",
+      },
+      {
+        text: "la mujer",
+        correct: false,
+        imageSrc: "/woman.svg",
+        audioSrc: "/es_woman.mp3",
+      },
+      {
+        text: "el chico",
+        correct: false,
+        imageSrc: "/boy.svg",
+        audioSrc: "/es_boy.mp3",
       },
     ],
   },
+  {
+    type: "SELECT",
+    question: 'Which one of these is "the woman"?',
+    options: [
+      {
+        text: "la mujer",
+        correct: true,
+        imageSrc: "/woman.svg",
+        audioSrc: "/es_woman.mp3",
+      },
+      {
+        text: "el chico",
+        correct: false,
+        imageSrc: "/boy.svg",
+        audioSrc: "/es_boy.mp3",
+      },
+      {
+        text: "el hombre",
+        correct: false,
+        imageSrc: "/man.svg",
+        audioSrc: "/es_man.mp3",
+      },
+    ],
+  },
+  {
+    type: "SELECT",
+    question: 'Which one of these is "the boy"?',
+    options: [
+      {
+        text: "la mujer",
+        correct: false,
+        imageSrc: "/woman.svg",
+        audioSrc: "/es_woman.mp3",
+      },
+      {
+        text: "el hombre",
+        correct: false,
+        imageSrc: "/man.svg",
+        audioSrc: "/es_man.mp3",
+      },
+      {
+        text: "el chico",
+        correct: true,
+        imageSrc: "/boy.svg",
+        audioSrc: "/es_boy.mp3",
+      },
+    ],
+  },
+  {
+    type: "ASSIST",
+    question: '"the man"',
+    options: [
+      {
+        text: "la mujer",
+        correct: false,
+        audioSrc: "/es_woman.mp3",
+      },
+      {
+        text: "el hombre",
+        correct: true,
+        audioSrc: "/es_man.mp3",
+      },
+      {
+        text: "el chico",
+        correct: false,
+        audioSrc: "/es_boy.mp3",
+      },
+    ],
+  },
+  {
+    type: "SELECT",
+    question: 'Which one of these is "the zombie"?',
+    options: [
+      {
+        text: "el hombre",
+        correct: false,
+        imageSrc: "/man.svg",
+        audioSrc: "/es_man.mp3",
+      },
+      {
+        text: "la mujer",
+        correct: false,
+        imageSrc: "/woman.svg",
+        audioSrc: "/es_woman.mp3",
+      },
+      {
+        text: "el zombie",
+        correct: true,
+        imageSrc: "/zombie.svg",
+        audioSrc: "/es_zombie.mp3",
+      },
+    ],
+  },
+  {
+    type: "SELECT",
+    question: 'Which one of these is "the robot"?',
+    options: [
+      {
+        text: "el robot",
+        correct: true,
+        imageSrc: "/robot.svg",
+        audioSrc: "/es_robot.mp3",
+      },
+      {
+        text: "el zombie",
+        correct: false,
+        imageSrc: "/zombie.svg",
+        audioSrc: "/es_zombie.mp3",
+      },
+      {
+        text: "el chico",
+        correct: false,
+        imageSrc: "/boy.svg",
+        audioSrc: "/es_boy.mp3",
+      },
+    ],
+  },
+  {
+    type: "SELECT",
+    question: 'Which one of these is "the girl"?',
+    options: [
+      {
+        text: "la nina",
+        correct: true,
+        imageSrc: "/girl.svg",
+        audioSrc: "/es_girl.mp3",
+      },
+      {
+        text: "el zombie",
+        correct: false,
+        imageSrc: "/zombie.svg",
+        audioSrc: "/es_zombie.mp3",
+      },
+      {
+        text: "el hombre",
+        correct: false,
+        imageSrc: "/man.svg",
+        audioSrc: "/es_man.mp3",
+      },
+    ],
+  },
+  {
+    type: "ASSIST",
+    question: '"the zombie"',
+    options: [
+      {
+        text: "la mujer",
+        correct: false,
+        audioSrc: "/es_woman.mp3",
+      },
+      {
+        text: "el zombie",
+        correct: true,
+        audioSrc: "/es_zombie.mp3",
+      },
+      {
+        text: "el chico",
+        correct: false,
+        audioSrc: "/es_boy.mp3",
+      },
+    ],
+  },
+];
+
+const spanishLesson = (title: string): LessonSeed => ({
+  title,
+  challenges: spanishChallengeTemplates,
+});
+
+const spanishCourse: CourseSeed = {
+  title: "Spanish",
+  imageSrc: "/es.svg",
+  units: [
+    {
+      title: "Unit 1",
+      description: "Learn the basics of Spanish",
+      lessons: ["Nouns", "Verbs", "Adjectives", "Phrases", "Sentences"].map(
+        spanishLesson
+      ),
+    },
+    {
+      title: "Unit 2",
+      description: "Learn intermediate Spanish",
+      lessons: ["Nouns", "Verbs", "Adjectives", "Phrases", "Sentences"].map(
+        spanishLesson
+      ),
+    },
+  ],
+};
+
+const naturalCourses: CourseSeed[] = [
+  spanishCourse,
   {
     title: "English",
     imageSrc: "/en.svg",
@@ -418,10 +593,24 @@ const coursesData: CourseSeed[] = [
 ];
 
 const insertCourse = async (course: CourseSeed) => {
-  const [insertedCourse] = await db
-    .insert(schema.courses)
-    .values({ title: course.title, imageSrc: course.imageSrc })
-    .returning();
+  const existingCourse = await db.query.courses.findFirst({
+    where: eq(schema.courses.title, course.title),
+  });
+
+  const [insertedCourse] = existingCourse
+    ? await db
+        .update(schema.courses)
+        .set({ imageSrc: course.imageSrc })
+        .where(eq(schema.courses.id, existingCourse.id))
+        .returning()
+    : await db
+        .insert(schema.courses)
+        .values({ title: course.title, imageSrc: course.imageSrc })
+        .returning();
+
+  await db
+    .delete(schema.units)
+    .where(eq(schema.units.courseId, insertedCourse.id));
 
   for (const [unitIndex, unit] of course.units.entries()) {
     const [insertedUnit] = await db
@@ -474,16 +663,7 @@ const insertCourse = async (course: CourseSeed) => {
 
 const main = async () => {
   try {
-    console.log("Seeding database");
-
-    await db.delete(schema.challengeProgress);
-    await db.delete(schema.challengeOptions);
-    await db.delete(schema.challenges);
-    await db.delete(schema.lessons);
-    await db.delete(schema.units);
-    await db.delete(schema.userSubscription);
-    await db.delete(schema.userProgress);
-    await db.delete(schema.courses);
+    console.log("Seeding course catalog without deleting user progress");
 
     for (const course of coursesData) {
       console.log(`Seeding ${course.title}`);

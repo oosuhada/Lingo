@@ -1,8 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" role="img" aria-label="Korean course icon">
   <rect width="64" height="48" rx="8" fill="#fff"/>
-  <circle cx="32" cy="24" r="12" fill="#dc2626"/>
-  <path fill="#2563eb" d="M20 24a12 12 0 0 0 24 0c-5 4-11 4-16 0-3-2-5-2-8 0Z"/>
-  <g stroke="#111827" stroke-width="3" stroke-linecap="round">
-    <path d="M10 11h11M10 16h11M43 11h11M43 16h11M10 32h11M10 37h11M43 32h11M43 37h11"/>
+  <g transform="rotate(-28 32 24)">
+    <circle cx="32" cy="24" r="10" fill="#cd2e3a"/>
+    <path d="M22 24a10 10 0 0 0 20 0 5 5 0 0 0-10 0 5 5 0 0 1-10 0Z" fill="#0047a0"/>
+  </g>
+  <g stroke="#111827" stroke-width="2.4" stroke-linecap="round">
+    <path d="M9 10h11M9 15h11M9 20h11"/>
+    <path d="M44 10h4M52 10h4M44 15h12M44 20h4M52 20h4"/>
+    <path d="M9 28h11M9 33h4M17 33h3M9 38h11"/>
+    <path d="M44 28h4M52 28h4M44 33h4M52 33h4M44 38h4M52 38h4"/>
   </g>
 </svg>

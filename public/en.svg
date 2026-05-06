@@ -1,6 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" role="img" aria-label="English course icon">
-  <rect width="64" height="48" rx="8" fill="#1d4ed8"/>
-  <path fill="#fff" d="M0 18h64v12H0z"/>
-  <path fill="#dc2626" d="M0 21h64v6H0z"/>
-  <text x="32" y="37" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#fff">EN</text>
+  <defs>
+    <clipPath id="flag">
+      <rect width="64" height="48" rx="8"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#flag)">
+    <rect width="64" height="48" fill="#012169"/>
+    <path d="M-7 0 64 54M71 0 0 54" stroke="#fff" stroke-width="11"/>
+    <path d="M-7 0 64 54M71 0 0 54" stroke="#c8102e" stroke-width="6"/>
+    <path d="M32 0v48M0 24h64" stroke="#fff" stroke-width="16"/>
+    <path d="M32 0v48M0 24h64" stroke="#c8102e" stroke-width="9"/>
+  </g>
 </svg>
