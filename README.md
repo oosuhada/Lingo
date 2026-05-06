@@ -45,7 +45,7 @@ Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
 ```bash
-Lingo/
+lingo/
   |- actions/
     |-- challenge-progress.ts
     |-- user-progress.ts
