@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" role="img" aria-label="Python course icon">
+  <rect width="64" height="48" rx="8" fill="#0f172a"/>
+  <path fill="#3776ab" d="M15 24a13 13 0 0 1 13-13h9a8 8 0 0 1 8 8v5H27a5 5 0 0 0-5 5v8h-7z"/>
+  <path fill="#ffd43b" d="M49 24a13 13 0 0 1-13 13h-9a8 8 0 0 1-8-8v-5h18a5 5 0 0 0 5-5v-8h7z"/>
+  <circle cx="28" cy="18" r="2" fill="#fff"/>
+  <circle cx="36" cy="30" r="2" fill="#111827"/>
+</svg>

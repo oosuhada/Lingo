@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
@@ -13,15 +11,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useMounted } from "@/hooks/use-mounted";
 import { usePracticeModal } from "@/store/use-practice-modal";
 
 export const PracticeModal = () => {
-  const [isClient, setIsClient] = useState(false);
+  const isMounted = useMounted();
   const { isOpen, close } = usePracticeModal();
 
-  useEffect(() => setIsClient(true), []);
-
-  if (!isClient) return null;
+  if (!isMounted) return null;
 
   return (
     <Dialog open={isOpen} onOpenChange={close}>

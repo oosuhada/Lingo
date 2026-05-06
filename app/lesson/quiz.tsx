@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -18,6 +18,7 @@ import { usePracticeModal } from "@/store/use-practice-modal";
 import { Challenge } from "./challenge";
 import { Footer } from "./footer";
 import { Header } from "./header";
+import { ProgrammingPrompt } from "./programming-prompt";
 import { QuestionBubble } from "./question-bubble";
 import { ResultCard } from "./result-card";
 
@@ -80,9 +81,23 @@ export const Quiz = ({
 
   const [selectedOption, setSelectedOption] = useState<number>();
   const [status, setStatus] = useState<"none" | "wrong" | "correct">("none");
+  const [streak, setStreak] = useState(0);
+  const [burst, setBurst] = useState<{
+    key: number;
+    pieces: number;
+    message: string;
+  } | null>(null);
 
   const challenge = challenges[activeIndex];
   const options = challenge?.challengeOptions ?? [];
+
+  useEffect(() => {
+    if (!burst) return;
+
+    const timeout = window.setTimeout(() => setBurst(null), 2400);
+
+    return () => window.clearTimeout(timeout);
+  }, [burst]);
 
   const onNext = () => {
     setActiveIndex((current) => current + 1);
@@ -126,6 +141,24 @@ export const Quiz = ({
             void correctControls.play();
             setStatus("correct");
             setPercentage((prev) => prev + 100 / challenges.length);
+            setStreak((current) => {
+              const next = current + 1;
+              const milestones: Record<number, string> = {
+                3: "3 in a row. Your rhythm is getting sharper.",
+                5: "5 in a row. Full focus mode.",
+                10: "10 in a row. That is real mastery energy.",
+                15: "15 in a row. Keep the streak alive.",
+                20: "20 in a row. Legendary run.",
+              };
+
+              setBurst({
+                key: Date.now(),
+                pieces: Math.min(120 + next * 24, 420),
+                message: milestones[next] ?? "Correct. Nicely done.",
+              });
+
+              return next;
+            });
 
             // This is a practice
             if (initialPercentage === 100) {
@@ -145,6 +178,7 @@ export const Quiz = ({
 
             void incorrectControls.play();
             setStatus("wrong");
+            setStreak(0);
 
             if (!response?.error) setHearts((prev) => Math.max(prev - 1, 0));
           })
@@ -212,6 +246,26 @@ export const Quiz = ({
     <>
       {incorrectAudio}
       {correctAudio}
+      {burst && (
+        <>
+          <Confetti
+            key={burst.key}
+            recycle={false}
+            numberOfPieces={burst.pieces}
+            tweenDuration={4000}
+            width={width}
+            height={height}
+          />
+          <div className="pointer-events-none fixed left-1/2 top-6 z-50 -translate-x-1/2 rounded-full border border-green-200 bg-white px-4 py-2 text-sm font-bold text-green-600 shadow-lg">
+            {burst.message}
+          </div>
+        </>
+      )}
+      {streak >= 2 && (
+        <div className="pointer-events-none fixed right-5 top-5 z-40 rounded-full border border-orange-200 bg-white px-3 py-2 text-sm font-bold text-orange-600 shadow-md">
+          {streak} streak
+        </div>
+      )}
       <Header
         hearts={hearts}
         percentage={percentage}
@@ -225,10 +279,16 @@ export const Quiz = ({
               {title}
             </h1>
 
-            <div>
+            <div className="space-y-4">
               {challenge.type === "ASSIST" && (
                 <QuestionBubble question={challenge.question} />
               )}
+
+              <ProgrammingPrompt
+                prompt={challenge.prompt}
+                code={challenge.code}
+                hint={challenge.hint}
+              />
 
               <Challenge
                 options={options}
