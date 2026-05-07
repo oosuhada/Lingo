@@ -28,7 +28,7 @@ export const Header = () => {
 
       <header
         className={cn(
-          "h-20 w-full border-b-2 border-slate-200 px-4",
+          "relative z-[100] h-20 w-full border-b-2 border-slate-200 bg-white px-4",
           !hideBanner ? "mt-20 sm:mt-16 lg:mt-10" : "mt-0"
         )}
       >

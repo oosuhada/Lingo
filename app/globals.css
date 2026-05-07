@@ -80,3 +80,31 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .cl-modalBackdrop {
+    z-index: 9990 !important;
+    background: rgba(17, 24, 39, 0.72) !important;
+    backdrop-filter: blur(2px);
+  }
+
+  .cl-modalContent,
+  .cl-userButtonPopoverRootBox {
+    z-index: 10000 !important;
+  }
+
+  .cl-card,
+  .cl-cardBox,
+  .cl-footer,
+  .cl-userButtonPopoverCard,
+  .cl-userButtonPopoverFooter {
+    background: #fff !important;
+    opacity: 1 !important;
+  }
+
+  .cl-footer,
+  .cl-userButtonPopoverFooter {
+    background-image: none !important;
+    border-top: 1px solid #e5e7eb !important;
+  }
+}

@@ -32,6 +32,16 @@ export default function RootLayout({
         variables: {
           colorPrimary: "#22C55E",
         },
+        elements: {
+          card: "bg-white",
+          cardBox: "bg-white shadow-2xl",
+          footer: "bg-white",
+          modalBackdrop: "bg-black/70 backdrop-blur-sm",
+          modalContent: "z-[10000]",
+          userButtonPopoverCard: "z-[10000] bg-white shadow-2xl",
+          userButtonPopoverFooter: "bg-white",
+          userButtonPopoverRootBox: "z-[10000]",
+        },
       }}
       afterSignOutUrl="/"
     >

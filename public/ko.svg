@@ -1,13 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" role="img" aria-label="Korean course icon">
   <rect width="64" height="48" rx="8" fill="#fff"/>
-  <g transform="rotate(-28 32 24)">
-    <circle cx="32" cy="24" r="10" fill="#cd2e3a"/>
-    <path d="M22 24a10 10 0 0 0 20 0 5 5 0 0 0-10 0 5 5 0 0 1-10 0Z" fill="#0047a0"/>
+  <g transform="translate(32 24) rotate(-33.69)">
+    <circle r="10.8" fill="#cd2e3a"/>
+    <path d="M-10.8 0a10.8 10.8 0 0 0 21.6 0 5.4 5.4 0 0 0-10.8 0 5.4 5.4 0 0 1-10.8 0Z" fill="#0047a0"/>
   </g>
-  <g stroke="#111827" stroke-width="2.4" stroke-linecap="round">
-    <path d="M9 10h11M9 15h11M9 20h11"/>
-    <path d="M44 10h4M52 10h4M44 15h12M44 20h4M52 20h4"/>
-    <path d="M9 28h11M9 33h4M17 33h3M9 38h11"/>
-    <path d="M44 28h4M52 28h4M44 33h4M52 33h4M44 38h4M52 38h4"/>
+  <g fill="#111827">
+    <g transform="translate(15 14) rotate(-33.69)">
+      <rect x="-7" y="-5" width="14" height="2"/>
+      <rect x="-7" y="-1" width="14" height="2"/>
+      <rect x="-7" y="3" width="14" height="2"/>
+    </g>
+    <g transform="translate(49 14) rotate(33.69)">
+      <rect x="-7" y="-5" width="5.3" height="2"/>
+      <rect x="1.7" y="-5" width="5.3" height="2"/>
+      <rect x="-7" y="-1" width="14" height="2"/>
+      <rect x="-7" y="3" width="5.3" height="2"/>
+      <rect x="1.7" y="3" width="5.3" height="2"/>
+    </g>
+    <g transform="translate(15 34) rotate(33.69)">
+      <rect x="-7" y="-5" width="14" height="2"/>
+      <rect x="-7" y="-1" width="5.3" height="2"/>
+      <rect x="1.7" y="-1" width="5.3" height="2"/>
+      <rect x="-7" y="3" width="14" height="2"/>
+    </g>
+    <g transform="translate(49 34) rotate(-33.69)">
+      <rect x="-7" y="-5" width="5.3" height="2"/>
+      <rect x="1.7" y="-5" width="5.3" height="2"/>
+      <rect x="-7" y="-1" width="5.3" height="2"/>
+      <rect x="1.7" y="-1" width="5.3" height="2"/>
+      <rect x="-7" y="3" width="5.3" height="2"/>
+      <rect x="1.7" y="3" width="5.3" height="2"/>
+    </g>
   </g>
 </svg>
