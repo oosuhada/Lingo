@@ -67,9 +67,9 @@ export default function RootLayout({
                 "z-[10000] glass-panel-strong text-foreground shadow-2xl",
               userButtonPopoverFooter: "glass-panel-strong",
               userButtonPopoverRootBox: "z-[10000]",
-              userButtonBox: "h-9 w-9 sm:h-10 sm:w-10",
-              userButtonTrigger: "h-9 w-9 sm:h-10 sm:w-10",
-              userButtonAvatarBox: "h-9 w-9 sm:h-10 sm:w-10",
+              userButtonBox: "h-10 w-10 sm:h-12 sm:w-12",
+              userButtonTrigger: "h-10 w-10 sm:h-12 sm:w-12",
+              userButtonAvatarBox: "h-10 w-10 sm:h-12 sm:w-12",
               userButtonAvatarImage: "h-full w-full object-cover",
             },
           }}

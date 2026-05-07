@@ -396,9 +396,10 @@ body,
   .landing-blob-svg {
     width: 100%;
     height: 100%;
-    opacity: 0.7;
+    opacity: 0.74;
     mix-blend-mode: multiply;
     transform: translateZ(0);
+    will-change: transform;
   }
 
   .landing-blob-svg g {
@@ -422,20 +423,21 @@ body,
     inset: 0;
     z-index: -1;
     background:
-      radial-gradient(480px circle at var(--main-pointer-x, 50%) var(--main-pointer-y, 30%), rgb(34 197 94 / 0.2), transparent 62%),
-      radial-gradient(360px circle at calc(var(--main-pointer-x, 50%) + 180px) calc(var(--main-pointer-y, 30%) - 120px), rgb(14 165 233 / 0.12), transparent 64%),
+      radial-gradient(560px circle at var(--main-pointer-x, 50%) var(--main-pointer-y, 30%), rgb(34 197 94 / 0.22), transparent 62%),
+      radial-gradient(420px circle at calc(var(--main-pointer-x, 50%) + 180px) calc(var(--main-pointer-y, 30%) - 120px), rgb(14 165 233 / 0.13), transparent 64%),
       radial-gradient(720px 320px at 78% 12%, rgb(255 255 255 / 0.3), transparent 72%);
-    filter: blur(24px);
+    filter: blur(28px);
     opacity: 0.8;
     content: "";
   }
 
   .dark .main-interaction-field::before {
     background:
-      radial-gradient(520px circle at var(--main-pointer-x, 50%) var(--main-pointer-y, 30%), rgb(34 197 94 / 0.16), transparent 62%),
-      radial-gradient(380px circle at calc(var(--main-pointer-x, 50%) + 180px) calc(var(--main-pointer-y, 30%) - 120px), rgb(14 165 233 / 0.08), transparent 66%),
+      radial-gradient(620px circle at var(--main-pointer-x, 50%) var(--main-pointer-y, 30%), rgb(34 197 94 / 0.2), transparent 62%),
+      radial-gradient(440px circle at calc(var(--main-pointer-x, 50%) + 180px) calc(var(--main-pointer-y, 30%) - 120px), rgb(14 165 233 / 0.09), transparent 66%),
       radial-gradient(820px 360px at 76% 10%, rgb(255 255 255 / 0.045), transparent 76%);
     opacity: 0.9;
+    mix-blend-mode: screen;
   }
 
   .main-content-grid {
@@ -496,6 +498,30 @@ body,
   .cl-modalContent,
   .cl-userButtonPopoverRootBox {
     z-index: 10000 !important;
+  }
+
+  .cl-userButtonBox,
+  .cl-userButtonTrigger,
+  .cl-userButtonAvatarBox,
+  .cl-avatarBox.cl-userButtonAvatarBox,
+  .cl-internal-biqd9y {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+
+  @media (max-width: 639px) {
+    .cl-userButtonBox,
+    .cl-userButtonTrigger,
+    .cl-userButtonAvatarBox,
+    .cl-avatarBox.cl-userButtonAvatarBox,
+    .cl-internal-biqd9y {
+      width: 40px !important;
+      height: 40px !important;
+      min-width: 40px !important;
+      min-height: 40px !important;
+    }
   }
 
   .cl-card,

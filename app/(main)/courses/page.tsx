@@ -5,6 +5,23 @@ import { getUiLocaleFromCookie } from "@/lib/ui-locale-server";
 
 import { List } from "./list";
 
+const courseOrder = [
+  "korean",
+  "japanese",
+  "spanish",
+  "italian",
+  "english",
+  "hanja",
+  "python",
+  "java",
+];
+
+const getCourseOrder = (title: string) => {
+  const index = courseOrder.indexOf(title.toLowerCase());
+
+  return index === -1 ? courseOrder.length : index;
+};
+
 const CoursesPage = async () => {
   const coursesData = getCourses();
   const userProgressData = getUserProgress();
@@ -40,7 +57,7 @@ const CoursesPage = async () => {
   ];
 
   return (
-    <div className="mx-auto min-h-full max-w-[980px] px-3 pb-10">
+    <div className="mx-auto min-h-full max-w-[980px] px-3 pb-10 pt-6">
       <header className="glass-panel-strong mb-8 space-y-2 rounded-3xl p-6">
         <p className="text-sm font-bold uppercase tracking-wide text-green-500">
           {copy.eyebrow}
@@ -55,9 +72,13 @@ const CoursesPage = async () => {
 
       <div className="space-y-10">
         {groups.map((group) => {
-          const groupCourses = courses.filter(
-            (course) => getCourseKind(course) === group.kind
-          );
+          const groupCourses = courses
+            .filter((course) => getCourseKind(course) === group.kind)
+            .sort(
+              (firstCourse, secondCourse) =>
+                getCourseOrder(firstCourse.title) -
+                getCourseOrder(secondCourse.title)
+            );
 
           if (groupCourses.length === 0) return null;
 

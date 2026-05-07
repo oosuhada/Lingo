@@ -22,7 +22,7 @@ export const Header = ({ title }: HeaderProps) => {
 
       idleTimer.current = window.setTimeout(() => {
         if (window.scrollY > 24) setIsVisible(false);
-      }, 2600);
+      }, 2400);
     };
 
     const handleScroll = () => {
@@ -51,7 +51,7 @@ export const Header = ({ title }: HeaderProps) => {
   return (
     <div
       className={[
-        "glass-nav sticky top-[58px] z-40 mb-5 flex items-center justify-between rounded-b-2xl border-b px-2 py-3 text-muted-foreground transition-all duration-500 ease-out lg:top-0 lg:z-50 lg:mt-[-28px] lg:pt-[28px]",
+        "glass-nav sticky top-[58px] z-40 mb-5 flex items-center justify-between rounded-b-2xl border-b px-2 py-3 text-muted-foreground transition-all duration-500 ease-out lg:top-0 lg:z-50",
         isVisible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none -translate-y-[calc(100%+16px)] opacity-0",

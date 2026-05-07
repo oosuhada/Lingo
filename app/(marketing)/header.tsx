@@ -23,13 +23,16 @@ export const Header = () => {
   return (
     <header className="glass-nav relative z-[100] h-20 w-full border-b px-4">
       <div className="mx-auto flex h-full items-center justify-between lg:max-w-screen-lg">
-        <Link href="/" className="flex shrink-0 items-center gap-1.5 pl-0 sm:gap-2 sm:pl-1">
+        <Link
+          href="/"
+          className="flex shrink-0 items-center gap-1 pl-0 sm:gap-1.5 sm:pl-1"
+        >
           <Image
             src="/memoji/replacements/mascot.png"
             alt="Mascot"
-            height={44}
-            width={44}
-            className="h-10 w-10 sm:h-11 sm:w-11"
+            height={54}
+            width={54}
+            className="h-12 w-12 sm:h-[54px] sm:w-[54px]"
           />
 
           <h1 className="text-xl font-extrabold tracking-wide text-green-600 sm:text-2xl">
@@ -37,7 +40,7 @@ export const Header = () => {
           </h1>
         </Link>
 
-        <div className="flex shrink-0 items-center gap-x-1.5 sm:gap-x-3">
+        <div className="flex shrink-0 items-center gap-x-1.5 sm:gap-x-2.5">
           <ClerkLoading>
             <Loader className="h-5 w-5 animate-spin text-muted-foreground" />
           </ClerkLoading>
@@ -62,7 +65,7 @@ export const Header = () => {
               href={links.sourceCode}
               target="_blank"
               rel="noreferrer noopener"
-              className="glass-control flex h-9 w-9 items-center justify-center rounded-full sm:h-10 sm:w-10"
+              className="glass-control flex h-10 w-10 items-center justify-center rounded-full sm:h-12 sm:w-12"
               aria-label="Source code"
               title="Source code"
             >
@@ -71,12 +74,12 @@ export const Header = () => {
                 alt="Source Code"
                 height={22}
                 width={22}
-                className="h-5 w-5 dark:invert sm:h-[22px] sm:w-[22px]"
+                className="h-5 w-5 dark:invert sm:h-6 sm:w-6"
               />
             </Link>
           </ClerkLoaded>
 
-          <ThemeToggle className="h-9 w-9 sm:h-10 sm:w-10" />
+          <ThemeToggle className="h-10 w-10 sm:h-12 sm:w-12" />
         </div>
       </div>
     </header>

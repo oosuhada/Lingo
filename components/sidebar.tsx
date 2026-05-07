@@ -26,13 +26,13 @@ export const Sidebar = ({ className, uiLocale = "en" }: SidebarProps) => {
       )}
     >
       <Link href="/learn">
-        <div className="flex items-center gap-2 pb-7 pl-2 pt-8">
+        <div className="flex items-center gap-1.5 pb-7 pl-2 pt-8">
           <Image
             src="/memoji/replacements/mascot.png"
             alt="Mascot"
-            height={44}
-            width={44}
-            className="h-11 w-11"
+            height={54}
+            width={54}
+            className="h-[54px] w-[54px]"
           />
 
           <h1 className="text-2xl font-extrabold tracking-wide text-green-600">
@@ -64,22 +64,22 @@ export const Sidebar = ({ className, uiLocale = "en" }: SidebarProps) => {
         />
       </div>
 
-      <div className="flex items-center justify-between gap-3 p-4">
-        <ThemeToggle />
+      <div className="flex items-center justify-center gap-2 p-4">
+        <ThemeToggle className="h-12 w-12" />
         <Link
           href={links.sourceCode}
           target="_blank"
           rel="noreferrer noopener"
-          className="glass-control flex h-10 w-10 items-center justify-center rounded-full"
+          className="glass-control flex h-12 w-12 items-center justify-center rounded-full"
           aria-label="Source code"
           title="Source code"
         >
           <Image
             src="/memoji/replacements/github.svg"
             alt="Source Code"
-            height={22}
-            width={22}
-            className="dark:invert"
+            height={24}
+            width={24}
+            className="h-6 w-6 dark:invert"
           />
         </Link>
         <ClerkLoading>

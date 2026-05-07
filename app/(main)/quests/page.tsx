@@ -28,7 +28,7 @@ const QuestsPage = async () => {
   const copy = uiCopy[uiLocale].questsPanel;
 
   return (
-    <div className="main-content-grid flex flex-row-reverse gap-[48px]">
+    <div className="main-content-grid flex flex-row-reverse gap-8 pt-6 xl:gap-10">
       <StickyWrapper>
         <UserProgress
           activeCourse={userProgress.activeCourse}
