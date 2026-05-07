@@ -2,15 +2,13 @@
 
 언어 학습 앱 구조를 바탕으로 한국어, 영어, 일본어, 스페인어, 이탈리아어, 한자, Python, Java 학습 코스를 함께 다루도록 확장 중인 Next.js 학습 플랫폼입니다. 아직 개발 중인 프로젝트라 데모 사이트 주소는 비워두고, 현재 구현된 기능과 화면 중심으로 정리했습니다.
 
-## 왜 만들었나 / Why I built it
+## Why I Built It / 만든 이유
 
-Duolingo를 매일 쓰면서, 텍스트를 읽고 외우는 방식보다 **짧게 반복하고 바로 반응을 받는 게임식 학습**이 나에게 훨씬 잘 맞는다는 걸 체감했습니다. 이후 Python과 Java를 공부하면서 코딩테스트를 풀다 보면 알고 있던 기초 문법이 순간적으로 생각나지 않는 일이 자주 있었고, 단순 암기식 복습은 오래 유지되지 않았습니다.
+코딩테스트를 풀 때 Python·Java 기초 문법에서 사소한 실수들이 반복되었습니다. 책으로 외우기보다 매일 하던 Duolingo 방식이 훨씬 재밌고 오래 기억에 남았던 터라, 그 방식을 차용해서 더 재밌게 문법을 학습할 수 있는 도구를 만들어봤습니다.
 
-그래서 프로그래밍 언어도 Duolingo처럼 작은 문제를 반복해서 풀고, 진행률과 보상으로 계속 돌아오게 만들면 어떨까에서 시작했습니다. 언어 학습 UX를 그대로 복제하는 것이 아니라 **내가 실제로 효과를 봤던 학습 리듬을 Python·Java·한자 같은 다른 학습 영역에 적용해 보는 것**이 Lingo의 핵심 동기입니다.
+Basic Python and Java syntax kept tripping me up with small mistakes during coding tests. Reading never stuck for me the way daily Duolingo practice did, so I borrowed that same game-like approach to make learning syntax fun again — and built a tool around it.
 
-I built Lingo because Duolingo's short, game-like repetition worked much better for me than passive memorization. When basic Python and Java syntax kept disappearing from memory during coding-test practice, I wanted the same kind of active, repeatable learning loop for programming concepts instead of another page of notes to reread.
-
-Demo site: [https://lingo.oosu.dev](https://lingo.oosu.dev)
+[Live Demo](https://lingo.oosu.dev)
 
 ![Lingo main screen](.github/images/img_main.png)
 
