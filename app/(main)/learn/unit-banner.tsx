@@ -1,29 +1,70 @@
-import { NotebookText } from "lucide-react";
+import { BookOpen, Braces, NotebookText, ScrollText } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { getCourseMicrocopy, getCourseTheme } from "@/lib/course-style";
+import { cn } from "@/lib/utils";
 
 type UnitBannerProps = {
   title: string;
+  order: number;
   description: string;
+  courseTitle: string;
 };
 
-export const UnitBanner = ({ title, description }: UnitBannerProps) => {
+export const UnitBanner = ({
+  title,
+  order,
+  description,
+  courseTitle,
+}: UnitBannerProps) => {
+  const theme = getCourseTheme({ title: courseTitle });
+  const copy = getCourseMicrocopy({ title: courseTitle });
+  const Icon =
+    theme.kind === "programming"
+      ? Braces
+      : theme.kind === "hanja"
+        ? ScrollText
+        : BookOpen;
+
   return (
-    <div className="flex w-full items-center justify-between rounded-xl bg-green-500 p-5 text-white">
-      <div className="space-y-2.5">
-        <h3 className="text-2xl font-bold">{title}</h3>
-        <p className="text-lg">{description}</p>
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-xl border-b-[6px] p-5 text-white",
+        theme.bannerClass,
+        theme.bannerBorderClass,
+        theme.glowClass
+      )}
+    >
+      <div className="flex w-full items-center justify-between gap-4">
+        <div className="space-y-2.5">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-extrabold uppercase">
+              {theme.label}
+            </span>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-extrabold uppercase">
+              Unit {order}
+            </span>
+          </div>
+          <h3 className="text-2xl font-extrabold tracking-normal">{title}</h3>
+          <p className="max-w-[36rem] text-base font-semibold leading-6 text-white/90 lg:text-lg">
+            {description}
+          </p>
+        </div>
+
+        <div className="hidden h-20 w-20 shrink-0 items-center justify-center rounded-2xl border-2 border-white/20 bg-white/10 xl:flex">
+          <Icon className="h-10 w-10" />
+        </div>
       </div>
 
       <Link href="/lesson">
         <Button
           size="lg"
           variant="secondary"
-          className="hidden border-2 border-b-4 active:border-b-2 xl:flex"
+          className="mt-5 hidden border-2 border-b-4 border-white/30 bg-white text-neutral-700 active:border-b-2 xl:flex"
         >
           <NotebookText className="mr-2" />
-          Continue
+          {copy.unitCta}
         </Button>
       </Link>
     </div>

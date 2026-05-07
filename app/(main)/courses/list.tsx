@@ -11,11 +11,18 @@ import { courses, userProgress } from "@/db/schema";
 import { Card } from "./card";
 
 type ListProps = {
+  title: string;
+  description: string;
   courses: (typeof courses.$inferSelect)[];
   activeCourseId?: typeof userProgress.$inferSelect.activeCourseId;
 };
 
-export const List = ({ courses, activeCourseId }: ListProps) => {
+export const List = ({
+  title,
+  description,
+  courses,
+  activeCourseId,
+}: ListProps) => {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
@@ -35,18 +42,27 @@ export const List = ({ courses, activeCourseId }: ListProps) => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 pt-6 lg:grid-cols-[repeat(auto-fill,minmax(210px,1fr))]">
-      {courses.map((course) => (
-        <Card
-          key={course.id}
-          id={course.id}
-          title={course.title}
-          imageSrc={course.imageSrc}
-          onClick={onClick}
-          disabled={pending}
-          isActive={course.id === activeCourseId}
-        />
-      ))}
-    </div>
+    <section className="space-y-4">
+      <div>
+        <h2 className="text-xl font-extrabold text-neutral-800">{title}</h2>
+        <p className="mt-1 text-sm font-medium text-neutral-500">
+          {description}
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
+        {courses.map((course) => (
+          <Card
+            key={course.id}
+            id={course.id}
+            title={course.title}
+            imageSrc={course.imageSrc}
+            onClick={onClick}
+            disabled={pending}
+            isActive={course.id === activeCourseId}
+          />
+        ))}
+      </div>
+    </section>
   );
 };

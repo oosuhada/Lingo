@@ -7,11 +7,14 @@ import { useRouter } from "next/navigation";
 import Confetti from "react-confetti";
 import { useAudio, useWindowSize, useMount } from "react-use";
 import { toast } from "sonner";
+import { BookOpenCheck, CheckCircle, X, XCircle } from "lucide-react";
 
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { reduceHearts } from "@/actions/user-progress";
 import { MAX_HEARTS } from "@/constants";
 import { challengeOptions, challenges, userSubscription } from "@/db/schema";
+import { getCourseKind, getCourseTheme } from "@/lib/course-style";
+import { cn } from "@/lib/utils";
 import { useHeartsModal } from "@/store/use-hearts-modal";
 import { usePracticeModal } from "@/store/use-practice-modal";
 
@@ -23,6 +26,7 @@ import { QuestionBubble } from "./question-bubble";
 import { ResultCard } from "./result-card";
 
 type QuizProps = {
+  courseTitle: string;
   initialPercentage: number;
   initialHearts: number;
   initialLessonId: number;
@@ -37,13 +41,27 @@ type QuizProps = {
     | null;
 };
 
+type QuestionResult = {
+  id: number;
+  question: string;
+  prompt: string | null;
+  code: string | null;
+  hint: string | null;
+  yourResponse: string;
+  correctResponse: string;
+  correct: boolean;
+};
+
 export const Quiz = ({
+  courseTitle,
   initialPercentage,
   initialHearts,
   initialLessonId,
   initialLessonChallenges,
   userSubscription,
 }: QuizProps) => {
+  const courseTheme = getCourseTheme({ title: courseTitle });
+  const courseKind = getCourseKind({ title: courseTitle });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [correctAudio, _c, correctControls] = useAudio({ src: "/correct.wav" });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -87,6 +105,8 @@ export const Quiz = ({
     pieces: number;
     message: string;
   } | null>(null);
+  const [questionResults, setQuestionResults] = useState<QuestionResult[]>([]);
+  const [reviewOpen, setReviewOpen] = useState(false);
 
   const challenge = challenges[activeIndex];
   const options = challenge?.challengeOptions ?? [];
@@ -107,6 +127,31 @@ export const Quiz = ({
     if (status !== "none") return;
 
     setSelectedOption(id);
+  };
+
+  const recordQuestionResult = ({
+    correct,
+    correctResponse,
+  }: {
+    correct: boolean;
+    correctResponse: string;
+  }) => {
+    const selectedResponse =
+      options.find((option) => option.id === selectedOption)?.text ?? "";
+
+    setQuestionResults((current) => [
+      ...current,
+      {
+        id: challenge.id,
+        question: challenge.question,
+        prompt: challenge.prompt,
+        code: challenge.code,
+        hint: challenge.hint,
+        yourResponse: selectedResponse,
+        correctResponse,
+        correct,
+      },
+    ]);
   };
 
   const onContinue = () => {
@@ -130,6 +175,8 @@ export const Quiz = ({
     if (!correctOption) return;
 
     if (correctOption.id === selectedOption) {
+      recordQuestionResult({ correct: true, correctResponse: correctOption.text });
+
       startTransition(() => {
         upsertChallengeProgress(challenge.id)
           .then((response) => {
@@ -168,6 +215,11 @@ export const Quiz = ({
           .catch(() => toast.error("Something went wrong. Please try again."));
       });
     } else {
+      recordQuestionResult({
+        correct: false,
+        correctResponse: correctOption.text,
+      });
+
       startTransition(() => {
         reduceHearts(challenge.id)
           .then((response) => {
@@ -226,12 +278,27 @@ export const Quiz = ({
               value={userSubscription?.isActive ? Infinity : hearts}
             />
           </div>
+
+          <button
+            className="flex items-center gap-2 rounded-2xl border-2 border-b-4 border-neutral-200 bg-white px-5 py-3 text-sm font-extrabold uppercase text-neutral-500 transition hover:bg-neutral-50 active:border-b-2"
+            onClick={() => setReviewOpen(true)}
+          >
+            <BookOpenCheck className="h-5 w-5" />
+            Review lesson
+          </button>
         </div>
 
         <Footer
           lessonId={lessonId}
           status="completed"
           onCheck={() => router.push("/learn")}
+        />
+
+        <ReviewLessonModal
+          open={reviewOpen}
+          onClose={() => setReviewOpen(false)}
+          results={questionResults}
+          courseTitle={courseTitle}
         />
       </>
     );
@@ -275,6 +342,23 @@ export const Quiz = ({
       <div className="flex-1">
         <div className="flex h-full items-center justify-center">
           <div className="flex w-full flex-col gap-y-12 px-6 lg:min-h-[350px] lg:w-[600px] lg:px-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className={cn(
+                  "rounded-full px-3 py-1 text-xs font-extrabold uppercase",
+                  courseTheme.softClass,
+                  courseTheme.textClass
+                )}
+              >
+                {courseTheme.label}
+              </span>
+              {courseKind === "programming" && (
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-extrabold uppercase text-slate-600">
+                  Code token drill
+                </span>
+              )}
+            </div>
+
             <h1 className="text-center text-lg font-bold text-neutral-700 lg:text-start lg:text-3xl">
               {title}
             </h1>
@@ -297,6 +381,7 @@ export const Quiz = ({
                 selectedOption={selectedOption}
                 disabled={pending}
                 type={challenge.type}
+                courseTitle={courseTitle}
               />
             </div>
           </div>
@@ -309,5 +394,125 @@ export const Quiz = ({
         onCheck={onContinue}
       />
     </>
+  );
+};
+
+const ReviewLessonModal = ({
+  open,
+  onClose,
+  results,
+  courseTitle,
+}: {
+  open: boolean;
+  onClose: () => void;
+  results: QuestionResult[];
+  courseTitle: string;
+}) => {
+  const theme = getCourseTheme({ title: courseTitle });
+
+  return (
+    <div
+      className={cn(
+        "fixed inset-0 z-50 flex items-center justify-center p-4 transition",
+        open ? "opacity-100" : "pointer-events-none opacity-0"
+      )}
+      aria-hidden={!open}
+    >
+      <div
+        className="absolute inset-0 bg-black/60"
+        onClick={onClose}
+        role="button"
+        aria-label="Close review"
+      />
+
+      <section className="relative max-h-[86vh] w-full max-w-4xl overflow-hidden rounded-2xl border-2 border-neutral-200 bg-white shadow-2xl">
+        <header
+          className={cn(
+            "flex items-start justify-between gap-4 border-b-2 p-5 text-white",
+            theme.bannerClass
+          )}
+        >
+          <div>
+            <p className="text-xs font-extrabold uppercase text-white/75">
+              Lesson scorecard
+            </p>
+            <h2 className="mt-1 text-2xl font-extrabold">
+              Review your answers
+            </h2>
+          </div>
+          <button
+            className="rounded-full bg-white/15 p-2 text-white transition hover:bg-white/25"
+            onClick={onClose}
+          >
+            <X className="h-5 w-5" />
+            <span className="sr-only">Close</span>
+          </button>
+        </header>
+
+        <div className="max-h-[calc(86vh-98px)] overflow-y-auto p-5">
+          {results.length === 0 ? (
+            <div className="rounded-xl border-2 border-dashed border-neutral-200 p-8 text-center text-sm font-semibold text-neutral-500">
+              Finish at least one challenge to see a review card.
+            </div>
+          ) : (
+            <div className="grid gap-4 md:grid-cols-2">
+              {results.map((result, index) => (
+                <article
+                  key={`${result.id}-${index}`}
+                  className={cn(
+                    "space-y-3 rounded-xl border-2 p-4",
+                    result.correct
+                      ? "border-green-200 bg-green-50"
+                      : "border-rose-200 bg-rose-50"
+                  )}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="text-sm font-extrabold leading-6 text-neutral-800">
+                      {result.question}
+                    </h3>
+                    {result.correct ? (
+                      <CheckCircle className="h-5 w-5 shrink-0 text-green-600" />
+                    ) : (
+                      <XCircle className="h-5 w-5 shrink-0 text-rose-600" />
+                    )}
+                  </div>
+
+                  {result.prompt && (
+                    <p className="whitespace-pre-wrap rounded-lg bg-white/70 p-3 text-xs font-semibold leading-5 text-neutral-600">
+                      {result.prompt}
+                    </p>
+                  )}
+
+                  {result.code && (
+                    <pre className="overflow-x-auto rounded-lg bg-neutral-950 p-3 text-xs leading-5 text-white">
+                      <code>{result.code}</code>
+                    </pre>
+                  )}
+
+                  <div className="grid gap-2 text-xs font-bold">
+                    <div>
+                      <div className="uppercase text-neutral-400">
+                        Your response
+                      </div>
+                      <div className="mt-1 rounded-lg bg-white p-2 text-neutral-700">
+                        {result.yourResponse || "No response"}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="uppercase text-neutral-400">
+                        Correct response
+                      </div>
+                      <div className="mt-1 rounded-lg bg-white p-2 text-neutral-700">
+                        {result.correctResponse}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
   );
 };

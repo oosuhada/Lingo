@@ -43,3 +43,6 @@ next-env.d.ts
 # local course data exchange artifacts
 lingo-course-data-context.zip
 lingo-course-data-expanded/
+
+# local reference repos
+reference/

@@ -29,5 +29,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "lingo-course-data-expanded"]
+  "exclude": ["node_modules", "lingo-course-data-expanded", "reference"]
 }
