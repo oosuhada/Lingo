@@ -1,23 +1,13 @@
 [
   {
-    "file": "boy.png",
-    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:justin:light_boy/boy_happy.png",
-    "imageUrl": "imejis local memoji set"
-  },
-  {
     "file": "finish.png",
     "source": "https://emojipedia.org/apple/ios-14.2/party-popper",
     "imageUrl": "https://em-content.zobj.net/source/apple/271/party-popper_1f389.png"
   },
   {
-    "file": "girl.png",
-    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:female:mary:light_girl/girl_happy.png",
-    "imageUrl": "imejis local memoji set"
-  },
-  {
     "file": "github.png",
-    "source": "https://emojipedia.org/apple/ios-14.2/laptop",
-    "imageUrl": "https://em-content.zobj.net/source/apple/271/laptop_1f4bb.png"
+    "source": "https://github.com/logos",
+    "imageUrl": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
   },
   {
     "file": "heart.png",
@@ -36,33 +26,28 @@
   },
   {
     "file": "learn.png",
-    "source": "https://emojipedia.org/apple/ios-14.2/open-book",
-    "imageUrl": "https://em-content.zobj.net/source/apple/271/open-book_1f4d6.png"
-  },
-  {
-    "file": "man.png",
-    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:mattew:light_man/man_happy.png",
-    "imageUrl": "imejis local memoji set"
-  },
-  {
-    "file": "mascot_bad.png",
-    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:mattew:light_man/man_angry.png",
-    "imageUrl": "imejis local memoji set"
-  },
-  {
-    "file": "mascot_sad.png",
-    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:mattew:light_man/man_sad.png",
-    "imageUrl": "imejis local memoji set"
+    "source": "https://emojipedia.org/apple/ios-14.2/house",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/house_1f3e0.png"
   },
   {
     "file": "mascot.png",
-    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:mattew:light_man/man_grinning.png",
-    "imageUrl": "imejis local memoji set"
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:ed:dark_mascot/mascot_happy.png",
+    "imageUrl": "imejis Ed dark memoji set"
+  },
+  {
+    "file": "mascot_bad.png",
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:ed:dark_mascot/mascot_angry.png",
+    "imageUrl": "imejis Ed dark memoji set"
+  },
+  {
+    "file": "mascot_sad.png",
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:ed:dark_mascot/mascot_sad.png",
+    "imageUrl": "imejis Ed dark memoji set"
   },
   {
     "file": "points.png",
-    "source": "https://emojipedia.org/apple/ios-14.2/coin",
-    "imageUrl": "https://em-content.zobj.net/source/apple/271/coin_1fa99.png"
+    "source": "https://emojipedia.org/apple/ios-14.2/high-voltage",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/high-voltage_26a1.png"
   },
   {
     "file": "quests.png",
@@ -76,18 +61,13 @@
   },
   {
     "file": "shop.png",
-    "source": "https://emojipedia.org/apple/ios-14.2/shopping-bags",
-    "imageUrl": "https://em-content.zobj.net/source/apple/271/shopping-bags_1f6cd-fe0f.png"
+    "source": "https://www.iconarchive.com/show/fluentui-emoji-3d-icons-by-microsoft/Shopping-Bags-3d-icon.html",
+    "imageUrl": "https://icons.iconarchive.com/icons/microsoft/fluentui-emoji-3d/512/Shopping-Bags-3d-icon.png"
   },
   {
     "file": "unlimited.png",
-    "source": "https://emojipedia.org/apple/ios-14.2/infinity",
-    "imageUrl": "https://em-content.zobj.net/source/apple/271/infinity_267e-fe0f.png"
-  },
-  {
-    "file": "woman.png",
-    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:female:angela:dark_woman/woman_happy.png",
-    "imageUrl": "imejis local memoji set"
+    "source": "https://emojipedia.org/apple/ios-14.2/sparkling-heart",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/sparkling-heart_1f496.png"
   },
   {
     "file": "zombie.png",

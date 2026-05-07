@@ -23,29 +23,32 @@ Downloaded character sets:
 - `www.imejis.io:images:tools:memoji-builder:female:angela:dark_woman`
   - Source: `/female/angela/dark/{emotion}.png`
   - Local filenames use the `woman_` prefix.
+- `www.imejis.io:images:tools:memoji-builder:male:ed:dark_mascot`
+  - Source: `/male/ed/dark/{emotion}.png`
+  - Local filenames use the `mascot_` prefix.
 
 Each character set includes:
 
 ```text
-{prefix}angry.png
-{prefix}crossing.png
-{prefix}crying.png
-{prefix}fisting.png
-{prefix}grinning.png
-{prefix}happy.png
-{prefix}heart.png
-{prefix}kiss.png
-{prefix}like.png
-{prefix}mouth.png
-{prefix}party.png
-{prefix}rolling.png
-{prefix}sad.png
-{prefix}scream.png
-{prefix}sh!.png
-{prefix}shocked.png
-{prefix}star.png
-{prefix}thinking.png
-{prefix}winking.png
+{prefix}_angry.png
+{prefix}_crossing.png
+{prefix}_crying.png
+{prefix}_fisting.png
+{prefix}_grinning.png
+{prefix}_happy.png
+{prefix}_heart.png
+{prefix}_kiss.png
+{prefix}_like.png
+{prefix}_mouth.png
+{prefix}_party.png
+{prefix}_rolling.png
+{prefix}_sad.png
+{prefix}_scream.png
+{prefix}_sh!.png
+{prefix}_shocked.png
+{prefix}_star.png
+{prefix}_thinking.png
+{prefix}_winking.png
 ```
 
 ## Replacement candidates
@@ -58,15 +61,12 @@ asset paths.
 Mapped files:
 
 ```text
-boy.png
 finish.png
-girl.png
 github.png
 heart.png
 hero.png
 leaderboard.png
 learn.png
-man.png
 mascot.png
 mascot_bad.png
 mascot_sad.png
@@ -75,11 +75,12 @@ quests.png
 robot.png
 shop.png
 unlimited.png
-woman.png
 zombie.png
 ```
 
-Human and mascot replacements come from the local memoji character sets above.
-Utility replacements come from Apple iOS 14.2 emoji images on Emojipedia, except
-`robot.png`, which preserves the user-provided sample at `public/memoji/robot.png`.
-See `replacements/manifest.json` for the exact source mapping.
+Human replacements are kept only in the emotion-specific character folders.
+Mascot replacements use the Ed dark memoji set above. Most utility replacements
+come from Apple iOS 14.2 emoji images on Emojipedia; `shop.png` uses the
+Microsoft Fluent 3D shopping bags icon, `github.png` uses the GitHub mark, and
+`robot.png` preserves the user-provided sample at `public/memoji/robot.png`. See
+`replacements/manifest.json` for the exact source mapping.
