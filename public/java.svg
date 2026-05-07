@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" role="img" aria-label="Java course icon">
-  <rect width="64" height="48" rx="8" fill="#f8fafc"/>
-  <path d="M34 8c-8 6 6 8-2 16" fill="none" stroke="#f43f5e" stroke-width="4" stroke-linecap="round"/>
-  <path d="M18 34c8 5 21 5 29 0M23 39c6 3 15 3 21 0" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-  <text x="32" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="#111827">J</text>
+  <path d="M35 3c-9 7 7 9-3 19" fill="none" stroke="#ef4444" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M28 8c-6 5 4 7-3 14" fill="none" stroke="#ef4444" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+  <text x="32" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#111827">Java</text>
+  <path d="M12 39c10 6 30 6 40 0M18 45c8 3 20 3 28 0" fill="none" stroke="#2563eb" stroke-width="3.5" stroke-linecap="round"/>
 </svg>

@@ -1,4 +1,5 @@
 import { lessons, units } from "@/db/schema";
+import type { UiLocale } from "@/lib/ui-copy";
 
 import { LessonButton } from "./lesson-button";
 import { UnitBanner } from "./unit-banner";
@@ -9,6 +10,7 @@ type UnitProps = {
   title: string;
   description: string;
   courseTitle: string;
+  uiLocale: UiLocale;
   lessons: (typeof lessons.$inferSelect & {
     completed: boolean;
   })[];
@@ -25,6 +27,7 @@ export const Unit = ({
   title,
   description,
   courseTitle,
+  uiLocale,
   lessons,
   activeLesson,
   activeLessonPercentage,
@@ -36,6 +39,7 @@ export const Unit = ({
         order={order}
         description={description}
         courseTitle={courseTitle}
+        uiLocale={uiLocale}
       />
 
       <div className="relative flex flex-col items-center">
@@ -51,6 +55,7 @@ export const Unit = ({
               totalCount={lessons.length - 1}
               lessonTitle={lesson.title}
               courseTitle={courseTitle}
+              uiLocale={uiLocale}
               current={isCurrent}
               locked={isLocked}
               percentage={activeLessonPercentage}

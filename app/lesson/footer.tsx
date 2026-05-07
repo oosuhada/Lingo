@@ -2,6 +2,7 @@ import { CheckCircle, XCircle } from "lucide-react";
 import { useKey, useMedia } from "react-use";
 
 import { Button } from "@/components/ui/button";
+import { uiCopy, type UiLocale } from "@/lib/ui-copy";
 import { cn } from "@/lib/utils";
 
 type FooterProps = {
@@ -9,6 +10,7 @@ type FooterProps = {
   status: "correct" | "wrong" | "none" | "completed";
   disabled?: boolean;
   lessonId?: number;
+  uiLocale: UiLocale;
 };
 
 export const Footer = ({
@@ -16,9 +18,11 @@ export const Footer = ({
   status,
   disabled,
   lessonId,
+  uiLocale,
 }: FooterProps) => {
   useKey("Enter", onCheck, {}, [onCheck]);
   const isMobile = useMedia("(max-width: 1024px)");
+  const copy = uiCopy[uiLocale].lesson;
 
   return (
     <footer
@@ -32,14 +36,14 @@ export const Footer = ({
         {status === "correct" && (
           <div className="flex items-center text-base font-bold text-green-500 lg:text-2xl">
             <CheckCircle className="mr-4 h-6 w-6 lg:h-10 lg:w-10" />
-            Nicely done!
+            {copy.nicelyDone}
           </div>
         )}
 
         {status === "wrong" && (
           <div className="flex items-center text-base font-bold text-rose-500 lg:text-2xl">
             <XCircle className="mr-4 h-6 w-6 lg:h-10 lg:w-10" />
-            Try again.
+            {copy.tryAgain}
           </div>
         )}
 
@@ -49,7 +53,7 @@ export const Footer = ({
             size={isMobile ? "sm" : "lg"}
             onClick={() => (window.location.href = `/lesson/${lessonId}`)}
           >
-            Practice again
+            {copy.practiceAgain}
           </Button>
         )}
 
@@ -61,10 +65,10 @@ export const Footer = ({
           size={isMobile ? "sm" : "lg"}
           variant={status === "wrong" ? "danger" : "secondary"}
         >
-          {status === "none" && "Check"}
-          {status === "correct" && "Next"}
-          {status === "wrong" && "Retry"}
-          {status === "completed" && "Continue"}
+          {status === "none" && copy.check}
+          {status === "correct" && copy.next}
+          {status === "wrong" && copy.retry}
+          {status === "completed" && copy.continue}
         </Button>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" role="img" aria-label="Python course icon">
-  <rect width="64" height="48" rx="8" fill="#f8fafc"/>
-  <circle cx="19" cy="15" r="3" fill="#60a5fa"/>
-  <circle cx="45" cy="33" r="3" fill="#facc15"/>
-  <text x="32" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#111827">Py</text>
+  <path d="M31 4c-12 0-17 4-17 12v4h18v4H10c-5 0-8 4-8 10s3 10 8 10h12v-6h-4v-4h28c12 0 16-5 16-14V16c0-8-6-12-17-12H31Z" fill="#3776ab"/>
+  <path d="M33 44c12 0 17-4 17-12v-4H32v-4h22c5 0 8-4 8-10S59 4 54 4H42v6h4v4H18C6 14 2 19 2 28v4c0 8 6 12 17 12h14Z" fill="#ffd343"/>
+  <circle cx="23" cy="12" r="2.4" fill="#fff"/>
+  <circle cx="41" cy="36" r="2.4" fill="#111827"/>
 </svg>

@@ -2,6 +2,7 @@ import { Braces, Check, Languages, ScrollText } from "lucide-react";
 import Image from "next/image";
 
 import { getCourseMicrocopy, getCourseTheme } from "@/lib/course-style";
+import { uiCopy, type UiLocale } from "@/lib/ui-copy";
 import { cn } from "@/lib/utils";
 
 type CardProps = {
@@ -11,6 +12,7 @@ type CardProps = {
   onClick: (id: number) => void;
   disabled?: boolean;
   isActive?: boolean;
+  uiLocale: UiLocale;
 };
 
 export const Card = ({
@@ -20,9 +22,13 @@ export const Card = ({
   onClick,
   disabled,
   isActive,
+  uiLocale,
 }: CardProps) => {
   const theme = getCourseTheme({ title });
-  const copy = getCourseMicrocopy({ title });
+  const copy = getCourseMicrocopy({ title }, uiLocale);
+  const courseCopy = uiCopy[uiLocale].courses;
+  const kindLabel = uiCopy[uiLocale].courseKinds[theme.kind];
+  const kindDescription = uiCopy[uiLocale].courseKindDescriptions[theme.kind];
   const KindIcon =
     theme.kind === "programming"
       ? Braces
@@ -49,7 +55,7 @@ export const Card = ({
           )}
         >
           <KindIcon className="h-3.5 w-3.5" />
-          {theme.label}
+          {kindLabel}
         </div>
 
         {isActive && (
@@ -61,8 +67,7 @@ export const Card = ({
 
       <div
         className={cn(
-          "mx-auto flex h-28 w-36 items-center justify-center rounded-2xl border-2 bg-white transition group-hover:scale-[1.03]",
-          theme.kind === "programming" && "bg-slate-50",
+          "mx-auto flex h-28 w-36 items-center justify-center overflow-hidden rounded-2xl transition group-hover:scale-[1.03]",
           theme.kind === "hanja" && "bg-neutral-950"
         )}
       >
@@ -72,10 +77,10 @@ export const Card = ({
           height={76}
           width={104}
           className={cn(
-            "h-20 w-28 object-contain drop-shadow-md",
-            theme.kind === "language" && "rounded-xl",
+            "h-full w-full drop-shadow-md",
+            theme.kind === "language" && "object-cover",
             theme.kind === "hanja" && "scale-110 border-0 drop-shadow-none",
-            theme.kind === "programming" && "h-20 w-28"
+            theme.kind === "programming" && "object-contain"
           )}
         />
       </div>
@@ -83,7 +88,7 @@ export const Card = ({
       <div className="space-y-2 text-center">
         <p className="text-xl font-extrabold text-neutral-700">{title}</p>
         <p className="mx-auto max-w-[15rem] text-xs font-semibold leading-5 text-neutral-500">
-          {theme.description}
+          {kindDescription}
         </p>
       </div>
 
@@ -93,7 +98,7 @@ export const Card = ({
           theme.textClass
         )}
       >
-        {isActive ? copy.action : "Start course"}
+        {isActive ? copy.action : courseCopy.startCourse}
       </div>
     </div>
   );

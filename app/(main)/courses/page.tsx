@@ -1,16 +1,21 @@
 import { getCourses, getUserProgress } from "@/db/queries";
 import { getCourseKind, type CourseKind } from "@/lib/course-style";
+import { uiCopy } from "@/lib/ui-copy";
+import { getUiLocaleFromCookie } from "@/lib/ui-locale-server";
 
 import { List } from "./list";
 
 const CoursesPage = async () => {
   const coursesData = getCourses();
   const userProgressData = getUserProgress();
+  const uiLocaleData = getUiLocaleFromCookie();
 
-  const [courses, userProgress] = await Promise.all([
+  const [courses, userProgress, uiLocale] = await Promise.all([
     coursesData,
     userProgressData,
+    uiLocaleData,
   ]);
+  const copy = uiCopy[uiLocale].courses;
 
   const groups: {
     kind: CourseKind;
@@ -19,18 +24,18 @@ const CoursesPage = async () => {
   }[] = [
     {
       kind: "language",
-      title: "Language Courses",
-      description: "Everyday listening, translation, and vocabulary paths.",
+      title: copy.languageTitle,
+      description: copy.languageDescription,
     },
     {
       kind: "hanja",
-      title: "Hanja Studio",
-      description: "Character-first lessons for meaning and reading memory.",
+      title: copy.hanjaTitle,
+      description: copy.hanjaDescription,
     },
     {
       kind: "programming",
-      title: "Code Labs",
-      description: "Python and Java courses shaped for syntax drills.",
+      title: copy.programmingTitle,
+      description: copy.programmingDescription,
     },
   ];
 
@@ -38,14 +43,13 @@ const CoursesPage = async () => {
     <div className="mx-auto h-full max-w-[980px] px-3 pb-10">
       <header className="mb-8 space-y-2">
         <p className="text-sm font-bold uppercase tracking-wide text-green-500">
-          Choose your path
+          {copy.eyebrow}
         </p>
         <h1 className="text-3xl font-extrabold text-neutral-800">
-          Course Library
+          {copy.title}
         </h1>
         <p className="max-w-2xl text-sm font-medium leading-6 text-neutral-500">
-          Languages, Hanja, and programming now have separate course surfaces so
-          each track can grow into its own learning experience.
+          {copy.description}
         </p>
       </header>
 
@@ -64,6 +68,7 @@ const CoursesPage = async () => {
               description={group.description}
               courses={groupCourses}
               activeCourseId={userProgress?.activeCourseId}
+              uiLocale={uiLocale}
             />
           );
         })}

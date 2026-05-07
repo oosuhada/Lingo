@@ -12,6 +12,7 @@ import {
   getUserProgress,
   getUserSubscription,
 } from "@/db/queries";
+import { getUiLocaleFromCookie } from "@/lib/ui-locale-server";
 
 import { Header } from "./header";
 import { Unit } from "./unit";
@@ -22,6 +23,7 @@ const LearnPage = async () => {
   const lessonPercentageData = getLessonPercentage();
   const unitsData = getUnits();
   const userSubscriptionData = getUserSubscription();
+  const uiLocaleData = getUiLocaleFromCookie();
 
   const [
     userProgress,
@@ -29,12 +31,14 @@ const LearnPage = async () => {
     courseProgress,
     lessonPercentage,
     userSubscription,
+    uiLocale,
   ] = await Promise.all([
     userProgressData,
     unitsData,
     courseProgressData,
     lessonPercentageData,
     userSubscriptionData,
+    uiLocaleData,
   ]);
 
   if (!courseProgress || !userProgress) redirect("/courses");
@@ -55,8 +59,8 @@ const LearnPage = async () => {
           hasActiveSubscription={isPro}
         />
 
-        {!isPro && <Promo />}
-        <Quests points={userProgress.points} />
+        {!isPro && <Promo uiLocale={uiLocale} />}
+        <Quests points={userProgress.points} uiLocale={uiLocale} />
       </StickyWrapper>
       <FeedWrapper>
         <Header title={activeCourse.title} />
@@ -68,6 +72,7 @@ const LearnPage = async () => {
               description={unit.description}
               title={unit.title}
               courseTitle={activeCourse.title}
+              uiLocale={uiLocale}
               lessons={unit.lessons}
               activeLesson={courseProgress.activeLesson}
               activeLessonPercentage={lessonPercentage}

@@ -6,21 +6,26 @@ import { Quests } from "@/components/quests";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { getUserProgress, getUserSubscription } from "@/db/queries";
+import { uiCopy } from "@/lib/ui-copy";
+import { getUiLocaleFromCookie } from "@/lib/ui-locale-server";
 
 import { Items } from "./items";
 
 const ShopPage = async () => {
   const userProgressData = getUserProgress();
   const userSubscriptionData = getUserSubscription();
+  const uiLocaleData = getUiLocaleFromCookie();
 
-  const [userProgress, userSubscription] = await Promise.all([
+  const [userProgress, userSubscription, uiLocale] = await Promise.all([
     userProgressData,
     userSubscriptionData,
+    uiLocaleData,
   ]);
 
   if (!userProgress || !userProgress.activeCourse) redirect("/courses");
 
   const isPro = !!userSubscription?.isActive;
+  const copy = uiCopy[uiLocale].shop;
 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
@@ -32,7 +37,7 @@ const ShopPage = async () => {
           hasActiveSubscription={isPro}
         />
 
-        <Quests points={userProgress.points} />
+        <Quests points={userProgress.points} uiLocale={uiLocale} />
       </StickyWrapper>
 
       <FeedWrapper>
@@ -40,16 +45,17 @@ const ShopPage = async () => {
           <Image src="/shop.svg" alt="Shop" height={90} width={90} />
 
           <h1 className="my-6 text-center text-2xl font-bold text-neutral-800">
-            Shop
+            {copy.title}
           </h1>
           <p className="mb-6 text-center text-lg text-muted-foreground">
-            Spend your points on cool stuff.
+            {copy.description}
           </p>
 
           <Items
             hearts={userProgress.hearts}
             points={userProgress.points}
             hasActiveSubscription={isPro}
+            uiLocale={uiLocale}
           />
         </div>
       </FeedWrapper>

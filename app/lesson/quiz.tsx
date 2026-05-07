@@ -14,6 +14,11 @@ import { reduceHearts } from "@/actions/user-progress";
 import { MAX_HEARTS } from "@/constants";
 import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { getCourseKind, getCourseTheme } from "@/lib/course-style";
+import {
+  localizeQuestion,
+  uiCopy,
+  type UiLocale,
+} from "@/lib/ui-copy";
 import { cn } from "@/lib/utils";
 import { useHeartsModal } from "@/store/use-hearts-modal";
 import { usePracticeModal } from "@/store/use-practice-modal";
@@ -27,6 +32,7 @@ import { ResultCard } from "./result-card";
 
 type QuizProps = {
   courseTitle: string;
+  uiLocale: UiLocale;
   initialPercentage: number;
   initialHearts: number;
   initialLessonId: number;
@@ -54,6 +60,7 @@ type QuestionResult = {
 
 export const Quiz = ({
   courseTitle,
+  uiLocale,
   initialPercentage,
   initialHearts,
   initialLessonId,
@@ -62,6 +69,7 @@ export const Quiz = ({
 }: QuizProps) => {
   const courseTheme = getCourseTheme({ title: courseTitle });
   const courseKind = getCourseKind({ title: courseTitle });
+  const copy = uiCopy[uiLocale].lesson;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [correctAudio, _c, correctControls] = useAudio({ src: "/correct.wav" });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -110,6 +118,9 @@ export const Quiz = ({
 
   const challenge = challenges[activeIndex];
   const options = challenge?.challengeOptions ?? [];
+  const displayQuestion = challenge
+    ? localizeQuestion(challenge.question, uiLocale)
+    : "";
 
   useEffect(() => {
     if (!burst) return;
@@ -143,7 +154,7 @@ export const Quiz = ({
       ...current,
       {
         id: challenge.id,
-        question: challenge.question,
+        question: displayQuestion,
         prompt: challenge.prompt,
         code: challenge.code,
         hint: challenge.hint,
@@ -175,7 +186,10 @@ export const Quiz = ({
     if (!correctOption) return;
 
     if (correctOption.id === selectedOption) {
-      recordQuestionResult({ correct: true, correctResponse: correctOption.text });
+      recordQuestionResult({
+        correct: true,
+        correctResponse: correctOption.text,
+      });
 
       startTransition(() => {
         upsertChallengeProgress(challenge.id)
@@ -190,18 +204,15 @@ export const Quiz = ({
             setPercentage((prev) => prev + 100 / challenges.length);
             setStreak((current) => {
               const next = current + 1;
-              const milestones: Record<number, string> = {
-                3: "3 in a row. Your rhythm is getting sharper.",
-                5: "5 in a row. Full focus mode.",
-                10: "10 in a row. That is real mastery energy.",
-                15: "15 in a row. Keep the streak alive.",
-                20: "20 in a row. Legendary run.",
-              };
+              const milestone =
+                copy.streakMessages[
+                  next as keyof typeof copy.streakMessages
+                ];
 
               setBurst({
                 key: Date.now(),
                 pieces: Math.min(120 + next * 24, 420),
-                message: milestones[next] ?? "Correct. Nicely done.",
+                message: milestone ?? copy.correctDefault,
               });
 
               return next;
@@ -212,7 +223,7 @@ export const Quiz = ({
               setHearts((prev) => Math.min(prev + 1, MAX_HEARTS));
             }
           })
-          .catch(() => toast.error("Something went wrong. Please try again."));
+          .catch(() => toast.error(`${uiCopy[uiLocale].courses.error}`));
       });
     } else {
       recordQuestionResult({
@@ -234,7 +245,7 @@ export const Quiz = ({
 
             if (!response?.error) setHearts((prev) => Math.max(prev - 1, 0));
           })
-          .catch(() => toast.error("Something went wrong. Please try again."));
+          .catch(() => toast.error(`${uiCopy[uiLocale].courses.error}`));
       });
     }
   };
@@ -268,12 +279,17 @@ export const Quiz = ({
           />
 
           <h1 className="text-lg font-bold text-neutral-700 lg:text-3xl">
-            Great job! <br /> You&apos;ve completed the lesson.
+            {copy.completedMessage}
           </h1>
 
           <div className="flex w-full items-center gap-x-4">
-            <ResultCard variant="points" value={challenges.length * 10} />
             <ResultCard
+              uiLocale={uiLocale}
+              variant="points"
+              value={challenges.length * 10}
+            />
+            <ResultCard
+              uiLocale={uiLocale}
               variant="hearts"
               value={userSubscription?.isActive ? Infinity : hearts}
             />
@@ -284,7 +300,7 @@ export const Quiz = ({
             onClick={() => setReviewOpen(true)}
           >
             <BookOpenCheck className="h-5 w-5" />
-            Review lesson
+            {copy.reviewLesson}
           </button>
         </div>
 
@@ -292,6 +308,7 @@ export const Quiz = ({
           lessonId={lessonId}
           status="completed"
           onCheck={() => router.push("/learn")}
+          uiLocale={uiLocale}
         />
 
         <ReviewLessonModal
@@ -299,6 +316,7 @@ export const Quiz = ({
           onClose={() => setReviewOpen(false)}
           results={questionResults}
           courseTitle={courseTitle}
+          uiLocale={uiLocale}
         />
       </>
     );
@@ -306,7 +324,7 @@ export const Quiz = ({
 
   const title =
     challenge.type === "ASSIST"
-      ? "Select the correct meaning"
+      ? copy.selectCorrectMeaning
       : challenge.question;
 
   return (
@@ -330,7 +348,7 @@ export const Quiz = ({
       )}
       {streak >= 2 && (
         <div className="pointer-events-none fixed right-5 top-5 z-40 rounded-full border border-orange-200 bg-white px-3 py-2 text-sm font-bold text-orange-600 shadow-md">
-          {streak} streak
+          {streak} {copy.streakLabel}
         </div>
       )}
       <Header
@@ -350,22 +368,22 @@ export const Quiz = ({
                   courseTheme.textClass
                 )}
               >
-                {courseTheme.label}
+                {uiCopy[uiLocale].courseKinds[courseTheme.kind]}
               </span>
               {courseKind === "programming" && (
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-extrabold uppercase text-slate-600">
-                  Code token drill
+                  {copy.codeTokenDrill}
                 </span>
               )}
             </div>
 
             <h1 className="text-center text-lg font-bold text-neutral-700 lg:text-start lg:text-3xl">
-              {title}
+              {localizeQuestion(title, uiLocale)}
             </h1>
 
             <div className="space-y-4">
               {challenge.type === "ASSIST" && (
-                <QuestionBubble question={challenge.question} />
+                <QuestionBubble question={displayQuestion} />
               )}
 
               <ProgrammingPrompt
@@ -392,6 +410,7 @@ export const Quiz = ({
         disabled={pending || !selectedOption}
         status={status}
         onCheck={onContinue}
+        uiLocale={uiLocale}
       />
     </>
   );
@@ -402,13 +421,16 @@ const ReviewLessonModal = ({
   onClose,
   results,
   courseTitle,
+  uiLocale,
 }: {
   open: boolean;
   onClose: () => void;
   results: QuestionResult[];
   courseTitle: string;
+  uiLocale: UiLocale;
 }) => {
   const theme = getCourseTheme({ title: courseTitle });
+  const copy = uiCopy[uiLocale].lesson;
 
   return (
     <div
@@ -422,7 +444,7 @@ const ReviewLessonModal = ({
         className="absolute inset-0 bg-black/60"
         onClick={onClose}
         role="button"
-        aria-label="Close review"
+        aria-label={copy.closeReview}
       />
 
       <section className="relative max-h-[86vh] w-full max-w-4xl overflow-hidden rounded-2xl border-2 border-neutral-200 bg-white shadow-2xl">
@@ -434,25 +456,26 @@ const ReviewLessonModal = ({
         >
           <div>
             <p className="text-xs font-extrabold uppercase text-white/75">
-              Lesson scorecard
+              {copy.lessonScorecard}
             </p>
             <h2 className="mt-1 text-2xl font-extrabold">
-              Review your answers
+              {copy.reviewAnswers}
             </h2>
           </div>
           <button
             className="rounded-full bg-white/15 p-2 text-white transition hover:bg-white/25"
             onClick={onClose}
+            title={copy.closeReview}
           >
             <X className="h-5 w-5" />
-            <span className="sr-only">Close</span>
+            <span className="sr-only">{copy.closeReview}</span>
           </button>
         </header>
 
         <div className="max-h-[calc(86vh-98px)] overflow-y-auto p-5">
           {results.length === 0 ? (
             <div className="rounded-xl border-2 border-dashed border-neutral-200 p-8 text-center text-sm font-semibold text-neutral-500">
-              Finish at least one challenge to see a review card.
+              {copy.reviewEmpty}
             </div>
           ) : (
             <div className="grid gap-4 md:grid-cols-2">
@@ -492,15 +515,15 @@ const ReviewLessonModal = ({
                   <div className="grid gap-2 text-xs font-bold">
                     <div>
                       <div className="uppercase text-neutral-400">
-                        Your response
+                        {copy.yourResponse}
                       </div>
                       <div className="mt-1 rounded-lg bg-white p-2 text-neutral-700">
-                        {result.yourResponse || "No response"}
+                        {result.yourResponse || copy.noResponse}
                       </div>
                     </div>
                     <div>
                       <div className="uppercase text-neutral-400">
-                        Correct response
+                        {copy.correctResponse}
                       </div>
                       <div className="mt-1 rounded-lg bg-white p-2 text-neutral-700">
                         {result.correctResponse}

@@ -15,11 +15,14 @@ import Link from "next/link";
 import Banner from "@/components/banner";
 import { Button } from "@/components/ui/button";
 import { links } from "@/config";
+import { useUiLocale } from "@/hooks/use-ui-locale";
+import { uiCopy } from "@/lib/ui-copy";
 import { cn } from "@/lib/utils";
 
 export const Header = () => {
   const { isSignedIn } = useAuth();
   const [hideBanner, setHideBanner] = useState(true);
+  const [uiLocale] = useUiLocale("en");
 
   return (
     <>
@@ -49,7 +52,7 @@ export const Header = () => {
               <Show when="signed-out">
                 <SignInButton>
                   <Button size="lg" variant="ghost">
-                    Login
+                    {uiCopy[uiLocale].common.login}
                   </Button>
                 </SignInButton>
               </Show>

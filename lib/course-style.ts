@@ -1,3 +1,5 @@
+import { uiCopy, type UiLocale } from "@/lib/ui-copy";
+
 export type CourseKind = "language" | "hanja" | "programming";
 
 type CourseLike = {
@@ -91,34 +93,11 @@ export const getCourseTheme = (course: CourseLike): CourseTheme => {
   };
 };
 
-export const getCourseMicrocopy = (course: CourseLike) => {
+export const getCourseMicrocopy = (
+  course: CourseLike,
+  locale: UiLocale = "en"
+) => {
   const theme = getCourseTheme(course);
 
-  if (theme.kind === "programming") {
-    return {
-      action: "Build the next concept",
-      unitCta: "Open Lab",
-      currentLabel: "Start Lab",
-      lockedLabel: "Locked",
-      completeLabel: "Review",
-    };
-  }
-
-  if (theme.kind === "hanja") {
-    return {
-      action: "Trace the next character set",
-      unitCta: "Open Guide",
-      currentLabel: "Start",
-      lockedLabel: "Locked",
-      completeLabel: "Practice",
-    };
-  }
-
-  return {
-    action: "Continue your next lesson",
-    unitCta: "Continue",
-    currentLabel: "Start",
-    lockedLabel: "Locked",
-    completeLabel: "Practice",
-  };
+  return uiCopy[locale].microcopy[theme.kind];
 };

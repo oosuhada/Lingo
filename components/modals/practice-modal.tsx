@@ -12,11 +12,15 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useMounted } from "@/hooks/use-mounted";
+import { useUiLocale } from "@/hooks/use-ui-locale";
+import { uiCopy } from "@/lib/ui-copy";
 import { usePracticeModal } from "@/store/use-practice-modal";
 
 export const PracticeModal = () => {
   const isMounted = useMounted();
   const { isOpen, close } = usePracticeModal();
+  const [uiLocale] = useUiLocale("en");
+  const copy = uiCopy[uiLocale].modals;
 
   if (!isMounted) return null;
 
@@ -29,12 +33,11 @@ export const PracticeModal = () => {
           </div>
 
           <DialogTitle className="text-center text-2xl font-bold">
-            Practice lesson
+            {copy.practiceTitle}
           </DialogTitle>
 
           <DialogDescription className="text-center text-base">
-            Use practice lessons to regain hearts and points. You cannot loose
-            hearts or points in practice lessons.
+            {copy.practiceDescription}
           </DialogDescription>
         </DialogHeader>
 
@@ -46,7 +49,7 @@ export const PracticeModal = () => {
               size="lg"
               onClick={close}
             >
-              I understand
+              {copy.understand}
             </Button>
           </div>
         </DialogFooter>

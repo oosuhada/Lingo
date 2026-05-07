@@ -4,18 +4,24 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { QUESTS } from "@/constants";
+import { uiCopy, type UiLocale } from "@/lib/ui-copy";
 
-type QuestsProps = { points: number };
+type QuestsProps = {
+  points: number;
+  uiLocale: UiLocale;
+};
 
-export const Quests = ({ points }: QuestsProps) => {
+export const Quests = ({ points, uiLocale }: QuestsProps) => {
+  const copy = uiCopy[uiLocale].questsPanel;
+
   return (
     <div className="space-y-4 rounded-xl border-2 p-4">
       <div className="flex w-full items-center justify-between space-y-2">
-        <h3 className="text-lg font-bold">Quests</h3>
+        <h3 className="text-lg font-bold">{copy.title}</h3>
 
         <Link href="/quests">
           <Button size="sm" variant="primaryOutline">
-            View all
+            {copy.viewAll}
           </Button>
         </Link>
       </div>
@@ -33,7 +39,7 @@ export const Quests = ({ points }: QuestsProps) => {
 
               <div className="flex w-full flex-col gap-y-2">
                 <p className="text-sm font-bold text-neutral-700">
-                  {quest.title}
+                  {copy.earnXp(quest.value)}
                 </p>
 
                 <Progress value={progress} className="h-2" />

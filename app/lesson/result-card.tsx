@@ -1,15 +1,18 @@
 import { InfinityIcon } from "lucide-react";
 import Image from "next/image";
 
+import { uiCopy, type UiLocale } from "@/lib/ui-copy";
 import { cn } from "@/lib/utils";
 
 type ResultCardProps = {
   value: number;
   variant: "points" | "hearts";
+  uiLocale: UiLocale;
 };
 
-export const ResultCard = ({ value, variant }: ResultCardProps) => {
+export const ResultCard = ({ value, variant, uiLocale }: ResultCardProps) => {
   const imageSrc = variant === "points" ? "/points.svg" : "/heart.svg";
+  const copy = uiCopy[uiLocale].lesson;
 
   return (
     <div
@@ -26,7 +29,7 @@ export const ResultCard = ({ value, variant }: ResultCardProps) => {
           variant === "hearts" && "bg-rose-500"
         )}
       >
-        {variant === "hearts" ? "Hears Left" : "Total XP"}
+        {variant === "hearts" ? copy.heartsLeft : copy.totalXp}
       </div>
 
       <div

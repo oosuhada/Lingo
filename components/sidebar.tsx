@@ -4,14 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import { uiCopy, type UiLocale } from "@/lib/ui-copy";
 
 import { SidebarItem } from "./sidebar-item";
 
 type SidebarProps = {
   className?: string;
+  uiLocale?: UiLocale;
 };
 
-export const Sidebar = ({ className }: SidebarProps) => {
+export const Sidebar = ({ className, uiLocale = "en" }: SidebarProps) => {
+  const copy = uiCopy[uiLocale].nav;
+
   return (
     <div
       className={cn(
@@ -30,14 +34,14 @@ export const Sidebar = ({ className }: SidebarProps) => {
       </Link>
 
       <div className="flex flex-1 flex-col gap-y-2">
-        <SidebarItem label="Learn" href="/learn" iconSrc="/learn.svg" />
+        <SidebarItem label={copy.learn} href="/learn" iconSrc="/learn.svg" />
         <SidebarItem
-          label="Leaderboard"
+          label={copy.leaderboard}
           href="/leaderboard"
           iconSrc="/leaderboard.svg"
         />
-        <SidebarItem label="Quests" href="/quests" iconSrc="/quests.svg" />
-        <SidebarItem label="Shop" href="/shop" iconSrc="/shop.svg" />
+        <SidebarItem label={copy.quests} href="/quests" iconSrc="/quests.svg" />
+        <SidebarItem label={copy.shop} href="/shop" iconSrc="/shop.svg" />
       </div>
 
       <div className="p-4">

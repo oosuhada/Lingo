@@ -13,16 +13,20 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useMounted } from "@/hooks/use-mounted";
+import { useUiLocale } from "@/hooks/use-ui-locale";
+import { uiCopy } from "@/lib/ui-copy";
 import { useHeartsModal } from "@/store/use-hearts-modal";
 
 export const HeartsModal = () => {
   const router = useRouter();
   const isMounted = useMounted();
   const { isOpen, close } = useHeartsModal();
+  const [uiLocale] = useUiLocale("en");
+  const copy = uiCopy[uiLocale].modals;
 
   const onClick = () => {
     close();
-    router.push("/store");
+    router.push("/shop");
   };
 
   if (!isMounted) return null;
@@ -41,11 +45,11 @@ export const HeartsModal = () => {
           </div>
 
           <DialogTitle className="text-center text-2xl font-bold">
-            You ran out of hearts!
+            {copy.heartsTitle}
           </DialogTitle>
 
           <DialogDescription className="text-center text-base">
-            Get Pro for unlimited hearts, or purchase them in the store.
+            {copy.heartsDescription}
           </DialogDescription>
         </DialogHeader>
 
@@ -57,7 +61,7 @@ export const HeartsModal = () => {
               size="lg"
               onClick={onClick}
             >
-              Get unlimited hearts
+              {copy.getUnlimitedHearts}
             </Button>
 
             <Button
@@ -66,7 +70,7 @@ export const HeartsModal = () => {
               size="lg"
               onClick={close}
             >
-              No thanks
+              {copy.noThanks}
             </Button>
           </div>
         </DialogFooter>

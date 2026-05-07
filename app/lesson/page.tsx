@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { getLesson, getUserProgress, getUserSubscription } from "@/db/queries";
+import { getUiLocaleFromCookie } from "@/lib/ui-locale-server";
 
 import { Quiz } from "./quiz";
 
@@ -8,11 +9,13 @@ const LessonPage = async () => {
   const lessonData = getLesson();
   const userProgressData = getUserProgress();
   const userSubscriptionData = getUserSubscription();
+  const uiLocaleData = getUiLocaleFromCookie();
 
-  const [lesson, userProgress, userSubscription] = await Promise.all([
+  const [lesson, userProgress, userSubscription, uiLocale] = await Promise.all([
     lessonData,
     userProgressData,
     userSubscriptionData,
+    uiLocaleData,
   ]);
 
   if (!lesson || !userProgress) return redirect("/learn");
@@ -27,6 +30,7 @@ const LessonPage = async () => {
       initialLessonId={lesson.id}
       initialLessonChallenges={lesson.challenges}
       courseTitle={lesson.unit.course.title}
+      uiLocale={uiLocale}
       initialHearts={userProgress.hearts}
       initialPercentage={initialPercentage}
       userSubscription={userSubscription}

@@ -7,6 +7,7 @@ import { toast } from "sonner";
 
 import { upsertUserProgress } from "@/actions/user-progress";
 import { courses, userProgress } from "@/db/schema";
+import { uiCopy, type UiLocale } from "@/lib/ui-copy";
 
 import { Card } from "./card";
 
@@ -15,6 +16,7 @@ type ListProps = {
   description: string;
   courses: (typeof courses.$inferSelect)[];
   activeCourseId?: typeof userProgress.$inferSelect.activeCourseId;
+  uiLocale: UiLocale;
 };
 
 export const List = ({
@@ -22,6 +24,7 @@ export const List = ({
   description,
   courses,
   activeCourseId,
+  uiLocale,
 }: ListProps) => {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -37,7 +40,7 @@ export const List = ({
           router.push("/learn");
           router.refresh();
         })
-        .catch(() => toast.error("Something went wrong."));
+        .catch(() => toast.error(uiCopy[uiLocale].courses.error));
     });
   };
 
@@ -60,6 +63,7 @@ export const List = ({
             onClick={onClick}
             disabled={pending}
             isActive={course.id === activeCourseId}
+            uiLocale={uiLocale}
           />
         ))}
       </div>

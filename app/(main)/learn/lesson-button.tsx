@@ -19,6 +19,7 @@ import {
   getCourseMicrocopy,
   getCourseTheme,
 } from "@/lib/course-style";
+import type { UiLocale } from "@/lib/ui-copy";
 import { cn } from "@/lib/utils";
 
 import "react-circular-progressbar/dist/styles.css";
@@ -29,6 +30,7 @@ type LessonButtonProps = {
   totalCount: number;
   lessonTitle: string;
   courseTitle: string;
+  uiLocale: UiLocale;
   locked?: boolean;
   current?: boolean;
   percentage: number;
@@ -86,12 +88,13 @@ export const LessonButton = ({
   totalCount,
   lessonTitle,
   courseTitle,
+  uiLocale,
   locked,
   current,
   percentage,
 }: LessonButtonProps) => {
   const theme = getCourseTheme({ title: courseTitle });
-  const copy = getCourseMicrocopy({ title: courseTitle });
+  const copy = getCourseMicrocopy({ title: courseTitle }, uiLocale);
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { getCourseMicrocopy, getCourseTheme } from "@/lib/course-style";
+import { uiCopy, type UiLocale } from "@/lib/ui-copy";
 import { cn } from "@/lib/utils";
 
 type UnitBannerProps = {
@@ -10,6 +11,7 @@ type UnitBannerProps = {
   order: number;
   description: string;
   courseTitle: string;
+  uiLocale: UiLocale;
 };
 
 export const UnitBanner = ({
@@ -17,9 +19,11 @@ export const UnitBanner = ({
   order,
   description,
   courseTitle,
+  uiLocale,
 }: UnitBannerProps) => {
   const theme = getCourseTheme({ title: courseTitle });
-  const copy = getCourseMicrocopy({ title: courseTitle });
+  const copy = getCourseMicrocopy({ title: courseTitle }, uiLocale);
+  const kindLabel = uiCopy[uiLocale].courseKinds[theme.kind];
   const Icon =
     theme.kind === "programming"
       ? Braces
@@ -40,10 +44,10 @@ export const UnitBanner = ({
         <div className="space-y-2.5">
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-extrabold uppercase">
-              {theme.label}
+              {kindLabel}
             </span>
             <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-extrabold uppercase">
-              Unit {order}
+              {uiCopy[uiLocale].common.unit} {order}
             </span>
           </div>
           <h3 className="text-2xl font-extrabold tracking-normal">{title}</h3>

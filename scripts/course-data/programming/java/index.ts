@@ -7,10 +7,21 @@ import { unit5 } from "./units/unit-5";
 import { unit6 } from "./units/unit-6";
 import { unit7 } from "./units/unit-7";
 import { unit8 } from "./units/unit-8";
+import { javaSupplementUnits } from "../supplement";
 
 export const javaCourse: CourseSeed = {
   kind: "programming",
   title: "Java",
   imageSrc: "/java.svg",
-  units: [unit1, unit2, unit3, unit4, unit5, unit6, unit7, unit8],
+  units: [
+    unit1,
+    unit2,
+    unit3,
+    unit4,
+    unit5,
+    unit6,
+    unit7,
+    unit8,
+    ...javaSupplementUnits,
+  ],
 };

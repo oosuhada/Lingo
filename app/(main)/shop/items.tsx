@@ -9,36 +9,40 @@ import { refillHearts } from "@/actions/user-progress";
 import { createStripeUrl } from "@/actions/user-subscription";
 import { Button } from "@/components/ui/button";
 import { MAX_HEARTS, POINTS_TO_REFILL } from "@/constants";
+import { uiCopy, type UiLocale } from "@/lib/ui-copy";
 
 type ItemsProps = {
   hearts: number;
   points: number;
   hasActiveSubscription: boolean;
+  uiLocale: UiLocale;
 };
 
 export const Items = ({
   hearts,
   points,
   hasActiveSubscription,
+  uiLocale,
 }: ItemsProps) => {
   const [pending, startTransition] = useTransition();
+  const copy = uiCopy[uiLocale].shop;
 
   const onRefillHearts = () => {
     if (pending || hearts === MAX_HEARTS || points < POINTS_TO_REFILL) return;
 
     startTransition(() => {
-      refillHearts().catch(() => toast.error("Something went wrong."));
+      refillHearts().catch(() => toast.error(uiCopy[uiLocale].courses.error));
     });
   };
 
   const onUpgrade = () => {
-    toast.loading("Redirecting to checkout...");
+    toast.loading(copy.redirecting);
     startTransition(() => {
       createStripeUrl()
         .then((response) => {
           if (response.data) window.location.href = response.data;
         })
-        .catch(() => toast.error("Something went wrong."));
+        .catch(() => toast.error(uiCopy[uiLocale].courses.error));
     });
   };
 
@@ -49,7 +53,7 @@ export const Items = ({
 
         <div className="flex-1">
           <p className="text-base font-bold text-neutral-700 lg:text-xl">
-            Refill hearts
+            {copy.refillHearts}
           </p>
         </div>
 
@@ -63,7 +67,7 @@ export const Items = ({
           }
         >
           {hearts === MAX_HEARTS ? (
-            "full"
+            copy.full
           ) : (
             <div className="flex items-center">
               <Image src="/points.svg" alt="Points" height={20} width={20} />
@@ -79,12 +83,12 @@ export const Items = ({
 
         <div className="flex-1">
           <p className="text-base font-bold text-neutral-700 lg:text-xl">
-            Unlimited hearts
+            {copy.unlimitedHearts}
           </p>
         </div>
 
         <Button onClick={onUpgrade} disabled={pending} aria-disabled={pending}>
-          {hasActiveSubscription ? "settings" : "upgrade"}
+          {hasActiveSubscription ? copy.settings : copy.upgrade}
         </Button>
       </div>
     </ul>
