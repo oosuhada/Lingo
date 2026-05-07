@@ -1,6 +1,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
+import Script from "next/script";
 
 import { ExitModal } from "@/components/modals/exit-modal";
 import { HeartsModal } from "@/components/modals/hearts-modal";
@@ -40,12 +41,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      </head>
       <body
         className={`${font.className} min-h-screen overflow-x-hidden bg-background text-foreground`}
       >
+        <Script
+          id="lingo-theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
         <ClerkProvider
           appearance={{
             layout: {
@@ -64,6 +67,9 @@ export default function RootLayout({
                 "z-[10000] glass-panel-strong text-foreground shadow-2xl",
               userButtonPopoverFooter: "glass-panel-strong",
               userButtonPopoverRootBox: "z-[10000]",
+              userButtonBox: "h-10 w-10",
+              userButtonTrigger: "h-10 w-10",
+              userButtonAvatarBox: "h-10 w-10",
             },
           }}
           afterSignOutUrl="/"

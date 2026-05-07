@@ -29,7 +29,7 @@ export const MarketingLanguagePanel = () => {
   const copy = uiCopy[locale];
 
   return (
-    <div className="glass-panel-strong flex w-full max-w-[500px] flex-col items-center gap-y-8 rounded-3xl p-6 sm:p-8">
+    <div className="landing-panel flex w-full max-w-[500px] flex-col items-center gap-y-6 rounded-3xl p-0 sm:gap-y-8 sm:p-8">
       <div className="space-y-3 text-center">
         <h1 className="max-w-[480px] text-xl font-extrabold text-foreground lg:text-3xl">
           {copy.marketing.headline}

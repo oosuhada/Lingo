@@ -1,88 +1,75 @@
 "use client";
-import { useState } from "react";
 
 import {
   ClerkLoaded,
   ClerkLoading,
   SignInButton,
   Show,
-  useAuth,
 } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import Banner from "@/components/banner";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { links } from "@/config";
 import { useUiLocale } from "@/hooks/use-ui-locale";
 import { uiCopy } from "@/lib/ui-copy";
-import { cn } from "@/lib/utils";
 
 export const Header = () => {
-  const { isSignedIn } = useAuth();
-  const [hideBanner, setHideBanner] = useState(true);
   const [uiLocale] = useUiLocale("en");
 
   return (
-    <>
-      <Banner hide={hideBanner} setHide={setHideBanner} />
+    <header className="glass-nav h-20 w-full border-b px-4">
+      <div className="mx-auto flex h-full items-center justify-between lg:max-w-screen-lg">
+        <Link href="/" className="flex items-center gap-2 pl-1">
+          <Image
+            src="/memoji/replacements/mascot.png"
+            alt="Mascot"
+            height={34}
+            width={34}
+          />
 
-      <header
-        className={cn(
-          "glass-nav h-20 w-full border-b px-4",
-          !hideBanner ? "mt-20 sm:mt-16 lg:mt-10" : "mt-0"
-        )}
-      >
-        <div className="mx-auto flex h-full items-center justify-between lg:max-w-screen-lg">
-          <Link href="/" className="flex items-center gap-x-3 pb-7 pl-4 pt-8">
-            <Image
-              src="/memoji/replacements/mascot.png"
-              alt="Mascot"
-              height={40}
-              width={40}
-            />
+          <h1 className="text-2xl font-extrabold tracking-wide text-green-600">
+            Lingo
+          </h1>
+        </Link>
 
-            <h1 className="text-2xl font-extrabold tracking-wide text-green-600">
-              Lingo
-            </h1>
-          </Link>
+        <div className="flex items-center gap-x-3">
+          <ThemeToggle />
 
-          <div className="flex items-center gap-x-3">
-            <ThemeToggle />
+          <ClerkLoading>
+            <Loader className="h-5 w-5 animate-spin text-muted-foreground" />
+          </ClerkLoading>
 
-            <ClerkLoading>
-              <Loader className="h-5 w-5 animate-spin text-muted-foreground" />
-            </ClerkLoading>
+          <ClerkLoaded>
+            <Show when="signed-out">
+              <SignInButton mode="modal">
+                <Button size="lg" variant="ghost">
+                  {uiCopy[uiLocale].common.login}
+                </Button>
+              </SignInButton>
+            </Show>
 
-            <ClerkLoaded>
-              <Show when="signed-out">
-                <SignInButton>
-                  <Button size="lg" variant="ghost">
-                    {uiCopy[uiLocale].common.login}
-                  </Button>
-                </SignInButton>
-              </Show>
-
-              <Link
-                href={links.sourceCode}
-                target="_blank"
-                rel="noreferrer noopener"
-                className={isSignedIn ? "pt-1.5" : "pt-3"}
-              >
-                <Image
-                  src="/memoji/replacements/github.svg"
-                  alt="Source Code"
-                  height={20}
-                  width={20}
-                  className="dark:invert"
-                />
-              </Link>
-            </ClerkLoaded>
-          </div>
+            <Link
+              href={links.sourceCode}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="glass-control flex h-10 w-10 items-center justify-center rounded-full"
+              aria-label="Source code"
+              title="Source code"
+            >
+              <Image
+                src="/memoji/replacements/github.svg"
+                alt="Source Code"
+                height={22}
+                width={22}
+                className="dark:invert"
+              />
+            </Link>
+          </ClerkLoaded>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 };

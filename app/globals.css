@@ -54,76 +54,76 @@ body,
 
   .dark {
     color-scheme: dark;
-    --background: 222 51% 7%;
-    --foreground: 190 45% 96%;
+    --background: 0 0% 3%;
+    --foreground: 0 0% 96%;
 
-    --card: 222 48% 11%;
+    --card: 0 0% 5%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 48% 11%;
+    --popover: 0 0% 5%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 150 63% 51%;
-    --primary-foreground: 222 47% 9%;
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 150 58% 43%;
+    --secondary: 150 58% 38%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 222 31% 18%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 68%;
 
-    --accent: 192 56% 23%;
+    --accent: 0 0% 13%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 210 28% 22%;
-    --input: 210 28% 22%;
-    --ring: 212.7 26.8% 83.9%;
-    --glass-panel: 15 23 42 / 0.6;
-    --glass-panel-strong: 15 23 42 / 0.78;
-    --glass-panel-soft: 15 23 42 / 0.42;
-    --glass-border: 255 255 255 / 0.12;
-    --glass-shadow: 0 0 0 / 0.26;
-    --glass-shadow-strong: 0 0 0 / 0.36;
-    --glass-line: 255 255 255 / 0.1;
-    --glass-highlight: 255 255 255 / 0.1;
-    --glass-code: 2 6 23 / 0.82;
+    --border: 0 0% 100% / 0.1;
+    --input: 0 0% 100% / 0.14;
+    --ring: 0 0% 92%;
+    --glass-panel: 255 255 255 / 0.07;
+    --glass-panel-strong: 255 255 255 / 0.095;
+    --glass-panel-soft: 255 255 255 / 0.052;
+    --glass-border: 255 255 255 / 0.17;
+    --glass-shadow: 0 0 0 / 0.42;
+    --glass-shadow-strong: 0 0 0 / 0.56;
+    --glass-line: 255 255 255 / 0.055;
+    --glass-highlight: 255 255 255 / 0.16;
+    --glass-code: 0 0 0 / 0.64;
     --glass-code-border: 148 163 184 / 0.22;
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not(.light) {
       color-scheme: dark;
-      --background: 222 51% 7%;
-      --foreground: 190 45% 96%;
-      --card: 222 48% 11%;
+      --background: 0 0% 3%;
+      --foreground: 0 0% 96%;
+      --card: 0 0% 5%;
       --card-foreground: 210 40% 98%;
-      --popover: 222 48% 11%;
+      --popover: 0 0% 5%;
       --popover-foreground: 210 40% 98%;
       --primary: 150 63% 51%;
-      --primary-foreground: 222 47% 9%;
-      --secondary: 150 58% 43%;
+      --primary-foreground: 0 0% 4%;
+      --secondary: 150 58% 38%;
       --secondary-foreground: 210 40% 98%;
-      --muted: 222 31% 18%;
-      --muted-foreground: 215 20.2% 65.1%;
-      --accent: 192 56% 23%;
+      --muted: 0 0% 12%;
+      --muted-foreground: 0 0% 68%;
+      --accent: 0 0% 13%;
       --accent-foreground: 210 40% 98%;
       --destructive: 0 62.8% 30.6%;
       --destructive-foreground: 210 40% 98%;
-      --border: 210 28% 22%;
-      --input: 210 28% 22%;
-      --ring: 212.7 26.8% 83.9%;
-      --glass-panel: 15 23 42 / 0.6;
-      --glass-panel-strong: 15 23 42 / 0.78;
-      --glass-panel-soft: 15 23 42 / 0.42;
-      --glass-border: 255 255 255 / 0.12;
-      --glass-shadow: 0 0 0 / 0.26;
-      --glass-shadow-strong: 0 0 0 / 0.36;
-      --glass-line: 255 255 255 / 0.1;
-      --glass-highlight: 255 255 255 / 0.1;
-      --glass-code: 2 6 23 / 0.82;
+      --border: 0 0% 100% / 0.1;
+      --input: 0 0% 100% / 0.14;
+      --ring: 0 0% 92%;
+      --glass-panel: 255 255 255 / 0.07;
+      --glass-panel-strong: 255 255 255 / 0.095;
+      --glass-panel-soft: 255 255 255 / 0.052;
+      --glass-border: 255 255 255 / 0.17;
+      --glass-shadow: 0 0 0 / 0.42;
+      --glass-shadow-strong: 0 0 0 / 0.56;
+      --glass-line: 255 255 255 / 0.055;
+      --glass-highlight: 255 255 255 / 0.16;
+      --glass-code: 0 0 0 / 0.64;
       --glass-code-border: 148 163 184 / 0.22;
     }
   }
@@ -148,7 +148,7 @@ body,
 
   .dark body {
     background-image:
-      linear-gradient(135deg, hsl(222 51% 7%) 0%, hsl(215 42% 10%) 46%, hsl(174 36% 10%) 100%),
+      linear-gradient(145deg, hsl(0 0% 2%) 0%, hsl(0 0% 4%) 44%, hsl(145 18% 5%) 100%),
       linear-gradient(90deg, rgb(var(--glass-line)) 1px, transparent 1px),
       linear-gradient(0deg, rgb(var(--glass-line)) 1px, transparent 1px);
   }
@@ -156,7 +156,7 @@ body,
   @media (prefers-color-scheme: dark) {
     :root:not(.light) body {
       background-image:
-        linear-gradient(135deg, hsl(222 51% 7%) 0%, hsl(215 42% 10%) 46%, hsl(174 36% 10%) 100%),
+        linear-gradient(145deg, hsl(0 0% 2%) 0%, hsl(0 0% 4%) 44%, hsl(145 18% 5%) 100%),
         linear-gradient(90deg, rgb(var(--glass-line)) 1px, transparent 1px),
         linear-gradient(0deg, rgb(var(--glass-line)) 1px, transparent 1px);
     }
@@ -190,65 +190,102 @@ body,
 
 @layer components {
   .glass-panel {
-    background: rgb(var(--glass-panel));
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 18% 0%, rgb(var(--glass-highlight)), transparent 52%),
+      linear-gradient(135deg, rgb(var(--glass-highlight)), transparent 34%),
+      rgb(var(--glass-panel));
     border: 1px solid rgb(var(--glass-border));
     box-shadow:
       0 18px 60px rgb(var(--glass-shadow)),
-      inset 0 1px 0 rgb(var(--glass-highlight));
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
+      inset 0 1px 0 rgb(var(--glass-highlight)),
+      inset 0 -1px 0 rgb(255 255 255 / 0.06);
+    backdrop-filter: blur(28px) saturate(170%) contrast(115%);
+    -webkit-backdrop-filter: blur(28px) saturate(170%) contrast(115%);
   }
 
   .glass-panel-strong {
-    background: rgb(var(--glass-panel-strong));
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 16% 0%, rgb(var(--glass-highlight)), transparent 54%),
+      linear-gradient(135deg, rgb(var(--glass-highlight)), transparent 36%),
+      rgb(var(--glass-panel-strong));
     border: 1px solid rgb(var(--glass-border));
     box-shadow:
       0 24px 80px rgb(var(--glass-shadow-strong)),
-      inset 0 1px 0 rgb(var(--glass-highlight));
-    backdrop-filter: blur(28px) saturate(160%);
-    -webkit-backdrop-filter: blur(28px) saturate(160%);
+      inset 0 1px 0 rgb(var(--glass-highlight)),
+      inset 0 -1px 0 rgb(255 255 255 / 0.07);
+    backdrop-filter: blur(32px) saturate(180%) contrast(118%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%) contrast(118%);
   }
 
   .glass-panel-soft {
-    background: rgb(var(--glass-panel-soft));
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 18% 0%, rgb(var(--glass-highlight)), transparent 50%),
+      rgb(var(--glass-panel-soft));
     border: 1px solid rgb(var(--glass-border));
     box-shadow:
       0 12px 40px rgb(var(--glass-shadow)),
-      inset 0 1px 0 rgb(var(--glass-highlight));
-    backdrop-filter: blur(18px) saturate(140%);
-    -webkit-backdrop-filter: blur(18px) saturate(140%);
+      inset 0 1px 0 rgb(var(--glass-highlight)),
+      inset 0 -1px 0 rgb(255 255 255 / 0.05);
+    backdrop-filter: blur(22px) saturate(160%) contrast(112%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%) contrast(112%);
   }
 
   .glass-nav {
-    background: rgb(var(--glass-panel-strong));
+    position: relative;
+    isolation: isolate;
+    background:
+      linear-gradient(135deg, rgb(var(--glass-highlight)), transparent 38%),
+      rgb(var(--glass-panel-strong));
     border-color: rgb(var(--glass-border));
     box-shadow:
       0 20px 60px rgb(var(--glass-shadow)),
-      inset 0 1px 0 rgb(var(--glass-highlight));
-    backdrop-filter: blur(28px) saturate(170%);
-    -webkit-backdrop-filter: blur(28px) saturate(170%);
+      inset 0 1px 0 rgb(var(--glass-highlight)),
+      inset 0 -1px 0 rgb(255 255 255 / 0.06);
+    backdrop-filter: blur(32px) saturate(180%) contrast(115%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%) contrast(115%);
   }
 
   .glass-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     background:
-      linear-gradient(180deg, rgb(var(--glass-highlight)), transparent 36%),
+      radial-gradient(circle at 18% 0%, rgb(var(--glass-highlight)), transparent 52%),
+      linear-gradient(135deg, rgb(var(--glass-highlight)), transparent 36%),
       rgb(var(--glass-panel));
     border: 1px solid rgb(var(--glass-border));
     box-shadow:
       0 18px 48px rgb(var(--glass-shadow)),
-      inset 0 1px 0 rgb(var(--glass-highlight));
-    backdrop-filter: blur(22px) saturate(150%);
-    -webkit-backdrop-filter: blur(22px) saturate(150%);
+      inset 0 1px 0 rgb(var(--glass-highlight)),
+      inset 0 -1px 0 rgb(255 255 255 / 0.06);
+    backdrop-filter: blur(26px) saturate(170%) contrast(115%);
+    -webkit-backdrop-filter: blur(26px) saturate(170%) contrast(115%);
   }
 
   .glass-control {
-    background: rgb(var(--glass-panel-soft));
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 18% 0%, rgb(var(--glass-highlight)), transparent 54%),
+      linear-gradient(135deg, rgb(var(--glass-highlight)), transparent 40%),
+      rgb(var(--glass-panel-soft));
     border: 1px solid rgb(var(--glass-border));
     box-shadow:
       0 8px 24px rgb(var(--glass-shadow)),
-      inset 0 1px 0 rgb(var(--glass-highlight));
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
+      inset 0 1px 0 rgb(var(--glass-highlight)),
+      inset 0 -1px 0 rgb(255 255 255 / 0.055);
+    backdrop-filter: blur(20px) saturate(170%) contrast(115%);
+    -webkit-backdrop-filter: blur(20px) saturate(170%) contrast(115%);
   }
 
   .glass-inset {
@@ -263,6 +300,117 @@ body,
     background: rgb(var(--glass-code));
     border: 1px solid rgb(var(--glass-code-border));
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08);
+  }
+
+  .glass-panel::after,
+  .glass-panel-strong::after,
+  .glass-panel-soft::after,
+  .glass-card::after,
+  .glass-control::after {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    background:
+      linear-gradient(120deg, rgb(255 255 255 / 0.16), transparent 32%, rgb(255 255 255 / 0.04) 64%, transparent),
+      radial-gradient(circle at var(--glass-x, 50%) var(--glass-y, 0%), rgb(255 255 255 / 0.28), transparent 28%);
+    opacity: 0.42;
+    content: "";
+  }
+
+  .glass-panel > *,
+  .glass-panel-strong > *,
+  .glass-panel-soft > *,
+  .glass-card > *,
+  .glass-control > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .dark .glass-panel::after,
+  .dark .glass-panel-strong::after,
+  .dark .glass-panel-soft::after,
+  .dark .glass-card::after,
+  .dark .glass-control::after {
+    background:
+      linear-gradient(120deg, rgb(255 255 255 / 0.11), transparent 32%, rgb(255 255 255 / 0.025) 64%, transparent),
+      radial-gradient(circle at var(--glass-x, 50%) var(--glass-y, 0%), rgb(255 255 255 / 0.16), transparent 30%);
+    opacity: 0.5;
+  }
+
+  .glass-shine {
+    --glass-x: 50%;
+    --glass-y: 0%;
+  }
+
+  .landing-light-field {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .landing-light-field::before {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(420px circle at var(--pointer-x, 50%) var(--pointer-y, 42%), rgb(34 197 94 / 0.2), transparent 62%),
+      radial-gradient(880px 360px at 52% 42%, rgb(255 255 255 / 0.42), transparent 72%);
+    filter: blur(22px);
+    opacity: 0.84;
+    transition: opacity 220ms ease;
+    content: "";
+  }
+
+  .dark .landing-light-field::before {
+    background:
+      radial-gradient(460px circle at var(--pointer-x, 50%) var(--pointer-y, 42%), rgb(34 197 94 / 0.16), transparent 64%),
+      radial-gradient(820px 360px at 52% 42%, rgb(255 255 255 / 0.055), transparent 74%);
+    opacity: 0.92;
+  }
+
+  .landing-panel {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  @media (min-width: 640px) {
+    .landing-panel {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 16% 0%, rgb(var(--glass-highlight)), transparent 54%),
+        linear-gradient(135deg, rgb(var(--glass-highlight)), transparent 36%),
+        rgb(var(--glass-panel-strong));
+      border: 1px solid rgb(var(--glass-border));
+      box-shadow:
+        0 24px 80px rgb(var(--glass-shadow-strong)),
+        inset 0 1px 0 rgb(var(--glass-highlight)),
+        inset 0 -1px 0 rgb(255 255 255 / 0.07);
+      backdrop-filter: blur(32px) saturate(180%) contrast(118%);
+      -webkit-backdrop-filter: blur(32px) saturate(180%) contrast(118%);
+    }
+  }
+
+  .lingo-marquee-track {
+    display: flex;
+    width: max-content;
+    min-width: 200%;
+    animation: lingo-marquee 34s linear infinite;
+  }
+
+  @keyframes lingo-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 
   .cl-modalBackdrop {
