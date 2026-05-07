@@ -39,3 +39,7 @@ next-env.d.ts
 # testing tools
 /ngrok
 /stripe
+
+# local course data exchange artifacts
+lingo-course-data-context.zip
+lingo-course-data-expanded/

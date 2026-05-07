@@ -1,3 +1,5 @@
+export type CourseKind = "language" | "hanja" | "programming";
+
 export type ChallengeSeed = {
   type?: "SELECT" | "ASSIST";
   question: string;
@@ -24,6 +26,7 @@ export type UnitSeed = {
 };
 
 export type CourseSeed = {
+  kind?: CourseKind;
   title: string;
   imageSrc: string;
   units: UnitSeed[];
