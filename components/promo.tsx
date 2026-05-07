@@ -12,7 +12,7 @@ export const Promo = ({ uiLocale }: PromoProps) => {
   const copy = uiCopy[uiLocale].promo;
 
   return (
-    <div className="space-y-4 rounded-xl border-2 p-4">
+    <div className="glass-card space-y-4 rounded-2xl p-4">
       <div className="space-y-2">
         <div className="flex items-center gap-x-2">
           <Image

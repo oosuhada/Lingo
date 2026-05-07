@@ -40,15 +40,15 @@ const CoursesPage = async () => {
   ];
 
   return (
-    <div className="mx-auto h-full max-w-[980px] px-3 pb-10">
-      <header className="mb-8 space-y-2">
+    <div className="mx-auto min-h-full max-w-[980px] px-3 pb-10">
+      <header className="glass-panel-strong mb-8 space-y-2 rounded-3xl p-6">
         <p className="text-sm font-bold uppercase tracking-wide text-green-500">
           {copy.eyebrow}
         </p>
-        <h1 className="text-3xl font-extrabold text-neutral-800">
+        <h1 className="text-3xl font-extrabold text-foreground">
           {copy.title}
         </h1>
-        <p className="max-w-2xl text-sm font-medium leading-6 text-neutral-500">
+        <p className="max-w-2xl text-sm font-medium leading-6 text-muted-foreground">
           {copy.description}
         </p>
       </header>

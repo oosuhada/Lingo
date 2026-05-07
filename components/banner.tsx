@@ -44,7 +44,7 @@ const Banner = ({ hide, setHide }: BannerProps) => {
   return (
     <div
       id="sticky-banner"
-      className="fixed left-0 top-0 z-50 block h-20 w-full bg-secondary p-2.5 opacity-[0.98] shadow-md sm:h-16 lg:h-10"
+      className="glass-nav fixed left-0 top-0 z-50 block h-20 w-full p-2.5 sm:h-16 lg:h-10"
     >
       <div className="relative w-full">
         <div className="flex items-center justify-center">
@@ -79,7 +79,7 @@ const Banner = ({ hide, setHide }: BannerProps) => {
           data-dismiss-target="#sticky-banner"
           onClick={handleBannerClose}
           type="button"
-          className="absolute right-0 top-3/4 -translate-y-1/2 rounded-full border border-gray-300 bg-white p-1 opacity-80 hover:opacity-90 sm:top-1/2"
+          className="glass-control absolute right-0 top-3/4 -translate-y-1/2 rounded-full p-1 opacity-80 hover:opacity-90 sm:top-1/2"
         >
           <XIcon className="size-3" strokeWidth={3} />
           <span className="sr-only">Close banner</span>

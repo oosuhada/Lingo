@@ -6,40 +6,44 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase tracking-wide",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-bold uppercase tracking-wide ring-offset-background transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "bg-white text-black border-slate-200 border-2 border-b-4 active:border-b-2 hover:bg-slate-100 text-slate-500",
+          "glass-control border-2 border-b-4 text-slate-600 hover:bg-white/75 active:border-b-2 dark:text-slate-100 dark:hover:bg-white/10",
 
         // custom
         locked:
-          "bg-neutral-200 text-primary-foreground hover:bg-neutral-200/90 border-neutral-400 border-b-4 active:border-b-0",
+          "border-b-4 border-slate-300 bg-slate-200/80 text-slate-400 hover:bg-slate-200/80 active:border-b-0 dark:border-slate-600 dark:bg-slate-700/80 dark:text-slate-300",
 
         primary:
-          "bg-sky-400 text-primary-foreground hover:bg-sky-400/90 border-sky-500 border-b-4 active:border-b-0",
-        primaryOutline: "bg-white text-sky-500 hover:bg-slate-100",
+          "border-b-4 border-sky-500 bg-sky-400/95 text-primary-foreground shadow-[0_14px_32px_rgba(14,165,233,0.25)] hover:bg-sky-400 active:border-b-0",
+        primaryOutline:
+          "glass-control text-sky-600 hover:bg-sky-500/10 dark:text-sky-300",
 
         secondary:
-          "bg-green-500 text-primary-foreground hover:bg-green-500/90 border-green-600 border-b-4 active:border-b-0",
-        secondaryOutline: "bg-white text-green-500 hover:bg-slate-100",
+          "border-b-4 border-green-600 bg-green-500/95 text-primary-foreground shadow-[0_14px_32px_rgba(34,197,94,0.28)] hover:bg-green-500 active:border-b-0",
+        secondaryOutline:
+          "glass-control text-green-600 hover:bg-green-500/10 dark:text-green-300",
 
         danger:
-          "bg-rose-500 text-primary-foreground hover:bg-rose-500/90 border-rose-600 border-b-4 active:border-b-0",
-        dangerOutline: "bg-white text-rose-500 hover:bg-slate-100",
+          "border-b-4 border-rose-600 bg-rose-500/95 text-primary-foreground shadow-[0_14px_32px_rgba(244,63,94,0.24)] hover:bg-rose-500 active:border-b-0",
+        dangerOutline:
+          "glass-control text-rose-600 hover:bg-rose-500/10 dark:text-rose-300",
 
         super:
-          "bg-indigo-500 text-primary-foreground hover:bg-indigo-500/90 border-indigo-600 border-b-4 active:border-b-0",
-        superOutline: "bg-white text-indigo-500 hover:bg-slate-100",
+          "border-b-4 border-indigo-600 bg-indigo-500/95 text-primary-foreground shadow-[0_14px_32px_rgba(99,102,241,0.26)] hover:bg-indigo-500 active:border-b-0",
+        superOutline:
+          "glass-control text-indigo-600 hover:bg-indigo-500/10 dark:text-indigo-300",
 
         ghost:
-          "bg-transparent text-slate-500 border-transparent border-0 hover:bg-slate-100",
+          "border border-transparent bg-transparent text-muted-foreground hover:bg-white/45 hover:text-foreground dark:hover:bg-white/10",
 
         sidebar:
-          "bg-transparent text-slate-500 border-2 border-transparent hover:bg-slate-100 transition-none",
+          "border-2 border-transparent bg-transparent text-muted-foreground hover:bg-white/45 hover:text-foreground transition-none dark:hover:bg-white/10",
         sidebarOutline:
-          "bg-sky-500/15 text-sky-500 border-sky-300 border-2 hover:bg-sky-500/20 transition-none",
+          "glass-control border-2 border-green-400/45 bg-green-500/10 text-green-600 hover:bg-green-500/15 transition-none dark:text-green-300",
       },
       size: {
         default: "h-11 px-4 py-2",

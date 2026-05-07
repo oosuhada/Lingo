@@ -18,7 +18,7 @@ export const Header = ({
   const { open } = useExitModal();
 
   return (
-    <header className="mx-auto flex w-full max-w-[1140px] items-center justify-between gap-x-7 px-10 pt-[20px] lg:pt-[50px]">
+    <header className="glass-nav mx-auto mt-4 flex w-[calc(100%-2rem)] max-w-[1140px] items-center justify-between gap-x-7 rounded-2xl px-6 py-4 lg:mt-8 lg:px-10">
       <X
         onClick={open}
         className="cursor-pointer text-slate-500 transition hover:opacity-75"

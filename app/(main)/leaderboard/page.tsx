@@ -49,7 +49,7 @@ const LeaderboardPage = async () => {
       </StickyWrapper>
 
       <FeedWrapper>
-        <div className="flex w-full flex-col items-center">
+        <div className="glass-panel-strong flex w-full flex-col items-center rounded-3xl p-6">
           <Image
             src="/memoji/replacements/leaderboard.png"
             alt="Leaderboard"
@@ -57,7 +57,7 @@ const LeaderboardPage = async () => {
             width={90}
           />
 
-          <h1 className="my-6 text-center text-2xl font-bold text-neutral-800">
+          <h1 className="my-6 text-center text-2xl font-bold text-foreground">
             {copy.title}
           </h1>
           <p className="mb-6 text-center text-lg text-muted-foreground">
@@ -68,7 +68,7 @@ const LeaderboardPage = async () => {
           {leaderboard.map((userProgress, i) => (
             <div
               key={userProgress.userId}
-              className="flex w-full items-center rounded-xl p-2 px-4 hover:bg-gray-200/50"
+              className="flex w-full items-center rounded-xl p-2 px-4 transition hover:bg-white/45 dark:hover:bg-white/10"
             >
               <p className="mr-4 font-bold text-lime-700">{i + 1}</p>
 
@@ -79,7 +79,7 @@ const LeaderboardPage = async () => {
                 />
               </Avatar>
 
-              <p className="flex-1 font-bold text-neutral-800">
+              <p className="flex-1 font-bold text-foreground">
                 {userProgress.userName}
               </p>
               <p className="text-muted-foreground">{userProgress.points} XP</p>

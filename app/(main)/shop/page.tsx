@@ -41,7 +41,7 @@ const ShopPage = async () => {
       </StickyWrapper>
 
       <FeedWrapper>
-        <div className="flex w-full flex-col items-center">
+        <div className="glass-panel-strong flex w-full flex-col items-center rounded-3xl p-6">
           <Image
             src="/memoji/replacements/shop.png"
             alt="Shop"
@@ -49,7 +49,7 @@ const ShopPage = async () => {
             width={90}
           />
 
-          <h1 className="my-6 text-center text-2xl font-bold text-neutral-800">
+          <h1 className="my-6 text-center text-2xl font-bold text-foreground">
             {copy.title}
           </h1>
           <p className="mb-6 text-center text-lg text-muted-foreground">

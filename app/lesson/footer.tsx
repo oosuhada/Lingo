@@ -27,9 +27,9 @@ export const Footer = ({
   return (
     <footer
       className={cn(
-        "h-[100px] border-t-2 lg:h-[140px]",
-        status === "correct" && "border-transparent bg-green-100",
-        status === "wrong" && "border-transparent bg-rose-100"
+        "glass-nav h-[100px] border-t lg:h-[140px]",
+        status === "correct" && "border-green-300/40 bg-green-500/10",
+        status === "wrong" && "border-rose-300/40 bg-rose-500/10"
       )}
     >
       <div className="mx-auto flex h-full max-w-[1140px] items-center justify-between px-6 lg:px-10">

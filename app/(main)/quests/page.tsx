@@ -40,7 +40,7 @@ const QuestsPage = async () => {
       </StickyWrapper>
 
       <FeedWrapper>
-        <div className="flex w-full flex-col items-center">
+        <div className="glass-panel-strong flex w-full flex-col items-center rounded-3xl p-6">
           <Image
             src="/memoji/replacements/quests.png"
             alt="Quests"
@@ -48,7 +48,7 @@ const QuestsPage = async () => {
             width={90}
           />
 
-          <h1 className="my-6 text-center text-2xl font-bold text-neutral-800">
+          <h1 className="my-6 text-center text-2xl font-bold text-foreground">
             {copy.title}
           </h1>
           <p className="mb-6 text-center text-lg text-muted-foreground">
@@ -61,7 +61,7 @@ const QuestsPage = async () => {
 
               return (
                 <div
-                  className="flex w-full items-center gap-x-4 border-t-2 p-4"
+                  className="flex w-full items-center gap-x-4 border-t p-4"
                   key={quest.title}
                 >
                   <Image
@@ -72,7 +72,7 @@ const QuestsPage = async () => {
                   />
 
                   <div className="flex w-full flex-col gap-y-2">
-                    <p className="text-xl font-bold text-neutral-700">
+                    <p className="text-xl font-bold text-foreground">
                       {copy.earnXp(quest.value)}
                     </p>
 

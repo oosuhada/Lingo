@@ -47,8 +47,8 @@ export const List = ({
   return (
     <section className="space-y-4">
       <div>
-        <h2 className="text-xl font-extrabold text-neutral-800">{title}</h2>
-        <p className="mt-1 text-sm font-medium text-neutral-500">
+        <h2 className="text-xl font-extrabold text-foreground">{title}</h2>
+        <p className="mt-1 text-sm font-medium text-muted-foreground">
           {description}
         </p>
       </div>

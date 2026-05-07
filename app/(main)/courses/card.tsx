@@ -40,9 +40,9 @@ export const Card = ({
     <div
       onClick={() => onClick(id)}
       className={cn(
-        "group flex h-full min-h-[252px] min-w-[200px] cursor-pointer flex-col justify-between rounded-xl border-2 border-b-[5px] bg-white p-4 transition hover:-translate-y-0.5 hover:bg-black/[0.02] active:translate-y-0 active:border-b-2",
+        "glass-card group flex h-full min-h-[252px] min-w-[200px] cursor-pointer flex-col justify-between rounded-2xl p-4 transition hover:-translate-y-0.5 hover:bg-white/70 active:translate-y-0 dark:hover:bg-white/10",
         theme.glowClass,
-        isActive && "border-green-400 bg-green-50/60",
+        isActive && "border-green-400 bg-green-500/10",
         disabled && "pointer-events-none opacity-50"
       )}
     >
@@ -86,15 +86,15 @@ export const Card = ({
       </div>
 
       <div className="space-y-2 text-center">
-        <p className="text-xl font-extrabold text-neutral-700">{title}</p>
-        <p className="mx-auto max-w-[15rem] text-xs font-semibold leading-5 text-neutral-500">
+        <p className="text-xl font-extrabold text-foreground">{title}</p>
+        <p className="mx-auto max-w-[15rem] text-xs font-semibold leading-5 text-muted-foreground">
           {kindDescription}
         </p>
       </div>
 
       <div
         className={cn(
-          "rounded-xl border-2 border-b-4 bg-white px-3 py-2 text-center text-xs font-extrabold uppercase transition group-hover:bg-neutral-50",
+          "glass-control rounded-xl px-3 py-2 text-center text-xs font-extrabold uppercase transition",
           theme.textClass
         )}
       >

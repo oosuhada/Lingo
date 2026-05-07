@@ -29,12 +29,12 @@ export const MarketingLanguagePanel = () => {
   const copy = uiCopy[locale];
 
   return (
-    <div className="flex flex-col items-center gap-y-8">
+    <div className="glass-panel-strong flex w-full max-w-[500px] flex-col items-center gap-y-8 rounded-3xl p-6 sm:p-8">
       <div className="space-y-3 text-center">
-        <h1 className="max-w-[480px] text-xl font-extrabold text-neutral-700 lg:text-3xl">
+        <h1 className="max-w-[480px] text-xl font-extrabold text-foreground lg:text-3xl">
           {copy.marketing.headline}
         </h1>
-        <p className="mx-auto max-w-[420px] text-sm font-semibold leading-6 text-neutral-500">
+        <p className="mx-auto max-w-[420px] text-sm font-semibold leading-6 text-muted-foreground">
           {copy.marketing.subhead}
         </p>
       </div>
@@ -47,13 +47,13 @@ export const MarketingLanguagePanel = () => {
             <button
               key={option.locale}
               className={cn(
-                "flex min-h-[88px] flex-col justify-between rounded-xl border-2 border-b-4 bg-white p-3 text-left transition hover:bg-neutral-50 active:border-b-2",
-                active && "border-green-500 bg-green-50"
+                "glass-card flex min-h-[88px] flex-col justify-between rounded-xl p-3 text-left transition hover:-translate-y-0.5 active:translate-y-0",
+                active && "border-green-400 bg-green-500/10"
               )}
               onClick={() => setLocale(option.locale)}
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="text-base font-extrabold text-neutral-800">
+                <span className="text-base font-extrabold text-foreground">
                   {option.label}
                 </span>
                 {active && (
@@ -62,7 +62,7 @@ export const MarketingLanguagePanel = () => {
                   </span>
                 )}
               </div>
-              <span className="text-xs font-bold leading-5 text-neutral-500">
+              <span className="text-xs font-bold leading-5 text-muted-foreground">
                 {option.sublabel}
               </span>
             </button>

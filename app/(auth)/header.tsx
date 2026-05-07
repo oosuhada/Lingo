@@ -13,6 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Banner from "@/components/banner";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { links } from "@/config";
 import { useUiLocale } from "@/hooks/use-ui-locale";
@@ -30,7 +31,7 @@ export const Header = () => {
 
       <header
         className={cn(
-          "h-20 w-full border-b-2 border-slate-200 px-4",
+          "glass-nav h-20 w-full border-b px-4",
           !hideBanner ? "mt-20 sm:mt-16 lg:mt-10" : "mt-0"
         )}
       >
@@ -48,7 +49,9 @@ export const Header = () => {
             </h1>
           </Link>
 
-          <div className="flex gap-x-3">
+          <div className="flex items-center gap-x-3">
+            <ThemeToggle />
+
             <ClerkLoading>
               <Loader className="h-5 w-5 animate-spin text-muted-foreground" />
             </ClerkLoading>
@@ -73,6 +76,7 @@ export const Header = () => {
                   alt="Source Code"
                   height={20}
                   width={20}
+                  className="dark:invert"
                 />
               </Link>
             </ClerkLoaded>

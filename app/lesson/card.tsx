@@ -51,20 +51,20 @@ export const Card = ({
     <div
       onClick={handleClick}
       className={cn(
-        "h-full cursor-pointer rounded-xl border-2 border-b-4 bg-white p-4 transition hover:-translate-y-0.5 hover:bg-black/5 active:translate-y-0 active:border-b-2 lg:p-6",
+        "glass-card h-full cursor-pointer rounded-2xl p-4 transition hover:-translate-y-0.5 hover:bg-white/70 active:translate-y-0 lg:p-6 dark:hover:bg-white/10",
         courseKind === "programming" &&
-          "border-slate-200 bg-slate-50/60 font-mono shadow-sm",
-        selected && "border-sky-300 bg-sky-100 hover:bg-sky-100",
+          "border-slate-300/60 bg-slate-50/40 font-mono shadow-sm dark:border-slate-600/40 dark:bg-slate-950/30",
+        selected && "border-sky-300 bg-sky-100/60 hover:bg-sky-100/70",
         selected &&
           courseKind === "programming" &&
-          "border-emerald-400 bg-emerald-50 hover:bg-emerald-50",
+          "border-emerald-400 bg-emerald-50/60 hover:bg-emerald-50/70 dark:bg-emerald-500/10",
         selected &&
           status === "correct" &&
-          "border-green-300 bg-green-100 hover:bg-green-100",
+          "border-green-300 bg-green-100/70 hover:bg-green-100/80 dark:bg-green-500/10",
         selected &&
           status === "wrong" &&
-          "border-rose-300 bg-rose-100 hover:bg-rose-100",
-        disabled && "pointer-events-none hover:bg-white",
+          "border-rose-300 bg-rose-100/70 hover:bg-rose-100/80 dark:bg-rose-500/10",
+        disabled && "pointer-events-none hover:bg-transparent",
         type === "ASSIST" && "w-full lg:p-3"
       )}
     >
@@ -84,7 +84,7 @@ export const Card = ({
         {type === "ASSIST" && <div aria-hidden />}
         <p
           className={cn(
-            "break-words text-left text-sm text-neutral-600 lg:text-base",
+            "break-words text-left text-sm text-foreground lg:text-base",
             !imageSrc && "whitespace-pre-wrap font-mono",
             selected && "text-sky-500",
             selected && courseKind === "programming" && theme.textClass,

@@ -255,7 +255,7 @@ export const Quiz = ({
           width={width}
           height={height}
         />
-        <div className="mx-auto flex h-full max-w-lg flex-col items-center justify-center gap-y-4 text-center lg:gap-y-8">
+        <div className="glass-panel-strong mx-auto flex max-w-lg flex-col items-center justify-center gap-y-4 rounded-3xl p-8 text-center lg:gap-y-8">
           <Image
             src="/memoji/replacements/finish.png"
             alt="Finish"
@@ -272,7 +272,7 @@ export const Quiz = ({
             width={100}
           />
 
-          <h1 className="text-lg font-bold text-neutral-700 lg:text-3xl">
+          <h1 className="text-lg font-bold text-foreground lg:text-3xl">
             {copy.completedMessage}
           </h1>
 
@@ -290,7 +290,7 @@ export const Quiz = ({
           </div>
 
           <button
-            className="flex items-center gap-2 rounded-2xl border-2 border-b-4 border-neutral-200 bg-white px-5 py-3 text-sm font-extrabold uppercase text-neutral-500 transition hover:bg-neutral-50 active:border-b-2"
+            className="glass-control flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-extrabold uppercase text-muted-foreground transition hover:text-foreground active:translate-y-0.5"
             onClick={() => setReviewOpen(true)}
           >
             <BookOpenCheck className="h-5 w-5" />
@@ -335,13 +335,13 @@ export const Quiz = ({
             width={width}
             height={height}
           />
-          <div className="pointer-events-none fixed left-1/2 top-6 z-50 -translate-x-1/2 rounded-full border border-green-200 bg-white px-4 py-2 text-sm font-bold text-green-600 shadow-lg">
+          <div className="glass-panel-strong pointer-events-none fixed left-1/2 top-6 z-50 -translate-x-1/2 rounded-full px-4 py-2 text-sm font-bold text-green-600">
             {burst.message}
           </div>
         </>
       )}
       {streak >= 2 && (
-        <div className="pointer-events-none fixed right-5 top-5 z-40 rounded-full border border-orange-200 bg-white px-3 py-2 text-sm font-bold text-orange-600 shadow-md">
+        <div className="glass-panel-strong pointer-events-none fixed right-5 top-5 z-40 rounded-full px-3 py-2 text-sm font-bold text-orange-600">
           {streak} {copy.streakLabel}
         </div>
       )}
@@ -365,13 +365,13 @@ export const Quiz = ({
                 {uiCopy[uiLocale].courseKinds[courseTheme.kind]}
               </span>
               {courseKind === "programming" && (
-                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-extrabold uppercase text-slate-600">
+                <span className="glass-control rounded-full px-3 py-1 text-xs font-extrabold uppercase text-slate-600 dark:text-slate-200">
                   {copy.codeTokenDrill}
                 </span>
               )}
             </div>
 
-            <h1 className="text-center text-lg font-bold text-neutral-700 lg:text-start lg:text-3xl">
+            <h1 className="text-center text-lg font-bold text-foreground lg:text-start lg:text-3xl">
               {localizeQuestion(title, uiLocale)}
             </h1>
 
@@ -435,13 +435,13 @@ const ReviewLessonModal = ({
       aria-hidden={!open}
     >
       <div
-        className="absolute inset-0 bg-black/60"
+        className="absolute inset-0 bg-slate-950/70 backdrop-blur-xl"
         onClick={onClose}
         role="button"
         aria-label={copy.closeReview}
       />
 
-      <section className="relative max-h-[86vh] w-full max-w-4xl overflow-hidden rounded-2xl border-2 border-neutral-200 bg-white shadow-2xl">
+      <section className="glass-panel-strong relative max-h-[86vh] w-full max-w-4xl overflow-hidden rounded-2xl shadow-2xl">
         <header
           className={cn(
             "flex items-start justify-between gap-4 border-b-2 p-5 text-white",
@@ -468,7 +468,7 @@ const ReviewLessonModal = ({
 
         <div className="max-h-[calc(86vh-98px)] overflow-y-auto p-5">
           {results.length === 0 ? (
-            <div className="rounded-xl border-2 border-dashed border-neutral-200 p-8 text-center text-sm font-semibold text-neutral-500">
+            <div className="glass-panel-soft rounded-xl border-dashed p-8 text-center text-sm font-semibold text-muted-foreground">
               {copy.reviewEmpty}
             </div>
           ) : (
@@ -477,14 +477,14 @@ const ReviewLessonModal = ({
                 <article
                   key={`${result.id}-${index}`}
                   className={cn(
-                    "space-y-3 rounded-xl border-2 p-4",
+                    "glass-card space-y-3 rounded-xl p-4",
                     result.correct
-                      ? "border-green-200 bg-green-50"
-                      : "border-rose-200 bg-rose-50"
+                      ? "border-green-300/60 bg-green-500/10"
+                      : "border-rose-300/60 bg-rose-500/10"
                   )}
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-sm font-extrabold leading-6 text-neutral-800">
+                    <h3 className="text-sm font-extrabold leading-6 text-foreground">
                       {result.question}
                     </h3>
                     {result.correct ? (
@@ -495,31 +495,31 @@ const ReviewLessonModal = ({
                   </div>
 
                   {result.prompt && (
-                    <p className="whitespace-pre-wrap rounded-lg bg-white/70 p-3 text-xs font-semibold leading-5 text-neutral-600">
+                    <p className="glass-panel-soft whitespace-pre-wrap rounded-lg p-3 text-xs font-semibold leading-5 text-foreground">
                       {result.prompt}
                     </p>
                   )}
 
                   {result.code && (
-                    <pre className="overflow-x-auto rounded-lg bg-neutral-950 p-3 text-xs leading-5 text-white">
+                    <pre className="glass-code overflow-x-auto rounded-lg p-3 text-xs leading-5 text-white">
                       <code>{result.code}</code>
                     </pre>
                   )}
 
                   <div className="grid gap-2 text-xs font-bold">
                     <div>
-                      <div className="uppercase text-neutral-400">
+                      <div className="uppercase text-muted-foreground">
                         {copy.yourResponse}
                       </div>
-                      <div className="mt-1 rounded-lg bg-white p-2 text-neutral-700">
+                      <div className="glass-panel-soft mt-1 rounded-lg p-2 text-foreground">
                         {result.yourResponse || copy.noResponse}
                       </div>
                     </div>
                     <div>
-                      <div className="uppercase text-neutral-400">
+                      <div className="uppercase text-muted-foreground">
                         {copy.correctResponse}
                       </div>
-                      <div className="mt-1 rounded-lg bg-white p-2 text-neutral-700">
+                      <div className="glass-panel-soft mt-1 rounded-lg p-2 text-foreground">
                         {result.correctResponse}
                       </div>
                     </div>

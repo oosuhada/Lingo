@@ -34,7 +34,7 @@ export const UnitBanner = ({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-xl border-b-[6px] p-5 text-white",
+        "glass-panel-strong relative overflow-hidden rounded-3xl border-b-[6px] p-5 text-white",
         theme.bannerClass,
         theme.bannerBorderClass,
         theme.glowClass
@@ -65,7 +65,7 @@ export const UnitBanner = ({
         <Button
           size="lg"
           variant="secondary"
-          className="mt-5 hidden border-2 border-b-4 border-white/30 bg-white text-neutral-700 active:border-b-2 xl:flex"
+          className="mt-5 hidden border-2 border-b-4 border-white/30 bg-white/20 text-white hover:bg-white/25 active:border-b-2 xl:flex"
         >
           <NotebookText className="mr-2" />
           {copy.unitCta}

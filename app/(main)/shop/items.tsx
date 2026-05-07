@@ -48,7 +48,7 @@ export const Items = ({
 
   return (
     <ul className="w-full">
-      <div className="flex w-full items-center gap-x-4 border-t-2 p-4">
+      <div className="flex w-full items-center gap-x-4 border-t p-4">
         <Image
           src="/memoji/replacements/heart.png"
           alt="Heart"
@@ -57,7 +57,7 @@ export const Items = ({
         />
 
         <div className="flex-1">
-          <p className="text-base font-bold text-neutral-700 lg:text-xl">
+          <p className="text-base font-bold text-foreground lg:text-xl">
             {copy.refillHearts}
           </p>
         </div>
@@ -88,7 +88,7 @@ export const Items = ({
         </Button>
       </div>
 
-      <div className="flex w-full items-center gap-x-4 border-t-2 p-4 pt-8">
+      <div className="flex w-full items-center gap-x-4 border-t p-4 pt-8">
         <Image
           src="/memoji/replacements/unlimited.png"
           alt="Unlimited"
@@ -97,7 +97,7 @@ export const Items = ({
         />
 
         <div className="flex-1">
-          <p className="text-base font-bold text-neutral-700 lg:text-xl">
+          <p className="text-base font-bold text-foreground lg:text-xl">
             {copy.unlimitedHearts}
           </p>
         </div>

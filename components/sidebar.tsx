@@ -3,6 +3,7 @@ import { Loader } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { uiCopy, type UiLocale } from "@/lib/ui-copy";
 
@@ -19,7 +20,7 @@ export const Sidebar = ({ className, uiLocale = "en" }: SidebarProps) => {
   return (
     <div
       className={cn(
-        "left-0 top-0 flex h-full flex-col border-r-2 px-4 lg:fixed lg:w-[256px]",
+        "glass-nav left-0 top-0 flex h-full flex-col border-r px-4 lg:fixed lg:w-[256px]",
         className
       )}
     >
@@ -61,7 +62,8 @@ export const Sidebar = ({ className, uiLocale = "en" }: SidebarProps) => {
         />
       </div>
 
-      <div className="p-4">
+      <div className="flex items-center justify-between gap-3 p-4">
+        <ThemeToggle />
         <ClerkLoading>
           <Loader className="h-5 w-5 animate-spin text-muted-foreground" />
         </ClerkLoading>

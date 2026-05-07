@@ -20,16 +20,16 @@ export const ResultCard = ({ value, variant, uiLocale }: ResultCardProps) => {
   return (
     <div
       className={cn(
-        "w-full rounded-2xl border-2",
-        variant === "points" && "border-orange-400 bg-orange-400",
-        variant === "hearts" && "border-rose-500 bg-rose-500"
+        "glass-card w-full rounded-2xl",
+        variant === "points" && "border-orange-400/70",
+        variant === "hearts" && "border-rose-500/70"
       )}
     >
       <div
         className={cn(
           "rounded-t-xl p-1.5 text-center text-xs font-bold uppercase text-white",
-          variant === "points" && "bg-orange-400",
-          variant === "hearts" && "bg-rose-500"
+          variant === "points" && "bg-orange-400/90",
+          variant === "hearts" && "bg-rose-500/90"
         )}
       >
         {variant === "hearts" ? copy.heartsLeft : copy.totalXp}
@@ -37,7 +37,7 @@ export const ResultCard = ({ value, variant, uiLocale }: ResultCardProps) => {
 
       <div
         className={cn(
-          "flex items-center justify-center rounded-2xl bg-white p-6 text-lg font-bold",
+          "flex items-center justify-center rounded-2xl bg-white/65 p-6 text-lg font-bold dark:bg-white/10",
           variant === "points" && "text-orange-400",
           variant === "hearts" && "text-rose-500"
         )}

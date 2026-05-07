@@ -15,7 +15,7 @@ export const Quests = ({ points, uiLocale }: QuestsProps) => {
   const copy = uiCopy[uiLocale].questsPanel;
 
   return (
-    <div className="space-y-4 rounded-xl border-2 p-4">
+    <div className="glass-card space-y-4 rounded-2xl p-4">
       <div className="flex w-full items-center justify-between space-y-2">
         <h3 className="text-lg font-bold">{copy.title}</h3>
 
@@ -43,7 +43,7 @@ export const Quests = ({ points, uiLocale }: QuestsProps) => {
               />
 
               <div className="flex w-full flex-col gap-y-2">
-                <p className="text-sm font-bold text-neutral-700">
+                <p className="text-sm font-bold text-foreground">
                   {copy.earnXp(quest.value)}
                 </p>
 

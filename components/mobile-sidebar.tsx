@@ -12,8 +12,8 @@ type MobileSidebarProps = {
 export const MobileSidebar = ({ uiLocale = "en" }: MobileSidebarProps) => {
   return (
     <Sheet>
-      <SheetTrigger>
-        <Menu className="text-white" />
+      <SheetTrigger className="glass-control rounded-xl p-2 text-foreground">
+        <Menu className="h-5 w-5" />
       </SheetTrigger>
 
       <SheetContent className="z-[100] p-0" side="left">

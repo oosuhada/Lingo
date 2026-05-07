@@ -146,12 +146,12 @@ export const LessonButton = ({
         {!current && (
           <div
             className={cn(
-              "pointer-events-none absolute left-1/2 top-[-22px] z-10 w-max -translate-x-1/2 scale-95 rounded-lg border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-extrabold uppercase opacity-0 shadow-sm transition group-hover:scale-100 group-hover:opacity-100",
+              "glass-panel-strong pointer-events-none absolute left-1/2 top-[-22px] z-10 w-max -translate-x-1/2 scale-95 rounded-lg px-3 py-1.5 text-xs font-extrabold uppercase opacity-0 shadow-sm transition group-hover:scale-100 group-hover:opacity-100",
               locked ? "text-neutral-400" : theme.textClass
             )}
           >
             {label}
-            <div className="absolute bottom-[-7px] left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-b-2 border-r-2 border-gray-200 bg-white" />
+            <div className="glass-panel-strong absolute bottom-[-7px] left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l-0 border-t-0" />
           </div>
         )}
 
@@ -159,7 +159,7 @@ export const LessonButton = ({
           <div className="relative h-[102px] w-[102px]">
             <div
               className={cn(
-                "absolute -top-7 left-1/2 z-10 w-max -translate-x-1/2 animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 text-sm font-extrabold uppercase tracking-wide",
+                "glass-panel-strong absolute -top-7 left-1/2 z-10 w-max -translate-x-1/2 animate-bounce rounded-xl px-3 py-2.5 text-sm font-extrabold uppercase tracking-wide",
                 theme.textClass
               )}
             >

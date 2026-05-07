@@ -15,7 +15,7 @@ const marketingCourses = [
 
 export const Footer = () => {
   return (
-    <div className="hidden h-20 w-full border-t-2 border-slate-200 p-2 lg:block">
+    <div className="glass-nav hidden h-20 w-full border-t p-2 lg:block">
       <div className="mx-auto flex h-full max-w-screen-lg items-center gap-2 overflow-x-auto">
         {marketingCourses.map((course) => (
           <Button
@@ -30,6 +30,7 @@ export const Footer = () => {
               height={32}
               width={40}
               className="mr-3 rounded-md"
+              style={{ height: 32, width: "auto" }}
             />
             {course.title}
           </Button>
