@@ -1,7 +1,9 @@
 "use client";
 
 import type { CSSProperties, PropsWithChildren } from "react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+
+import { LandingBlobField } from "@/components/landing-blob-field";
 
 type LandingStyle = CSSProperties & {
   "--pointer-x": string;
@@ -12,6 +14,12 @@ type LandingStyle = CSSProperties & {
 
 export const LandingGlassField = ({ children }: PropsWithChildren) => {
   const frame = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (frame.current) window.cancelAnimationFrame(frame.current);
+    };
+  }, []);
 
   const updatePointer = (x: number, y: number, currentTarget: HTMLElement) => {
     if (frame.current) window.cancelAnimationFrame(frame.current);
@@ -32,7 +40,7 @@ export const LandingGlassField = ({ children }: PropsWithChildren) => {
 
   return (
     <div
-      className="landing-light-field mx-auto flex w-full max-w-[988px] flex-1 flex-col items-center justify-center gap-4 px-4 pb-6 pt-16 sm:gap-8 sm:py-8 lg:flex-row lg:py-4"
+      className="landing-light-field flex w-full flex-1 px-4 pb-6 pt-16 sm:py-8 lg:py-4"
       style={
         {
           "--pointer-x": "50%",
@@ -45,7 +53,11 @@ export const LandingGlassField = ({ children }: PropsWithChildren) => {
         updatePointer(event.clientX, event.clientY, event.currentTarget);
       }}
     >
-      {children}
+      <LandingBlobField />
+
+      <div className="mx-auto flex w-full max-w-[988px] flex-col items-center justify-center gap-4 sm:gap-8 lg:flex-row">
+        {children}
+      </div>
     </div>
   );
 };

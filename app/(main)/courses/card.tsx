@@ -25,6 +25,13 @@ export const Card = ({
   uiLocale,
 }: CardProps) => {
   const theme = getCourseTheme({ title });
+  const normalizedTitle = title.toLowerCase();
+  const displayImageSrc =
+    normalizedTitle === "python"
+      ? "/memoji/replacements/python-logo.png"
+      : normalizedTitle === "java"
+        ? "/memoji/replacements/java-svgrepo-com.svg"
+        : imageSrc;
   const copy = getCourseMicrocopy({ title }, uiLocale);
   const courseCopy = uiCopy[uiLocale].courses;
   const kindLabel = uiCopy[uiLocale].courseKinds[theme.kind];
@@ -72,7 +79,7 @@ export const Card = ({
         )}
       >
         <Image
-          src={imageSrc}
+          src={displayImageSrc}
           alt={title}
           height={76}
           width={104}
