@@ -47,3 +47,39 @@ Each character set includes:
 {prefix}thinking.png
 {prefix}winking.png
 ```
+
+## Replacement candidates
+
+`replacements/` contains one PNG candidate for each non-course SVG in
+`public/`, excluding flags, Hanja, Python, and Java. The filenames intentionally
+match the original SVG basename so a later UI swap can change only extensions or
+asset paths.
+
+Mapped files:
+
+```text
+boy.png
+finish.png
+girl.png
+github.png
+heart.png
+hero.png
+leaderboard.png
+learn.png
+man.png
+mascot.png
+mascot_bad.png
+mascot_sad.png
+points.png
+quests.png
+robot.png
+shop.png
+unlimited.png
+woman.png
+zombie.png
+```
+
+Human and mascot replacements come from the local memoji character sets above.
+Utility replacements come from Apple iOS 14.2 emoji images on Emojipedia, except
+`robot.png`, which preserves the user-provided sample at `public/memoji/robot.png`.
+See `replacements/manifest.json` for the exact source mapping.

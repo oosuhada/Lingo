@@ -1,0 +1,97 @@
+[
+  {
+    "file": "boy.png",
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:justin:light_boy/boy_happy.png",
+    "imageUrl": "imejis local memoji set"
+  },
+  {
+    "file": "finish.png",
+    "source": "https://emojipedia.org/apple/ios-14.2/party-popper",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/party-popper_1f389.png"
+  },
+  {
+    "file": "girl.png",
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:female:mary:light_girl/girl_happy.png",
+    "imageUrl": "imejis local memoji set"
+  },
+  {
+    "file": "github.png",
+    "source": "https://emojipedia.org/apple/ios-14.2/laptop",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/laptop_1f4bb.png"
+  },
+  {
+    "file": "heart.png",
+    "source": "https://emojipedia.org/apple/ios-14.2/red-heart",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/red-heart_2764-fe0f.png"
+  },
+  {
+    "file": "hero.png",
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:mattew:light_man/man_party.png",
+    "imageUrl": "imejis local memoji set"
+  },
+  {
+    "file": "leaderboard.png",
+    "source": "https://emojipedia.org/apple/ios-14.2/trophy",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/trophy_1f3c6.png"
+  },
+  {
+    "file": "learn.png",
+    "source": "https://emojipedia.org/apple/ios-14.2/open-book",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/open-book_1f4d6.png"
+  },
+  {
+    "file": "man.png",
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:mattew:light_man/man_happy.png",
+    "imageUrl": "imejis local memoji set"
+  },
+  {
+    "file": "mascot_bad.png",
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:mattew:light_man/man_angry.png",
+    "imageUrl": "imejis local memoji set"
+  },
+  {
+    "file": "mascot_sad.png",
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:mattew:light_man/man_sad.png",
+    "imageUrl": "imejis local memoji set"
+  },
+  {
+    "file": "mascot.png",
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:mattew:light_man/man_grinning.png",
+    "imageUrl": "imejis local memoji set"
+  },
+  {
+    "file": "points.png",
+    "source": "https://emojipedia.org/apple/ios-14.2/coin",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/coin_1fa99.png"
+  },
+  {
+    "file": "quests.png",
+    "source": "https://emojipedia.org/apple/ios-14.2/direct-hit",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/direct-hit_1f3af.png"
+  },
+  {
+    "file": "robot.png",
+    "source": "public/memoji/robot.png",
+    "imageUrl": "user-provided sample"
+  },
+  {
+    "file": "shop.png",
+    "source": "https://emojipedia.org/apple/ios-14.2/shopping-bags",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/shopping-bags_1f6cd-fe0f.png"
+  },
+  {
+    "file": "unlimited.png",
+    "source": "https://emojipedia.org/apple/ios-14.2/infinity",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/infinity_267e-fe0f.png"
+  },
+  {
+    "file": "woman.png",
+    "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:female:angela:dark_woman/woman_happy.png",
+    "imageUrl": "imejis local memoji set"
+  },
+  {
+    "file": "zombie.png",
+    "source": "https://emojipedia.org/apple/ios-14.2/woman-zombie",
+    "imageUrl": "https://em-content.zobj.net/source/apple/271/woman-zombie_1f9df-200d-2640-fe0f.png"
+  }
+]
