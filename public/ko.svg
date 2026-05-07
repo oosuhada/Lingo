@@ -1,35 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" role="img" aria-label="Korean course icon">
-  <rect width="64" height="48" rx="8" fill="#fff"/>
-  <g transform="translate(32 24) rotate(-33.69)">
-    <circle r="10.8" fill="#cd2e3a"/>
-    <path d="M-10.8 0a10.8 10.8 0 0 0 21.6 0 5.4 5.4 0 0 0-10.8 0 5.4 5.4 0 0 1-10.8 0Z" fill="#0047a0"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="-72 -48 144 96" role="img" aria-label="Flag of South Korea">
+  <path fill="#fff" d="M-72-48v96H72v-96z"/>
+  <g stroke="#000" stroke-width="4">
+    <path transform="rotate(33.69006752598)" d="M-50-12v24m6 0v-24m6 0v24m76 0V1m0-2v-11m6 0v11m0 2v11m6 0V1m0-2v-11"/>
+    <path transform="rotate(-33.69006752598)" d="M-50-12v24m6 0V1m0-2v-11m6 0v24m76 0V1m0-2v-11m6 0v24m6 0V1m0-2v-11"/>
   </g>
-  <g fill="#111827">
-    <g transform="translate(15 14) rotate(-33.69)">
-      <rect x="-7" y="-5" width="14" height="2"/>
-      <rect x="-7" y="-1" width="14" height="2"/>
-      <rect x="-7" y="3" width="14" height="2"/>
-    </g>
-    <g transform="translate(49 14) rotate(33.69)">
-      <rect x="-7" y="-5" width="5.3" height="2"/>
-      <rect x="1.7" y="-5" width="5.3" height="2"/>
-      <rect x="-7" y="-1" width="14" height="2"/>
-      <rect x="-7" y="3" width="5.3" height="2"/>
-      <rect x="1.7" y="3" width="5.3" height="2"/>
-    </g>
-    <g transform="translate(15 34) rotate(33.69)">
-      <rect x="-7" y="-5" width="14" height="2"/>
-      <rect x="-7" y="-1" width="5.3" height="2"/>
-      <rect x="1.7" y="-1" width="5.3" height="2"/>
-      <rect x="-7" y="3" width="14" height="2"/>
-    </g>
-    <g transform="translate(49 34) rotate(-33.69)">
-      <rect x="-7" y="-5" width="5.3" height="2"/>
-      <rect x="1.7" y="-5" width="5.3" height="2"/>
-      <rect x="-7" y="-1" width="5.3" height="2"/>
-      <rect x="1.7" y="-1" width="5.3" height="2"/>
-      <rect x="-7" y="3" width="5.3" height="2"/>
-      <rect x="1.7" y="3" width="5.3" height="2"/>
-    </g>
+  <g transform="rotate(33.69006752598)">
+    <path fill="#cd2e3a" d="M12 0a18 18 0 1 1-36 0 24 24 0 1 1 48 0"/>
+    <path fill="#0047a0" d="M0 0a12 12 0 1 1 24 0 24 24 0 1 1-48 0 12 12 0 1 0 24 0"/>
   </g>
 </svg>

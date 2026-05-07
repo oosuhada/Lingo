@@ -72,8 +72,10 @@ export const Card = ({
           height={76}
           width={104}
           className={cn(
-            "max-h-[76px] w-auto object-contain drop-shadow-md",
-            theme.kind === "hanja" && "scale-110 border-0 drop-shadow-none"
+            "h-20 w-28 object-contain drop-shadow-md",
+            theme.kind === "language" && "rounded-xl",
+            theme.kind === "hanja" && "scale-110 border-0 drop-shadow-none",
+            theme.kind === "programming" && "h-20 w-28"
           )}
         />
       </div>
