@@ -8,9 +8,9 @@ const marketingCourses = [
   { title: "Korean", imageSrc: "/ko.svg" },
   { title: "Japanese", imageSrc: "/jp.svg" },
   { title: "Italian", imageSrc: "/it.svg" },
-  { title: "Hanja", imageSrc: "/hanja.svg" },
-  { title: "Python", imageSrc: "/python.svg" },
-  { title: "Java", imageSrc: "/java.svg" },
+  { title: "Hanja", imageSrc: "/memoji/replacements/hanja.svg" },
+  { title: "Python", imageSrc: "/memoji/replacements/python-logo.png" },
+  { title: "Java", imageSrc: "/memoji/replacements/java-svgrepo-com.svg" },
 ];
 
 export const Footer = () => {

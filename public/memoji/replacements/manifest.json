@@ -5,9 +5,14 @@
     "imageUrl": "https://em-content.zobj.net/source/apple/271/party-popper_1f389.png"
   },
   {
-    "file": "github.png",
-    "source": "https://github.com/logos",
-    "imageUrl": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+    "file": "github.svg",
+    "source": "public/github.svg",
+    "imageUrl": "local GitHub mark SVG"
+  },
+  {
+    "file": "hanja.svg",
+    "source": "public/hanja.svg",
+    "imageUrl": "local Hanja course SVG"
   },
   {
     "file": "heart.png",
@@ -18,6 +23,11 @@
     "file": "hero.png",
     "source": "public/memoji/www.imejis.io:images:tools:memoji-builder:male:mattew:light_man/man_party.png",
     "imageUrl": "imejis local memoji set"
+  },
+  {
+    "file": "java-svgrepo-com.svg",
+    "source": "public/memoji/replacements/java-svgrepo-com.svg",
+    "imageUrl": "local Java replacement SVG"
   },
   {
     "file": "leaderboard.png",
@@ -48,6 +58,11 @@
     "file": "points.png",
     "source": "https://emojipedia.org/apple/ios-14.2/high-voltage",
     "imageUrl": "https://em-content.zobj.net/source/apple/271/high-voltage_26a1.png"
+  },
+  {
+    "file": "python-logo.png",
+    "source": "public/memoji/replacements/python-logo.png",
+    "imageUrl": "local Python replacement PNG"
   },
   {
     "file": "quests.png",

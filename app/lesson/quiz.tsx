@@ -14,11 +14,7 @@ import { reduceHearts } from "@/actions/user-progress";
 import { MAX_HEARTS } from "@/constants";
 import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { getCourseKind, getCourseTheme } from "@/lib/course-style";
-import {
-  localizeQuestion,
-  uiCopy,
-  type UiLocale,
-} from "@/lib/ui-copy";
+import { localizeQuestion, uiCopy, type UiLocale } from "@/lib/ui-copy";
 import { cn } from "@/lib/utils";
 import { useHeartsModal } from "@/store/use-hearts-modal";
 import { usePracticeModal } from "@/store/use-practice-modal";
@@ -205,9 +201,7 @@ export const Quiz = ({
             setStreak((current) => {
               const next = current + 1;
               const milestone =
-                copy.streakMessages[
-                  next as keyof typeof copy.streakMessages
-                ];
+                copy.streakMessages[next as keyof typeof copy.streakMessages];
 
               setBurst({
                 key: Date.now(),
@@ -263,7 +257,7 @@ export const Quiz = ({
         />
         <div className="mx-auto flex h-full max-w-lg flex-col items-center justify-center gap-y-4 text-center lg:gap-y-8">
           <Image
-            src="/finish.svg"
+            src="/memoji/replacements/finish.png"
             alt="Finish"
             className="hidden lg:block"
             height={100}
@@ -271,7 +265,7 @@ export const Quiz = ({
           />
 
           <Image
-            src="/finish.svg"
+            src="/memoji/replacements/finish.png"
             alt="Finish"
             className="block lg:hidden"
             height={100}

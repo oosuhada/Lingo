@@ -11,7 +11,10 @@ type ResultCardProps = {
 };
 
 export const ResultCard = ({ value, variant, uiLocale }: ResultCardProps) => {
-  const imageSrc = variant === "points" ? "/points.svg" : "/heart.svg";
+  const imageSrc =
+    variant === "points"
+      ? "/memoji/replacements/points.png"
+      : "/memoji/replacements/heart.png";
   const copy = uiCopy[uiLocale].lesson;
 
   return (

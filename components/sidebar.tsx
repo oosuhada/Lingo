@@ -25,7 +25,12 @@ export const Sidebar = ({ className, uiLocale = "en" }: SidebarProps) => {
     >
       <Link href="/learn">
         <div className="flex items-center gap-x-3 pb-7 pl-4 pt-8">
-          <Image src="/mascot.svg" alt="Mascot" height={40} width={40} />
+          <Image
+            src="/memoji/replacements/mascot.png"
+            alt="Mascot"
+            height={40}
+            width={40}
+          />
 
           <h1 className="text-2xl font-extrabold tracking-wide text-green-600">
             Lingo
@@ -34,14 +39,26 @@ export const Sidebar = ({ className, uiLocale = "en" }: SidebarProps) => {
       </Link>
 
       <div className="flex flex-1 flex-col gap-y-2">
-        <SidebarItem label={copy.learn} href="/learn" iconSrc="/learn.svg" />
+        <SidebarItem
+          label={copy.learn}
+          href="/learn"
+          iconSrc="/memoji/replacements/learn.png"
+        />
         <SidebarItem
           label={copy.leaderboard}
           href="/leaderboard"
-          iconSrc="/leaderboard.svg"
+          iconSrc="/memoji/replacements/leaderboard.png"
         />
-        <SidebarItem label={copy.quests} href="/quests" iconSrc="/quests.svg" />
-        <SidebarItem label={copy.shop} href="/shop" iconSrc="/shop.svg" />
+        <SidebarItem
+          label={copy.quests}
+          href="/quests"
+          iconSrc="/memoji/replacements/quests.png"
+        />
+        <SidebarItem
+          label={copy.shop}
+          href="/shop"
+          iconSrc="/memoji/replacements/shop.png"
+        />
       </div>
 
       <div className="p-4">

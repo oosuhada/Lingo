@@ -10,6 +10,6 @@ import { hanjaSupplementUnits } from "./supplement";
 export const hanjaCourse: CourseSeed = {
   kind: "hanja",
   title: "Hanja",
-  imageSrc: "/hanja.svg",
+  imageSrc: "/memoji/replacements/hanja.svg",
   units: [unit1, unit2, unit3, unit4, unit5, unit6, ...hanjaSupplementUnits],
 };

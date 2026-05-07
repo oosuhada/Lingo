@@ -29,7 +29,12 @@ export const PracticeModal = () => {
       <DialogContent className="max-w-md">
         <DialogHeader>
           <div className="mb-5 flex w-full items-center justify-center">
-            <Image src="/heart.svg" alt="Heart" height={100} width={100} />
+            <Image
+              src="/memoji/replacements/heart.png"
+              alt="Heart"
+              height={100}
+              width={100}
+            />
           </div>
 
           <DialogTitle className="text-center text-2xl font-bold">

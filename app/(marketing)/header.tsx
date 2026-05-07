@@ -37,7 +37,12 @@ export const Header = () => {
       >
         <div className="mx-auto flex h-full items-center justify-between lg:max-w-screen-lg">
           <Link href="/" className="flex items-center gap-x-3 pb-7 pl-4 pt-8">
-            <Image src="/mascot.svg" alt="Mascot" height={40} width={40} />
+            <Image
+              src="/memoji/replacements/mascot.png"
+              alt="Mascot"
+              height={40}
+              width={40}
+            />
 
             <h1 className="text-2xl font-extrabold tracking-wide text-green-600">
               Lingo
@@ -68,7 +73,7 @@ export const Header = () => {
                 className={isSignedIn ? "pt-1.5" : "pt-3"}
               >
                 <Image
-                  src="/github.svg"
+                  src="/memoji/replacements/github.svg"
                   alt="Source Code"
                   height={20}
                   width={20}

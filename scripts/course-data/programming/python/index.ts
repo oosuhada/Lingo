@@ -10,6 +10,6 @@ import { pythonSupplementUnits } from "../supplement";
 export const pythonCourse: CourseSeed = {
   kind: "programming",
   title: "Python",
-  imageSrc: "/python.svg",
+  imageSrc: "/memoji/replacements/python-logo.png",
   units: [unit1, unit2, unit3, unit4, unit5, unit6, ...pythonSupplementUnits],
 };

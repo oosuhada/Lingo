@@ -12,7 +12,7 @@ import { javaSupplementUnits } from "../supplement";
 export const javaCourse: CourseSeed = {
   kind: "programming",
   title: "Java",
-  imageSrc: "/java.svg",
+  imageSrc: "/memoji/replacements/java-svgrepo-com.svg",
   units: [
     unit1,
     unit2,

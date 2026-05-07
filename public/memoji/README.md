@@ -53,24 +53,27 @@ Each character set includes:
 
 ## Replacement candidates
 
-`replacements/` contains one PNG candidate for each non-course SVG in
-`public/`, excluding flags, Hanja, Python, and Java. The filenames intentionally
-match the original SVG basename so a later UI swap can change only extensions or
-asset paths.
+`replacements/` contains replacement candidates for every old public image asset
+except country flags. The filenames intentionally match the original SVG
+basename where possible so later UI swaps can change only extensions or asset
+paths.
 
 Mapped files:
 
 ```text
 finish.png
-github.png
+github.svg
+hanja.svg
 heart.png
 hero.png
+java-svgrepo-com.svg
 leaderboard.png
 learn.png
 mascot.png
 mascot_bad.png
 mascot_sad.png
 points.png
+python-logo.png
 quests.png
 robot.png
 shop.png
@@ -81,6 +84,6 @@ zombie.png
 Human replacements are kept only in the emotion-specific character folders.
 Mascot replacements use the Ed dark memoji set above. Most utility replacements
 come from Apple iOS 14.2 emoji images on Emojipedia; `shop.png` uses the
-Microsoft Fluent 3D shopping bags icon, `github.png` uses the GitHub mark, and
+Microsoft Fluent 3D shopping bags icon, `github.svg` uses the GitHub mark, and
 `robot.png` preserves the user-provided sample at `public/memoji/robot.png`. See
 `replacements/manifest.json` for the exact source mapping.
