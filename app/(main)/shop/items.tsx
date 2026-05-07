@@ -47,8 +47,12 @@ export const Items = ({
   };
 
   return (
-    <ul className="w-full">
-      <div className="flex w-full items-center gap-x-4 border-t p-4">
+    <ul className="w-full" data-motion="stagger">
+      <div
+        className="flex w-full items-center gap-x-4 border-t p-4"
+        data-motion-item
+        data-magnetic="0.025"
+      >
         <Image
           src="/memoji/replacements/heart.png"
           alt="Heart"
@@ -70,6 +74,7 @@ export const Items = ({
           aria-disabled={
             pending || hearts === MAX_HEARTS || points < POINTS_TO_REFILL
           }
+          data-magnetic="0.08"
         >
           {hearts === MAX_HEARTS ? (
             copy.full
@@ -88,7 +93,11 @@ export const Items = ({
         </Button>
       </div>
 
-      <div className="flex w-full items-center gap-x-4 border-t p-4 pt-8">
+      <div
+        className="flex w-full items-center gap-x-4 border-t p-4 pt-8"
+        data-motion-item
+        data-magnetic="0.025"
+      >
         <Image
           src="/memoji/replacements/unlimited.png"
           alt="Unlimited"
@@ -102,7 +111,12 @@ export const Items = ({
           </p>
         </div>
 
-        <Button onClick={onUpgrade} disabled={pending} aria-disabled={pending}>
+        <Button
+          onClick={onUpgrade}
+          disabled={pending}
+          aria-disabled={pending}
+          data-magnetic="0.08"
+        >
           {hasActiveSubscription ? copy.settings : copy.upgrade}
         </Button>
       </div>

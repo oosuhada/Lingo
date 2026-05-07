@@ -19,9 +19,12 @@ export const UserProgress = ({
   hasActiveSubscription,
 }: UserProgressProps) => {
   return (
-    <div className="flex w-full items-center justify-between gap-x-2">
+    <div
+      className="flex w-full items-center justify-between gap-x-2"
+      data-motion="stagger"
+    >
       <Link href="/courses">
-        <Button variant="ghost">
+        <Button variant="ghost" data-motion-item data-magnetic="0.08">
           <Image
             src={activeCourse.imageSrc}
             alt={activeCourse.title}
@@ -33,7 +36,12 @@ export const UserProgress = ({
       </Link>
 
       <Link href="/shop">
-        <Button variant="ghost" className="text-orange-500">
+        <Button
+          variant="ghost"
+          className="text-orange-500"
+          data-motion-item
+          data-magnetic="0.08"
+        >
           <Image
             src="/memoji/replacements/points.png"
             height={28}
@@ -46,7 +54,12 @@ export const UserProgress = ({
       </Link>
 
       <Link href="/shop">
-        <Button variant="ghost" className="text-rose-500">
+        <Button
+          variant="ghost"
+          className="text-rose-500"
+          data-motion-item
+          data-magnetic="0.08"
+        >
           <Image
             src="/memoji/replacements/heart.png"
             height={22}

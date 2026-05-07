@@ -42,7 +42,10 @@ export const Unit = ({
         uiLocale={uiLocale}
       />
 
-      <div className="relative flex flex-col items-center">
+      <div
+        className="relative flex flex-col items-center"
+        data-motion="stagger"
+      >
         {lessons.map((lesson, i) => {
           const isCurrent = lesson.id === activeLesson?.id;
           const isLocked = !lesson.completed && !isCurrent;

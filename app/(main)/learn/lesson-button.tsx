@@ -142,6 +142,8 @@ export const LessonButton = ({
           right: `${rightPosition}px`,
           marginTop: isFirst && !isCompleted ? 60 : 24,
         }}
+        data-motion-item
+        data-magnetic={locked ? undefined : "0.06"}
       >
         {!current && (
           <div

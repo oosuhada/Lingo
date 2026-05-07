@@ -22,7 +22,7 @@ export const SidebarItem = ({ label, iconSrc, href }: SidebarItemProps) => {
       className="h-[52px] justify-start"
       asChild
     >
-      <Link href={href}>
+      <Link href={href} data-magnetic="0.06">
         <Image
           src={iconSrc}
           alt={label}

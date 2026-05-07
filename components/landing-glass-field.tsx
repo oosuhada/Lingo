@@ -55,7 +55,10 @@ export const LandingGlassField = ({ children }: PropsWithChildren) => {
     >
       <LandingBlobField />
 
-      <div className="mx-auto flex w-full max-w-[988px] flex-col items-center justify-center gap-4 sm:gap-8 lg:flex-row">
+      <div
+        className="mx-auto flex w-full max-w-[1100px] flex-col items-center justify-center gap-5 sm:gap-8 lg:flex-row lg:gap-12"
+        data-motion="stagger"
+      >
         {children}
       </div>
     </div>

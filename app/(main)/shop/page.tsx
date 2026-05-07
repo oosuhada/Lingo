@@ -41,12 +41,17 @@ const ShopPage = async () => {
       </StickyWrapper>
 
       <FeedWrapper>
-        <div className="glass-panel-strong flex w-full flex-col items-center rounded-3xl p-6">
+        <div
+          className="glass-panel-strong motion-tilt-card flex w-full flex-col items-center rounded-3xl p-6"
+          data-motion="reveal"
+          data-magnetic="0.02"
+        >
           <Image
             src="/memoji/replacements/shop.png"
             alt="Shop"
             height={90}
             width={90}
+            data-float="10"
           />
 
           <h1 className="my-6 text-center text-2xl font-bold text-foreground">

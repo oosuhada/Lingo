@@ -25,6 +25,7 @@ export const Header = () => {
         <Link
           href="/"
           className="flex shrink-0 items-center gap-1 pl-0 sm:gap-1.5 sm:pl-1"
+          data-magnetic="0.05"
         >
           <Image
             src="/memoji/replacements/mascot.png"
@@ -64,6 +65,7 @@ export const Header = () => {
               className="glass-control flex h-10 w-10 items-center justify-center rounded-full sm:h-12 sm:w-12"
               aria-label="Source code"
               title="Source code"
+              data-magnetic="0.14"
             >
               <Image
                 src="/memoji/replacements/github.svg"

@@ -47,11 +47,13 @@ export const Card = ({
     <div
       onClick={() => onClick(id)}
       className={cn(
-        "glass-card group flex h-full min-h-[252px] min-w-[200px] cursor-pointer flex-col justify-between rounded-2xl p-4 transition hover:-translate-y-0.5 hover:bg-white/70 active:translate-y-0 dark:hover:bg-white/10",
+        "glass-card motion-tilt-card group flex h-full min-h-[252px] min-w-[200px] cursor-pointer flex-col justify-between rounded-2xl p-4 transition hover:-translate-y-0.5 hover:bg-white/70 active:translate-y-0 dark:hover:bg-white/10",
         theme.glowClass,
         isActive && "border-green-400 bg-green-500/10",
         disabled && "pointer-events-none opacity-50"
       )}
+      data-magnetic="0.055"
+      data-motion-item
     >
       <div className="flex min-h-[28px] w-full items-center justify-between">
         <div

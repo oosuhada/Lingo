@@ -25,7 +25,7 @@ export const Sidebar = ({ className, uiLocale = "en" }: SidebarProps) => {
         className
       )}
     >
-      <Link href="/learn">
+      <Link href="/learn" data-magnetic="0.05">
         <div className="flex items-center gap-1.5 pb-7 pl-2 pt-8">
           <Image
             src="/memoji/replacements/mascot.png"
@@ -73,6 +73,7 @@ export const Sidebar = ({ className, uiLocale = "en" }: SidebarProps) => {
           className="glass-control flex h-12 w-12 items-center justify-center rounded-full"
           aria-label="Source code"
           title="Source code"
+          data-magnetic="0.12"
         >
           <Image
             src="/memoji/replacements/github.svg"

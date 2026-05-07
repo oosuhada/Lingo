@@ -34,11 +34,13 @@ export const UnitBanner = ({
   return (
     <div
       className={cn(
-        "glass-panel-strong relative overflow-hidden rounded-3xl border-b-[6px] p-5 text-white",
+        "glass-panel-strong motion-tilt-card relative overflow-hidden rounded-3xl border-b-[6px] p-5 text-white",
         theme.bannerClass,
         theme.bannerBorderClass,
         theme.glowClass
       )}
+      data-motion="reveal"
+      data-magnetic="0.025"
     >
       <div className="flex w-full items-center justify-between gap-4">
         <div className="space-y-2.5">
@@ -56,7 +58,10 @@ export const UnitBanner = ({
           </p>
         </div>
 
-        <div className="hidden h-20 w-20 shrink-0 items-center justify-center rounded-2xl border-2 border-white/20 bg-white/10 xl:flex">
+        <div
+          className="hidden h-20 w-20 shrink-0 items-center justify-center rounded-2xl border-2 border-white/20 bg-white/10 xl:flex"
+          data-float="8"
+        >
           <Icon className="h-10 w-10" />
         </div>
       </div>
@@ -66,6 +71,7 @@ export const UnitBanner = ({
           size="lg"
           variant="secondary"
           className="mt-5 hidden border-2 border-b-4 border-white/30 bg-white/20 text-white hover:bg-white/25 active:border-b-2 xl:flex"
+          data-magnetic="0.08"
         >
           <NotebookText className="mr-2" />
           {copy.unitCta}

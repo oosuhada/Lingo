@@ -6,7 +6,11 @@ import { MarketingLanguagePanel } from "@/components/marketing-language-panel";
 export default function MarketingPage() {
   return (
     <LandingGlassField>
-      <div className="relative mb-0 h-[240px] w-[240px] lg:h-[424px] lg:w-[424px]">
+      <div
+        className="relative mb-0 h-[240px] w-[240px] lg:h-[424px] lg:w-[424px]"
+        data-motion-item
+        data-float="18"
+      >
         <Image
           src="/memoji/replacements/hero.png"
           alt="Hero"

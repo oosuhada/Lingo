@@ -12,7 +12,11 @@ export const Promo = ({ uiLocale }: PromoProps) => {
   const copy = uiCopy[uiLocale].promo;
 
   return (
-    <div className="glass-card space-y-4 rounded-2xl p-4">
+    <div
+      className="glass-card motion-tilt-card space-y-4 rounded-2xl p-4"
+      data-motion="reveal"
+      data-magnetic="0.035"
+    >
       <div className="space-y-2">
         <div className="flex items-center gap-x-2">
           <Image
@@ -29,7 +33,9 @@ export const Promo = ({ uiLocale }: PromoProps) => {
       </div>
 
       <Button variant="super" className="w-full" size="lg" asChild>
-        <Link href="/shop">{copy.action}</Link>
+        <Link href="/shop" data-magnetic="0.08">
+          {copy.action}
+        </Link>
       </Button>
     </div>
   );

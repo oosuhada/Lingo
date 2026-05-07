@@ -29,7 +29,11 @@ export const MarketingLanguagePanel = () => {
   const copy = uiCopy[locale];
 
   return (
-    <div className="landing-panel flex w-full max-w-[500px] flex-col items-center gap-y-6 rounded-3xl p-0 sm:gap-y-8 sm:p-8">
+    <div
+      className="landing-panel motion-tilt-card flex w-full max-w-[500px] flex-col items-center gap-y-6 rounded-3xl p-0 sm:gap-y-8 sm:p-8"
+      data-motion-item
+      data-magnetic="0.035"
+    >
       <div className="space-y-3 text-center">
         <h1 className="max-w-[480px] text-xl font-extrabold text-foreground lg:text-3xl">
           {copy.marketing.headline}
@@ -51,6 +55,7 @@ export const MarketingLanguagePanel = () => {
                 active && "border-green-400 bg-green-500/10"
               )}
               onClick={() => setLocale(option.locale)}
+              data-magnetic="0.08"
             >
               <div className="flex items-center justify-between gap-2">
                 <span className="text-base font-extrabold text-foreground">
@@ -78,19 +83,31 @@ export const MarketingLanguagePanel = () => {
         <ClerkLoaded>
           <Show when="signed-in">
             <Button size="lg" variant="secondary" className="w-full" asChild>
-              <Link href="/learn">{copy.marketing.continueLearning}</Link>
+              <Link href="/learn" data-magnetic="0.08">
+                {copy.marketing.continueLearning}
+              </Link>
             </Button>
           </Show>
 
           <Show when="signed-out">
             <SignUpButton mode="modal">
-              <Button size="lg" variant="secondary" className="w-full">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="w-full"
+                data-magnetic="0.08"
+              >
                 {copy.marketing.getStarted}
               </Button>
             </SignUpButton>
 
             <SignInButton mode="modal">
-              <Button size="lg" variant="primaryOutline" className="w-full">
+              <Button
+                size="lg"
+                variant="primaryOutline"
+                className="w-full"
+                data-magnetic="0.08"
+              >
                 {copy.marketing.signIn}
               </Button>
             </SignInButton>

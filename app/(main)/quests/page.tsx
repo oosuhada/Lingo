@@ -40,12 +40,17 @@ const QuestsPage = async () => {
       </StickyWrapper>
 
       <FeedWrapper>
-        <div className="glass-panel-strong flex w-full flex-col items-center rounded-3xl p-6">
+        <div
+          className="glass-panel-strong motion-tilt-card flex w-full flex-col items-center rounded-3xl p-6"
+          data-motion="reveal"
+          data-magnetic="0.02"
+        >
           <Image
             src="/memoji/replacements/quests.png"
             alt="Quests"
             height={90}
             width={90}
+            data-float="10"
           />
 
           <h1 className="my-6 text-center text-2xl font-bold text-foreground">
@@ -55,7 +60,7 @@ const QuestsPage = async () => {
             {copy.description}
           </p>
 
-          <ul className="w-full">
+          <ul className="w-full" data-motion="stagger">
             {QUESTS.map((quest) => {
               const progress = (userProgress.points / quest.value) * 100;
 
@@ -63,6 +68,8 @@ const QuestsPage = async () => {
                 <div
                   className="flex w-full items-center gap-x-4 border-t p-4"
                   key={quest.title}
+                  data-motion-item
+                  data-magnetic="0.025"
                 >
                   <Image
                     src="/memoji/replacements/points.png"

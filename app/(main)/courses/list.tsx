@@ -45,15 +45,18 @@ export const List = ({
   };
 
   return (
-    <section className="space-y-4">
-      <div>
+    <section className="space-y-4" data-motion="reveal">
+      <div data-parallax="4">
         <h2 className="text-xl font-extrabold text-foreground">{title}</h2>
         <p className="mt-1 text-sm font-medium text-muted-foreground">
           {description}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
+      <div
+        className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]"
+        data-motion="stagger"
+      >
         {courses.map((course) => (
           <Card
             key={course.id}

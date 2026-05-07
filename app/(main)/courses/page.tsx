@@ -58,7 +58,11 @@ const CoursesPage = async () => {
 
   return (
     <div className="mx-auto min-h-full max-w-[980px] px-3 pb-10 pt-6">
-      <header className="glass-panel-strong mb-8 space-y-2 rounded-3xl p-6">
+      <header
+        className="glass-panel-strong motion-tilt-card mb-8 space-y-2 rounded-3xl p-6"
+        data-motion="reveal"
+        data-magnetic="0.025"
+      >
         <p className="text-sm font-bold uppercase tracking-wide text-green-500">
           {copy.eyebrow}
         </p>

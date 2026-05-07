@@ -15,12 +15,16 @@ export const Quests = ({ points, uiLocale }: QuestsProps) => {
   const copy = uiCopy[uiLocale].questsPanel;
 
   return (
-    <div className="glass-card space-y-4 rounded-2xl p-4">
+    <div
+      className="glass-card motion-tilt-card space-y-4 rounded-2xl p-4"
+      data-motion="reveal"
+      data-magnetic="0.03"
+    >
       <div className="flex w-full items-center justify-between space-y-2">
         <h3 className="text-lg font-bold">{copy.title}</h3>
 
         <Link href="/quests">
-          <Button size="sm" variant="primaryOutline">
+          <Button size="sm" variant="primaryOutline" data-magnetic="0.08">
             {copy.viewAll}
           </Button>
         </Link>
@@ -34,6 +38,7 @@ export const Quests = ({ points, uiLocale }: QuestsProps) => {
             <div
               className="flex w-full items-center gap-x-3 pb-4"
               key={quest.title}
+              data-motion-item
             >
               <Image
                 src="/memoji/replacements/points.png"

@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
 import Script from "next/script";
 
+import { GsapSiteEffects } from "@/components/gsap-site-effects";
 import { ExitModal } from "@/components/modals/exit-modal";
 import { HeartsModal } from "@/components/modals/hearts-modal";
 import { PracticeModal } from "@/components/modals/practice-modal";
@@ -75,6 +76,7 @@ export default function RootLayout({
           }}
           afterSignOutUrl="/"
         >
+          <GsapSiteEffects />
           <Toaster theme="system" richColors closeButton />
           <ExitModal />
           <HeartsModal />

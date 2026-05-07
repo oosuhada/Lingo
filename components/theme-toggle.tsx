@@ -73,6 +73,7 @@ export const ThemeToggle = ({ className }: { className?: string }) => {
         window.localStorage.setItem(THEME_KEY, nextMode.value);
         window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
       }}
+      data-magnetic="0.14"
       className={cn(
         "glass-control flex h-10 w-10 items-center justify-center rounded-full text-foreground transition hover:scale-105 active:scale-95",
         className
