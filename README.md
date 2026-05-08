@@ -1,324 +1,116 @@
-<a name="readme-top"></a>
+# Lingo
 
-# Lingo - Interactive platform for language learning.
+언어 학습 앱 구조를 바탕으로 한국어, 영어, 일본어, 스페인어, 이탈리아어, 한자, Python, Java 학습 코스를 함께 다루도록 확장 중인 Next.js 학습 플랫폼입니다. 아직 개발 중인 프로젝트라 데모 사이트 주소는 비워두고, 현재 구현된 기능과 화면 중심으로 정리했습니다.
 
-![Lingo - Interactive platform for language learning.](/.github/images/img_main.png "Lingo - Interactive platform for language learning.")
+Demo site:
 
-[![Ask Me Anything!](https://flat.badgen.net/static/Ask%20me/anything?icon=github&color=black&scale=1.01)](https://github.com/sanidhyy "Ask Me Anything!")
-[![GitHub license](https://flat.badgen.net/github/license/oosuhada/Lingo?icon=github&color=black&scale=1.01)](https://github.com/oosuhada/Lingo/blob/main/LICENSE "GitHub license")
-[![Maintenance](https://flat.badgen.net/static/Maintained/yes?icon=github&color=black&scale=1.01)](https://github.com/oosuhada/Lingo/commits/main "Maintenance")
-[![GitHub branches](https://flat.badgen.net/github/branches/oosuhada/Lingo?icon=github&color=black&scale=1.01)](https://github.com/oosuhada/Lingo/branches "GitHub branches")
-[![Github commits](https://flat.badgen.net/github/commits/oosuhada/Lingo?icon=github&color=black&scale=1.01)](https://github.com/oosuhada/Lingo/commits "Github commits")
-[![GitHub issues](https://flat.badgen.net/github/issues/oosuhada/Lingo?icon=github&color=black&scale=1.01)](https://github.com/oosuhada/Lingo/issues "GitHub issues")
-[![GitHub pull requests](https://flat.badgen.net/github/prs/oosuhada/Lingo?icon=github&color=black&scale=1.01)](https://github.com/oosuhada/Lingo/pulls "GitHub pull requests")
-[![Vercel status](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://lingo-clone.vercel.app/ "Vercel status")
+![Lingo main screen](.github/images/img_main.png)
 
-<!-- Table of Contents -->
-<details>
+## Current Status
 
-<summary>
+- Next.js App Router 기반의 marketing, auth, main learning, lesson, admin route가 구성되어 있습니다.
+- Clerk 인증, Drizzle ORM, Neon/PostgreSQL, Stripe subscription, React Admin 기반 운영 화면을 연결할 수 있는 구조입니다.
+- 언어 코스뿐 아니라 Python/Java 프로그래밍 코스와 한자 코스를 추가하는 방향으로 확장하고 있습니다.
+- 기존 clone/template README에 남아 있던 외부 author, 후원, Vercel demo, star-history 중심 내용을 제거하고 현재 포트폴리오 맥락에 맞게 정리했습니다.
 
-# :notebook_with_decorative_cover: Table of Contents
+## Screenshots
 
-</summary>
+| Course selection | Quest progress |
+| --- | --- |
+| ![Course UI](.github/images/img1.png) | ![Quest UI](.github/images/img2.png) |
 
-- [Folder Structure](#bangbang-folder-structure)
-- [Getting Started](#toolbox-getting-started)
-- [Screenshots](#camera-screenshots)
-- [Tech Stack](#gear-tech-stack)
-- [Stats](#wrench-stats)
-- [Contribute](#raised_hands-contribute)
-- [Acknowledgements](#gem-acknowledgements)
-- [Buy Me a Coffee](#coffee-buy-me-a-coffee)
-- [Follow Me](#rocket-follow-me)
-- [Learn More](#books-learn-more)
-- [Deploy on Vercel](#page_with_curl-deploy-on-vercel)
-- [Give A Star](#star-give-a-star)
-- [Star History](#star2-star-history)
-- [Give A Star](#star-give-a-star)
+| Shop and hearts |
+| --- |
+| ![Shop UI](.github/images/img3.png) |
 
-</details>
+## Implemented Features
 
-## :bangbang: Folder Structure
+| Area | What is implemented |
+| --- | --- |
+| Marketing surface | Glass-field landing UI, animated hero visual, language panel, theme-aware global styling |
+| Course catalog | Courses are grouped into language, hanja, and programming categories with custom visual themes |
+| Learning path | Unit/lesson hierarchy, active lesson state, progress percentage, locked/completed lesson UI |
+| Lesson engine | Challenge cards, quiz footer, result card, hearts modal, practice modal, exit modal |
+| User progress | Hearts, points, active course, course progress, lesson percentage, subscription-aware state |
+| Quests and shop | Quest checklist, heart refill, unlimited hearts promo, Stripe subscription hook |
+| Admin tools | React Admin resources for courses, units, lessons, challenges, and challenge options |
+| Localization | UI copy helper and locale cookie flow for Korean/English interface text |
 
-Here is the folder structure of this app.
+## Course Direction
 
-<!--- FOLDER_STRUCTURE_START --->
-```bash
-lingo/
-  |- actions/
-    |-- challenge-progress.ts
-    |-- user-progress.ts
-    |-- user-subscription.ts
-  |- app/
-    |-- (auth)/
-    |-- (main)/
-    |-- (marketing)/
-    |-- admin/
-    |-- api/
-    |-- lesson/
-    |-- apple-icon.png
-    |-- favicon.ico
-    |-- globals.css
-    |-- icon1.png
-    |-- icon2.png
-    |-- layout.tsx
-  |- components/
-    |-- modals/
-    |-- ui/
-    |-- banner.tsx
-    |-- feed-wrapper.tsx
-    |-- mobile-header.tsx
-    |-- mobile-sidebar.tsx
-    |-- promo.tsx
-    |-- quests.tsx
-    |-- sidebar-item.tsx
-    |-- sidebar.tsx
-    |-- sticky-wrapper.tsx
-    |-- user-progress.tsx
-  |- config/
-    |-- index.ts
-  |- db/
-    |-- drizzle.ts
-    |-- queries.ts
-    |-- schema.ts
-  |- lib/
-    |-- admin.ts
-    |-- stripe.ts
-    |-- utils.ts
-  |- public/
-  |- scripts/
-    |-- prod.ts
-  |- store/
-    |-- use-exit-modal.ts
-    |-- use-hearts-modal.ts
-    |-- use-practice-modal.ts
-  |- .env.example
-  |- .env/.env.local
-  |- .gitignore
-  |- .prettierrc.json
-  |- bun.lock
-  |- components.json
-  |- constants.ts
-  |- drizzle.config.ts
-  |- environment.d.ts
-  |- eslint.config.mjs
-  |- next.config.ts
-  |- package.json
-  |- postcss.config.js
-  |- proxy.ts
-  |- tailwind.config.ts
-  |- tsconfig.json
-  |- vercel.ts
+The project is moving beyond a single-language clone into a broader learning playground:
+
+- Korean, English, Japanese, Spanish, Italian language courses
+- Hanja memorization and meaning drills
+- Python beginner drills based on control flow, functions, collections, and coding-test patterns
+- Java beginner drills planned around syntax, objects, and problem-solving flow
+
+## Architecture
+
+```text
+Lingo/
+├── app/
+│   ├── (marketing)/           # landing page
+│   ├── (auth)/                # Clerk sign-in/sign-up
+│   ├── (main)/                # courses, learn, quests, shop, leaderboard
+│   ├── lesson/                # lesson and challenge player
+│   ├── admin/                 # React Admin resources
+│   └── api/                   # CRUD and Stripe webhook routes
+├── actions/                   # server actions for progress/subscription
+├── components/                # layout, progress, quest, promo, landing UI
+├── db/                        # Drizzle schema, queries, connection
+├── lib/                       # admin, course style, Stripe, locale, UI copy
+├── scripts/course-data/       # language, hanja, and programming seed content
+└── store/                     # modal state stores
 ```
-<!--- FOLDER_STRUCTURE_END --->
 
-<br />
+```mermaid
+flowchart LR
+  user["Learner"] --> app["Next.js App Router"]
+  app --> auth["Clerk auth"]
+  app --> db["Drizzle + PostgreSQL"]
+  app --> lesson["Lesson/challenge engine"]
+  lesson --> progress["Progress, hearts, points"]
+  app --> admin["React Admin"]
+  app --> stripe["Stripe subscription"]
+```
 
-## :toolbox: Getting Started
+## Environment
 
-1. Make sure **Git** and **NodeJS** is installed.
-2. Clone this repository to your local computer.
-3. Create `.env` file in **root** directory.
-4. Contents of `.env`:
+Create local env files from `.env.example`. Keep real credentials out of git.
 
 ```env
-# .env
-
-# disabled next.js telemetry
 NEXT_TELEMETRY_DISABLED=1
-
-# clerk auth keys
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
-CLERK_SECRET_KEY=your_clerk_secret_key_here
-
-# neon db uri
-DATABASE_URL="postgresql://<user>:<password>@<host>:<post>/lingo?sslmode=require"
-
-# stripe api key and webhook
-STRIPE_API_SECRET_KEY=your_stripe_secret_key_here
-STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret_here
-
-# public app url
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+DATABASE_URL=
+STRIPE_API_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
 NEXT_PUBLIC_APP_URL=http://localhost:3000
-
-# clerk admin user id(s) separated by comma and space (, )
-CLERK_ADMIN_IDS="user_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-# or CLERK_ADMIN_IDS="user_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx, user_xxxxxxxxxxxxxxxxxxxxxx" for multiple admins.
-
+CLERK_ADMIN_IDS=
 ```
 
-5. Obtain Clerk Authentication Keys
-   1. **Source**: Clerk Dashboard or Settings Page
-   2. **Procedure**:
-      - Log in to your Clerk account.
-      - Navigate to the dashboard or settings page.
-      - Look for the section related to authentication keys.
-      - Copy the `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` provided in that section.
+## Run Locally
 
-6. Retrieve Neon Database URI
-   1. **Source**: Database Provider (e.g., Neon, PostgreSQL)
-   2. **Procedure**:
-      - Access your database provider's platform or configuration.
-      - Locate the database connection details.
-      - Replace `<user>`, `<password>`, `<host>`, and `<port>` placeholders in the URI with your actual database credentials.
-      - Ensure to include `?sslmode=require` at the end of the URI for SSL mode requirement.
-
-7. Fetch Stripe API Key and Webhook Secret
-   1. **Source**: Stripe Dashboard
-   2. **Procedure**:
-      - Log in to your Stripe account.
-      - Navigate to the dashboard or API settings.
-      - Find the section related to API keys and webhook secrets.
-      - Copy the `STRIPE_API_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET`.
-
-8. Specify Public App URL
-   1. **Procedure**:
-      - Replace `http://localhost:3000` with the URL of your deployed application.
-
-9. Identify Clerk Admin User IDs
-   1. **Source**: Clerk Dashboard or Settings Page
-   2. **Procedure**:
-      - Log in to your Clerk account.
-      - Navigate to the dashboard or settings page.
-      - Find the section related to admin user IDs.
-      - Copy the user IDs provided, ensuring they are separated by commas and spaces.
-
-10. Save and Secure:
-    - Save the changes to the `.env` file.
-
-11. Install Project Dependencies using `bun install --legacy-peer-deps`.
-
-12. Run the Seed Script:
-
-In the same terminal, run the following command to execute the seed script:
+This repo uses `bun.lock`, so Bun is the preferred package manager.
 
 ```bash
-bun run db:push && bun run db:prod
+bun install
+bun run dev
 ```
 
-This command uses `bun` to execute the Typescript file (`scripts/prod.ts`) and writes challenges data in database.
+Database setup when credentials are ready:
 
-13. Verify Data in Database:
+```bash
+bun run db:push
+bun run db:prod
+```
 
-Once the script completes, check your database to ensure that the challenges data has been successfully seeded.
+## Validate
 
-14. Now app is fully configured 👍 and you can start using this app using either one of `bun dev`.
+```bash
+bun run lint
+bun run build
+```
 
-**NOTE:** Please make sure to keep your API keys and configuration values secure and do not expose them publicly.
-
-## :camera: Screenshots
-
-![Modern UI/UX](/.github/images/img1.png "Modern UI/UX")
-
-![Quests](/.github/images/img2.png "Quests")
-
-![Shop](/.github/images/img3.png "Shop")
-
-## :gear: Tech Stack
-
-[![React JS](https://skillicons.dev/icons?i=react "React JS")](https://react.dev/ "React JS") [![Next JS](https://skillicons.dev/icons?i=next "Next JS")](https://nextjs.org/ "Next JS") [![Typescript](https://skillicons.dev/icons?i=ts "Typescript")](https://www.typescriptlang.org/ "Typescript") [![Tailwind CSS](https://skillicons.dev/icons?i=tailwind "Tailwind CSS")](https://tailwindcss.com/ "Tailwind CSS") [![Vercel](https://skillicons.dev/icons?i=vercel "Vercel")](https://vercel.app/ "Vercel") [![Postgresql](https://skillicons.dev/icons?i=postgres "Postgresql")](https://www.postgresql.org/ "Postgresql")
-
-## :wrench: Stats
-
-[![Stats for Lingo](/.github/images/stats.svg "Stats for Lingo")](https://pagespeed.web.dev/analysis?url=https://lingo-clone.vercel.app/ "Stats for Lingo")
-
-## :raised_hands: Contribute
-
-You might encounter some bugs while using this app. You are more than welcome to contribute. Just submit changes via pull request and I will review them before merging. Make sure you follow community guidelines.
-
-## :gem: Acknowledgements
-
-Useful resources and dependencies that are used in Lingo.
-
-- Special Thanks to Code with Antonio: https://codewithantonio.com/
-- Kenney Assets: https://kenney.nl/
-- Freesound: https://freesound.org/
-- Elevenlabs AI: https://elevenlabs.io/
-- Flagpack: https://flagpack.xyz/
-<!--- DEPENDENCIES_START --->
-- [@clerk/nextjs](https://www.npmjs.com/package/@clerk/nextjs): ^7.2.8
-- [@eslint/eslintrc](https://www.npmjs.com/package/@eslint/eslintrc): ^3
-- [@neondatabase/serverless](https://www.npmjs.com/package/@neondatabase/serverless): ^1.1.0
-- [@radix-ui/react-avatar](https://www.npmjs.com/package/@radix-ui/react-avatar): ^1.1.11
-- [@radix-ui/react-dialog](https://www.npmjs.com/package/@radix-ui/react-dialog): ^1.1.15
-- [@radix-ui/react-progress](https://www.npmjs.com/package/@radix-ui/react-progress): ^1.1.8
-- [@radix-ui/react-separator](https://www.npmjs.com/package/@radix-ui/react-separator): ^1.1.8
-- [@radix-ui/react-slot](https://www.npmjs.com/package/@radix-ui/react-slot): ^1.2.4
-- [@types/node](https://www.npmjs.com/package/@types/node): ^25.6.0
-- [@types/react](https://www.npmjs.com/package/@types/react): ^19.2.14
-- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom): ^19.2.3
-- [@vercel/config](https://www.npmjs.com/package/@vercel/config): ^0.2.1
-- [autoprefixer](https://www.npmjs.com/package/autoprefixer): ^10.4.27
-- [class-variance-authority](https://www.npmjs.com/package/class-variance-authority): ^0.7.1
-- [clsx](https://www.npmjs.com/package/clsx): ^2.1.0
-- [dotenv](https://www.npmjs.com/package/dotenv): ^17.4.2
-- [drizzle-kit](https://www.npmjs.com/package/drizzle-kit): ^0.31.10
-- [drizzle-orm](https://www.npmjs.com/package/drizzle-orm): ^0.45.1
-- [eslint](https://www.npmjs.com/package/eslint): ^10
-- [eslint-config-next](https://www.npmjs.com/package/eslint-config-next): 16.2.3
-- [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier): ^10.1.8
-- [lucide-react](https://www.npmjs.com/package/lucide-react): ^1.14.0
-- [next](https://www.npmjs.com/package/next): ^16.2.4
-- [pg](https://www.npmjs.com/package/pg): ^8.20.0
-- [postcss](https://www.npmjs.com/package/postcss): ^8
-- [prettier](https://www.npmjs.com/package/prettier): ^3.8.3
-- [prettier-plugin-tailwindcss](https://www.npmjs.com/package/prettier-plugin-tailwindcss): ^0.8.0
-- [ra-data-simple-rest](https://www.npmjs.com/package/ra-data-simple-rest): ^5.14.5
-- [react](https://www.npmjs.com/package/react): ^19.2.5
-- [react-admin](https://www.npmjs.com/package/react-admin): ^4.16.20
-- [react-circular-progressbar](https://www.npmjs.com/package/react-circular-progressbar): ^2.2.0
-- [react-confetti](https://www.npmjs.com/package/react-confetti): ^6.4.0
-- [react-dom](https://www.npmjs.com/package/react-dom): ^19.2.5
-- [react-use](https://www.npmjs.com/package/react-use): ^17.6.0
-- [sonner](https://www.npmjs.com/package/sonner): ^2.0.7
-- [stripe](https://www.npmjs.com/package/stripe): ^22.1.0
-- [tailwind-merge](https://www.npmjs.com/package/tailwind-merge): ^3.5.0
-- [tailwindcss](https://www.npmjs.com/package/tailwindcss): ^3.4.19
-- [tailwindcss-animate](https://www.npmjs.com/package/tailwindcss-animate): ^1.0.7
-- [tsx](https://www.npmjs.com/package/tsx): ^4.21.0
-- [typescript](https://www.npmjs.com/package/typescript): ^6
-- [zustand](https://www.npmjs.com/package/zustand): ^5.0.12
-
-<!--- DEPENDENCIES_END --->
-
-## :coffee: Buy Me a Coffee
-
-[<img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" width="200" />](https://www.buymeacoffee.com/sanidhy "Buy me a Coffee")
-
-## :rocket: Follow Me
-
-[![Follow Me](https://img.shields.io/github/followers/sanidhyy?style=social&label=Follow&maxAge=2592000)](https://github.com/sanidhyy "Follow Me")
-[![Tweet about this project](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fx.com%2F_sanidhyy)](https://x.com/intent/tweet?text=Check+out+this+amazing+app:&url=https%3A%2F%2Fgithub.com%2Foosuhada%2FLingo "Tweet about this project")
-
-## :books: Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## :page_with_curl: Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## :star: Give A Star
-
-You can also give this repository a star to show more people and they can use this repository.
-
-## :star2: Star History
-
-<a href="https://star-history.com/#oosuhada/Lingo&Timeline">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=oosuhada/Lingo&type=Timeline&theme=dark" />
-  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=oosuhada/Lingo&type=Timeline" />
-  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=oosuhada/Lingo&type=Timeline" />
-</picture>
-</a>
-
-<br />
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+If Clerk keys or database credentials are mismatched locally, authenticated pages can redirect before screenshots/build verification. In that case, fix env first and rerun the checks.
