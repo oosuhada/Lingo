@@ -62,17 +62,16 @@
     "typescript": "^6"
   },
   "author": {
-    "name": "Sanidhya Kumar Verma",
-    "email": "sanidhya.verma12345@gmail.com",
-    "url": "https://github.com/sanidhyy"
+    "name": "oosuhada",
+    "url": "https://github.com/oosuhada"
   },
-  "description": "Interactive platform for language learning with lessons, quizzes, and progress tracking.",
+  "description": "Portfolio learning platform for language, hanja, Python, and Java practice courses.",
   "keywords": [
     "reactjs",
     "nextjs",
     "vercel",
     "react",
-    "duolingo-clone",
+    "learning-platform",
     "learn-language",
     "shadcn",
     "shadcn-ui",
@@ -108,17 +107,6 @@
   },
   "homepage": "https://github.com/oosuhada/Lingo#readme",
   "bugs": {
-    "url": "https://github.com/oosuhada/Lingo/issues",
-    "email": "sanidhya.verma12345@gmail.com"
-  },
-  "funding": [
-    {
-      "type": "patreon",
-      "url": "https://www.patreon.com/sanidhy"
-    },
-    {
-      "type": "Buy me a coffee",
-      "url": "https://www.buymeacoffee.com/sanidhy"
-    }
-  ]
+    "url": "https://github.com/oosuhada/Lingo/issues"
+  }
 }
