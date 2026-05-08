@@ -120,3 +120,7 @@ bun run build
 ```
 
 If Clerk keys or database credentials are mismatched locally, authenticated pages can redirect before screenshots/build verification. In that case, fix env first and rerun the checks.
+
+## Topics
+
+[`clerk`](https://github.com/topics/clerk) · [`drizzle-orm`](https://github.com/topics/drizzle-orm) · [`gamified-learning`](https://github.com/topics/gamified-learning) · [`nextjs`](https://github.com/topics/nextjs) · [`postgresql`](https://github.com/topics/postgresql) · [`stripe`](https://github.com/topics/stripe) · [`tailwindcss`](https://github.com/topics/tailwindcss) · [`typescript`](https://github.com/topics/typescript)
