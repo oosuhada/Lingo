@@ -121,6 +121,13 @@ bun run build
 
 If Clerk keys or database credentials are mismatched locally, authenticated pages can redirect before screenshots/build verification. In that case, fix env first and rerun the checks.
 
-## Topics
+## Architecture & Topics / 아키텍처 및 주제
 
-[`clerk`](https://github.com/topics/clerk) · [`drizzle-orm`](https://github.com/topics/drizzle-orm) · [`gamified-learning`](https://github.com/topics/gamified-learning) · [`nextjs`](https://github.com/topics/nextjs) · [`postgresql`](https://github.com/topics/postgresql) · [`stripe`](https://github.com/topics/stripe) · [`tailwindcss`](https://github.com/topics/tailwindcss) · [`typescript`](https://github.com/topics/typescript) · [`language-learning`](https://github.com/topics/language-learning) · [`education`](https://github.com/topics/education) · [`full-stack`](https://github.com/topics/full-stack) · [`react`](https://github.com/topics/react) · [`stripe-payments`](https://github.com/topics/stripe-payments) · [`authentication`](https://github.com/topics/authentication) · [`web-app`](https://github.com/topics/web-app) · [`saas`](https://github.com/topics/saas)
+**Architecture / 아키텍처**<br>
+[`modular-monolith`](https://github.com/topics/modular-monolith) · [`server-rendered-application`](https://github.com/topics/server-rendered-application) · [`authentication-flow`](https://github.com/topics/authentication-flow) · [`payment-webhooks`](https://github.com/topics/payment-webhooks) · [`relational-data-model`](https://github.com/topics/relational-data-model) · [`gamification-loop`](https://github.com/topics/gamification-loop) · [`role-based-access-control`](https://github.com/topics/role-based-access-control) · [`transactional-workflow`](https://github.com/topics/transactional-workflow)
+
+**Project context / 프로젝트 맥락**<br>
+[`authentication`](https://github.com/topics/authentication) · [`education`](https://github.com/topics/education) · [`full-stack`](https://github.com/topics/full-stack) · [`gamified-learning`](https://github.com/topics/gamified-learning) · [`language-learning`](https://github.com/topics/language-learning) · [`saas`](https://github.com/topics/saas) · [`stripe-payments`](https://github.com/topics/stripe-payments) · [`web-app`](https://github.com/topics/web-app)
+
+**Implementation stack / 구현 스택**<br>
+[`clerk`](https://github.com/topics/clerk) · [`drizzle-orm`](https://github.com/topics/drizzle-orm) · [`nextjs`](https://github.com/topics/nextjs) · [`postgresql`](https://github.com/topics/postgresql) · [`react`](https://github.com/topics/react) · [`stripe`](https://github.com/topics/stripe) · [`tailwindcss`](https://github.com/topics/tailwindcss) · [`typescript`](https://github.com/topics/typescript)
